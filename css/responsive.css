@@ -1,0 +1,168 @@
+/* ════════════════════════════════════════
+   RESPONSIVE — Mobile first breakpoints
+   1024px → tablette paysage
+   768px  → tablette / mobile large
+   480px  → mobile
+   ════════════════════════════════════════ */
+
+/* ── Hamburger button (caché sur desktop) ── */
+.nav-burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  z-index: 110;
+}
+
+.nav-burger span {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ════════════════════════════════════════
+   1024px — Tablette paysage
+   ════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  nav { padding: 16px 48px; }
+
+  #hero    { padding: 80px 48px; }
+  #about   { padding: 64px 48px; }
+  #projects{ padding: 64px 48px; }
+  #skills  { padding: 64px 48px; }
+  #contact { padding: 64px 48px; }
+
+  .hero-headline { font-size: 72px; }
+
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: repeat(2, 1fr); }
+
+  .form-wrapper { width: 100%; }
+}
+
+/* ════════════════════════════════════════
+   768px — Tablette portrait / mobile large
+   ════════════════════════════════════════ */
+@media (max-width: 768px) {
+  /* ── Nav hamburger ── */
+  nav { padding: 16px 24px; }
+
+  .nav-links {
+    display: none;
+    position: fixed;
+    inset: 0;
+    top: 0;
+    background: rgba(10, 10, 26, 0.97);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    z-index: 105;
+  }
+
+  .nav-links.open { display: flex; }
+
+  .nav-links a {
+    font-size: 22px;
+    letter-spacing: 3px;
+  }
+
+  .nav-cta { display: none; }
+  .nav-burger { display: flex; z-index: 110; }
+
+  /* ── Hero ── */
+  #hero { padding: 80px 24px; }
+  .hero-headline { font-size: 56px; }
+  .hero-subtitle { font-size: 11px; letter-spacing: 1px; }
+  .hero-tagline  { font-size: 15px; }
+  .hero-cta-row  { flex-direction: column; width: 100%; }
+  .btn-primary, .btn-outline { width: 100%; text-align: center; padding: 14px 24px; }
+
+  /* ── About ── */
+  #about { padding: 56px 24px; gap: 40px; }
+
+  .about-body {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .about-right {
+    width: 100%;
+    order: -1; /* Portrait en premier sur mobile */
+  }
+
+  .portrait-wrapper {
+    width: 260px;
+    height: 260px;
+  }
+
+  .portrait-img {
+    width: 260px;
+    height: 260px;
+  }
+
+  /* Évite le débordement horizontal des orbes neon */
+  .portrait-bg-lights { inset: -40px -50px; }
+
+  .stats-row { gap: 12px; }
+  .stat-card { padding: 16px 20px; }
+  .stat-val  { font-size: 30px; }
+
+  /* ── Projects ── */
+  #projects { padding: 56px 24px; gap: 32px; }
+  .projects-grid { grid-template-columns: 1fr; }
+
+  /* ── Skills ── */
+  #skills { padding: 56px 24px; gap: 32px; }
+  .skills-grid { grid-template-columns: repeat(2, 1fr); }
+  .skills-heading { font-size: 36px; }
+  .skills-sub { font-size: 15px; }
+
+  /* ── Contact ── */
+  #contact { padding: 56px 24px; gap: 32px; }
+  .contact-heading { font-size: 36px; }
+  .contact-sub { font-size: 15px; }
+  .form-wrapper { width: 100%; padding: 24px; }
+
+  /* ── Section headers ── */
+  .section-header { font-size: 24px; }
+}
+
+/* ════════════════════════════════════════
+   480px — Mobile
+   ════════════════════════════════════════ */
+@media (max-width: 480px) {
+  /* ── Hero ── */
+  .hero-headline { font-size: 42px; }
+  .hero-subtitle { display: none; } /* trop long sur petit écran */
+  .hero-tagline  { font-size: 14px; }
+
+  /* ── Portrait ── */
+  .portrait-wrapper { width: 220px; height: 220px; }
+  .portrait-img     { width: 220px; height: 220px; }
+  .portrait-bg-lights { inset: -30px -40px; }
+
+  /* ── Skills : 1 colonne ── */
+  .skills-grid { grid-template-columns: 1fr; }
+
+  /* ── Stats en colonne ── */
+  .stats-row { flex-direction: column; align-items: center; gap: 12px; }
+  .stat-card { width: 100%; max-width: 280px; }
+
+  /* ── Contact form ── */
+  .form-wrapper { padding: 20px 16px; }
+  .contact-heading { font-size: 28px; }
+}

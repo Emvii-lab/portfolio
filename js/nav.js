@@ -1,3 +1,25 @@
+/* ── Shared refs ── */
+const burger   = document.querySelector('.nav-burger');
+const navMenu  = document.querySelector('.nav-links');
+const navItems = document.querySelectorAll('.nav-links a');
+
+/* ── Hamburger menu ── */
+if (burger && navMenu) {
+  burger.addEventListener('click', () => {
+    burger.classList.toggle('open');
+    navMenu.classList.toggle('open');
+    document.body.style.overflow = navMenu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  navItems.forEach(a => {
+    a.addEventListener('click', () => {
+      burger.classList.remove('open');
+      navMenu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
 /* ── Glitch on logo hover ── */
 const logo = document.querySelector('.nav-logo-img');
 if (logo) {
@@ -13,14 +35,13 @@ if (logo) {
 
 /* ── Smooth active nav link highlight ── */
 const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-links a');
 
 window.addEventListener('scroll', () => {
   let current = '';
   sections.forEach(s => {
     if (window.scrollY >= s.offsetTop - 100) current = s.id;
   });
-  navLinks.forEach(a => {
+  navItems.forEach(a => {
     a.style.color = a.getAttribute('href') === '#' + current ? '#fff' : '';
   });
 }, { passive: true });
