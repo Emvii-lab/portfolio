@@ -1,3 +1,14 @@
 .DS_Store
 Thumbs.db
 *.log
+
+# Fichiers de travail internes
+.claude/
+maquette.pen
+emvii-carte-visite.html
+emvii-charte.html
+
+# Fichiers inutilisés / trop lourds
+emvii.mp4
+images/
+KAHvKhh*.webp
