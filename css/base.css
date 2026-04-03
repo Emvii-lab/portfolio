@@ -1,0 +1,102 @@
+/* ── Reset & Base ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --pink: #FF2D95;
+  --purple: #B026FF;
+  --cyan: #00F0FF;
+  --bg-dark: #0A0A1A;
+  --bg-mid: #0F0F24;
+  --bg-foot: #08081A;
+  --card-bg: #111122;
+  --card-bg2: #0D0D20;
+  --text-gray: #94A3B8;
+  --text-muted: #64748B;
+  --text-dimmer: #475569;
+  --text-dimmest: #2A2A4E;
+  --mono: 'JetBrains Mono', monospace;
+  --sans: 'Inter', sans-serif;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--sans);
+  background: var(--bg-dark);
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* ── Utility ── */
+.gradient-text {
+  background: linear-gradient(180deg, var(--pink) 0%, var(--purple) 50%, var(--cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Section header (partagé) ── */
+.section-header {
+  font-family: var(--mono);
+  font-size: 32px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--cyan);
+  animation: neonFlicker 5s ease-in-out infinite;
+}
+
+.section-header.pink { color: var(--pink); }
+
+@keyframes neonFlicker {
+  0%, 95%, 100% { text-shadow: 0 0 10px currentColor, 0 0 30px currentColor; opacity: 1; }
+  96% { text-shadow: none; opacity: .7; }
+  97% { text-shadow: 0 0 10px currentColor, 0 0 30px currentColor; opacity: 1; }
+  98% { text-shadow: none; opacity: .5; }
+  99% { text-shadow: 0 0 20px currentColor, 0 0 40px currentColor; opacity: 1; }
+}
+
+/* ── Scroll fade-in ── */
+.fade-in {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.65s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.65s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── Curseur ── */
+* { cursor: crosshair; }
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-dark); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--pink), var(--purple));
+  border-radius: 3px;
+}
+
+/* ── CRT scanlines overlay ── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: repeating-linear-gradient(0deg,
+    transparent, transparent 2px,
+    rgba(0, 0, 0, .035) 2px, rgba(0, 0, 0, .035) 4px);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ── CRT vignette ── */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, .55) 100%);
+  pointer-events: none;
+  z-index: 9998;
+}

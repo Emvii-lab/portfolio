@@ -1,0 +1,30 @@
+<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Variante fond blanc — usage sur fond clair -->
+  <defs>
+    <linearGradient id="lA" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#7B2FBE"/>
+      <stop offset="100%" stop-color="#A855F7"/>
+    </linearGradient>
+    <linearGradient id="lC" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#7B2FBE"/>
+      <stop offset="100%" stop-color="#FF2D78"/>
+    </linearGradient>
+  </defs>
+
+  <polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="url(#lA)" stroke-width="1.5"/>
+  <rect x="55" y="55" width="170" height="170" fill="none" stroke="#A855F7" stroke-width="1" opacity="0.4"/>
+
+  <rect x="136" y="14"  width="8" height="8" fill="#FF2D78"/>
+  <rect x="254" y="136" width="8" height="8" fill="#7B2FBE"/>
+  <rect x="136" y="258" width="8" height="8" fill="#FF2D78"/>
+  <rect x="18"  y="136" width="8" height="8" fill="#7B2FBE"/>
+
+  <polygon points="55,55 67,55 55,67"      fill="#A855F7" opacity="0.7"/>
+  <polygon points="225,55 225,67 213,55"   fill="#A855F7" opacity="0.7"/>
+  <polygon points="55,225 67,225 55,213"   fill="#A855F7" opacity="0.7"/>
+  <polygon points="225,225 213,225 225,213" fill="#A855F7" opacity="0.7"/>
+
+  <circle cx="140" cy="140" r="72" fill="white"/>
+  <text x="140" y="148" font-family="Orbitron, sans-serif" font-weight="900" font-size="30"
+    fill="url(#lC)" text-anchor="middle" dominant-baseline="middle">EMVII</text>
+</svg>

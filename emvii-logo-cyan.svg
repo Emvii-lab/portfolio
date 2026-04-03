@@ -1,0 +1,20 @@
+<svg width="280" height="280" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg">
+  <!-- Variante monochrome cyan — usage sur fond sombre -->
+
+  <polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="#00F5FF" stroke-width="1.5"/>
+  <rect x="55" y="55" width="170" height="170" fill="none" stroke="#00F5FF" stroke-width="1" opacity="0.35"/>
+
+  <rect x="136" y="14"  width="8" height="8" fill="#00F5FF"/>
+  <rect x="254" y="136" width="8" height="8" fill="#00F5FF"/>
+  <rect x="136" y="258" width="8" height="8" fill="#00F5FF"/>
+  <rect x="18"  y="136" width="8" height="8" fill="#00F5FF"/>
+
+  <polygon points="55,55 67,55 55,67"      fill="#00F5FF" opacity="0.6"/>
+  <polygon points="225,55 225,67 213,55"   fill="#00F5FF" opacity="0.6"/>
+  <polygon points="55,225 67,225 55,213"   fill="#00F5FF" opacity="0.6"/>
+  <polygon points="225,225 213,225 225,213" fill="#00F5FF" opacity="0.6"/>
+
+  <circle cx="140" cy="140" r="72" fill="#06060A"/>
+  <text x="140" y="148" font-family="Orbitron, sans-serif" font-weight="900" font-size="30"
+    fill="#00F5FF" text-anchor="middle" dominant-baseline="middle">EMVII</text>
+</svg>

@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Emvii — Charte Graphique</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=DM+Sans:wght@300;400;500&display=swap');
+
+  :root {
+    --violet:        #7B2FBE;
+    --violet-light:  #A855F7;
+    --cyan:          #00F5FF;
+    --magenta:       #FF2D78;
+    --noir:          #06060A;
+    --noir-2:        #0D0B14;
+    --noir-3:        #110D1A;
+    --gris:          #2A2A3A;
+    --gris-light:    #9090A0;
+    --blanc:         #F5F5F5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--noir);
+    color: var(--blanc);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+  }
+
+  /* ── BARRE DE NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: #06060Aee;
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid #7B2FBE22;
+    padding: 0 48px;
+    display: flex; align-items: center; gap: 32px; height: 52px;
+  }
+  .nav-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900; font-size: 14px;
+    background: linear-gradient(90deg, #00F5FF, #A855F7, #FF2D78);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 4px;
+  }
+  nav a {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 3px; text-transform: uppercase;
+    color: #7B2FBE88; text-decoration: none;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: #A855F7; }
+  .nav-sep { color: #7B2FBE33; font-size: 10px; }
+
+  /* ── LAYOUT ── */
+  main { padding-top: 52px; }
+
+  section {
+    padding: 80px 64px;
+    border-bottom: 1px solid #7B2FBE11;
+    position: relative;
+  }
+
+  .section-tag {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 5px; text-transform: uppercase;
+    color: #7B2FBE66; margin-bottom: 8px;
+  }
+
+  h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 700; font-size: 28px;
+    color: white; margin-bottom: 48px;
+    letter-spacing: 2px;
+  }
+
+  h3 {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 4px; text-transform: uppercase;
+    color: #A855F7; margin-bottom: 16px;
+  }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 24px;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 60%, #7B2FBE14 0%, transparent 70%);
+    border-bottom: 1px solid #7B2FBE22;
+  }
+
+  .hero-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 8px; text-transform: uppercase;
+    color: #7B2FBE55;
+  }
+
+  .hero-title {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900; font-size: clamp(32px, 5vw, 56px);
+    background: linear-gradient(135deg, #00F5FF 0%, #A855F7 50%, #FF2D78 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 8px;
+  }
+
+  .hero-sub {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 11px; letter-spacing: 4px; color: #7B2FBE88;
+    text-transform: uppercase;
+  }
+
+  .hero-version {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 3px; color: #7B2FBE44;
+    margin-top: 32px;
+  }
+
+  /* ── GRILLE 2-3 cols ── */
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 24px; }
+  .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+
+  /* ── BLOCS ── */
+  .bloc {
+    background: var(--noir-2);
+    border: 1px solid #7B2FBE22;
+    padding: 28px;
+    position: relative;
+  }
+  .bloc::before {
+    content: ''; position: absolute; top: 0; left: 0;
+    width: 24px; height: 24px;
+    border-top: 1px solid #7B2FBE66; border-left: 1px solid #7B2FBE66;
+  }
+
+  /* ── COULEURS ── */
+  .color-card {
+    display: flex; flex-direction: column;
+  }
+  .color-swatch {
+    height: 80px; width: 100%;
+    position: relative;
+  }
+  .color-info {
+    background: var(--noir-2);
+    border: 1px solid #7B2FBE22;
+    border-top: none;
+    padding: 16px;
+  }
+  .color-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 11px; font-weight: 700;
+    color: white; margin-bottom: 4px;
+  }
+  .color-hex {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; color: #7B2FBE88; letter-spacing: 1px;
+  }
+  .color-role {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px; color: #9090A0; margin-top: 6px;
+  }
+
+  /* ── TYPO ── */
+  .type-specimen {
+    background: var(--noir-2);
+    border: 1px solid #7B2FBE22;
+    padding: 32px;
+  }
+  .type-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 4px; text-transform: uppercase;
+    color: #7B2FBE55; margin-bottom: 16px;
+  }
+
+  .scale-row {
+    display: flex; align-items: baseline; gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid #7B2FBE11;
+  }
+  .scale-row:last-child { border-bottom: none; }
+  .scale-meta {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; color: #7B2FBE55; min-width: 80px;
+    line-height: 1;
+  }
+
+  /* ── LOGO USAGES ── */
+  .logo-preview {
+    display: flex; align-items: center; justify-content: center;
+    height: 160px;
+  }
+  .logo-preview.on-light { background: #F0F0F0; }
+  .logo-preview.on-dark  { background: var(--noir); border: 1px solid #7B2FBE22; }
+  .logo-preview.on-violet { background: #7B2FBE; }
+
+  .dont-overlay {
+    position: relative;
+  }
+  .dont-overlay::after {
+    content: '✕ NE PAS FAIRE';
+    position: absolute; inset: 0;
+    display: flex; align-items: flex-end; justify-content: flex-start;
+    padding: 10px 12px;
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 2px;
+    color: #FF2D78; background: #FF2D7811;
+    border: 1px solid #FF2D7844;
+    pointer-events: none;
+  }
+
+  /* ── ESPACEMENTS ── */
+  .space-row {
+    display: flex; align-items: center; gap: 24px;
+    padding: 10px 0; border-bottom: 1px solid #7B2FBE11;
+  }
+  .space-bar {
+    height: 8px; background: linear-gradient(90deg, #A855F7, #00F5FF);
+    opacity: 0.7; flex-shrink: 0;
+  }
+  .space-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 10px; color: #A855F7; min-width: 48px;
+  }
+  .space-use {
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px; color: #7B2FBE88;
+  }
+
+  /* ── GRADIENTS ── */
+  .grad-card {
+    height: 80px; border-radius: 2px;
+    margin-bottom: 8px;
+  }
+  .grad-name {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 9px; letter-spacing: 2px; color: #7B2FBE88;
+  }
+
+  /* ── ICONES / ELEMENTS ── */
+  .icon-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px;
+  }
+  .icon-item {
+    display: flex; flex-direction: column; align-items: center; gap: 8px;
+  }
+  .icon-label {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 7px; letter-spacing: 2px; color: #7B2FBE55;
+    text-align: center;
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    padding: 32px 64px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-top: 1px solid #7B2FBE22;
+  }
+  .footer-logo {
+    font-family: 'Orbitron', sans-serif;
+    font-weight: 900; font-size: 12px;
+    background: linear-gradient(90deg, #00F5FF, #A855F7);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 4px;
+  }
+  .footer-note {
+    font-family: 'Share Tech Mono', monospace;
+    font-size: 8px; letter-spacing: 3px; color: #7B2FBE33;
+  }
+
+  /* Ligne déco gauche de section */
+  section::before {
+    content: '';
+    position: absolute; left: 0; top: 80px; bottom: 80px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #7B2FBE33, transparent);
+  }
+
+  table { width: 100%; border-collapse: collapse; }
+  td, th {
+    padding: 10px 16px;
+    border-bottom: 1px solid #7B2FBE11;
+    font-family: 'Share Tech Mono', monospace; font-size: 10px;
+    text-align: left;
+  }
+  th { color: #A855F7; font-size: 8px; letter-spacing: 3px; text-transform: uppercase; }
+  td { color: #ccc; }
+  td:first-child { color: #00F5FFaa; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">EMVII</div>
+  <span class="nav-sep">·</span>
+  <a href="#logo">Logo</a>
+  <a href="#couleurs">Couleurs</a>
+  <a href="#typo">Typographie</a>
+  <a href="#espacements">Espacements</a>
+  <a href="#usages">Usages</a>
+  <a href="#donts">Do / Don't</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero" style="border-left: none;">
+  <div class="hero-label">Charte Graphique Officielle</div>
+  <div class="hero-title">EMVII</div>
+  <div class="hero-sub">Digital Studio · M. Voymant</div>
+
+  <!-- Logo SVG centré -->
+  <svg width="140" height="140" viewBox="0 0 280 280" xmlns="http://www.w3.org/2000/svg" style="margin: 16px 0;">
+    <defs>
+      <linearGradient id="hgA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2D78"/><stop offset="100%" stop-color="#A855F7"/></linearGradient>
+      <linearGradient id="hgB" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="100%" stop-color="#A855F7"/></linearGradient>
+      <linearGradient id="hgC" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="50%" stop-color="#A855F7"/><stop offset="100%" stop-color="#FF2D78"/></linearGradient>
+    </defs>
+    <polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="url(#hgA)" stroke-width="1.5" opacity="0.9"/>
+    <rect x="55" y="55" width="170" height="170" fill="none" stroke="url(#hgB)" stroke-width="1" opacity="0.45"/>
+    <rect x="136" y="14"  width="8" height="8" fill="#FF2D78"/>
+    <rect x="254" y="136" width="8" height="8" fill="#A855F7"/>
+    <rect x="136" y="258" width="8" height="8" fill="#FF2D78"/>
+    <rect x="18"  y="136" width="8" height="8" fill="#A855F7"/>
+    <polygon points="55,55 66,55 55,66"    fill="#00F5FF" opacity="0.7"/>
+    <polygon points="225,55 225,66 214,55"  fill="#00F5FF" opacity="0.7"/>
+    <polygon points="55,225 66,225 55,214"  fill="#00F5FF" opacity="0.7"/>
+    <polygon points="225,225 214,225 225,214" fill="#00F5FF" opacity="0.7"/>
+    <circle cx="140" cy="140" r="72" fill="#06060A" opacity="0.97"/>
+    <text x="140" y="148" font-family="'Orbitron',sans-serif" font-weight="900" font-size="30" fill="url(#hgC)" text-anchor="middle" dominant-baseline="middle">EMVII</text>
+  </svg>
+
+  <div class="hero-version">v1.0 · 2026 · Mélanie Voymant</div>
+</section>
+
+
+<!-- ══════════════════════════════
+     01 — LOGO
+══════════════════════════════ -->
+<section id="logo">
+  <div class="section-tag">01 · Identité</div>
+  <h2>Logo</h2>
+
+  <div class="grid-2" style="margin-bottom: 48px;">
+    <!-- Anatomie -->
+    <div class="bloc">
+      <h3>Anatomie</h3>
+      <svg width="100%" viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" style="max-width:320px; display:block; margin: 0 auto;">
+        <defs>
+          <linearGradient id="aA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2D78"/><stop offset="100%" stop-color="#A855F7"/></linearGradient>
+          <linearGradient id="aB" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="100%" stop-color="#A855F7"/></linearGradient>
+          <linearGradient id="aC" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="50%" stop-color="#A855F7"/><stop offset="100%" stop-color="#FF2D78"/></linearGradient>
+        </defs>
+        <!-- Logo -->
+        <polygon points="160,30 242,160 160,290 78,160" fill="none" stroke="url(#aA)" stroke-width="1.5"/>
+        <rect x="95" y="95" width="130" height="130" fill="none" stroke="url(#aB)" stroke-width="1" opacity="0.45"/>
+        <rect x="156" y="26" width="8" height="8" fill="#FF2D78"/>
+        <rect x="238" y="156" width="8" height="8" fill="#A855F7"/>
+        <rect x="156" y="286" width="8" height="8" fill="#FF2D78"/>
+        <rect x="74"  y="156" width="8" height="8" fill="#A855F7"/>
+        <polygon points="95,95 107,95 95,107"   fill="#00F5FF" opacity="0.7"/>
+        <polygon points="225,95 225,107 213,95"  fill="#00F5FF" opacity="0.7"/>
+        <polygon points="95,225 107,225 95,213"  fill="#00F5FF" opacity="0.7"/>
+        <polygon points="225,225 213,225 225,213" fill="#00F5FF" opacity="0.7"/>
+        <circle cx="160" cy="160" r="56" fill="#06060A" opacity="0.97"/>
+        <text x="160" y="168" font-family="'Orbitron',sans-serif" font-weight="900" font-size="24" fill="url(#aC)" text-anchor="middle" dominant-baseline="middle">EMVII</text>
+
+        <!-- Annotations -->
+        <!-- Losange -->
+        <line x1="244" y1="160" x2="280" y2="110" stroke="#FF2D7866" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="282" y="108" font-family="'Share Tech Mono'" font-size="9" fill="#FF2D7899">Losange principal</text>
+
+        <!-- Carré -->
+        <line x1="225" y1="95" x2="280" y2="65" stroke="#00F5FF66" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="282" y="63" font-family="'Share Tech Mono'" font-size="9" fill="#00F5FF99">Carré décalé 45°</text>
+
+        <!-- Cercle -->
+        <line x1="208" y1="150" x2="280" y2="140" stroke="#A855F766" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="282" y="138" font-family="'Share Tech Mono'" font-size="9" fill="#A855F799">Zone protégée</text>
+
+        <!-- Accent -->
+        <line x1="160" y1="26" x2="130" y2="10" stroke="#FF2D7866" stroke-width="1" stroke-dasharray="3 3"/>
+        <text x="40" y="10" font-family="'Share Tech Mono'" font-size="9" fill="#FF2D7899">Accents carrés</text>
+      </svg>
+    </div>
+
+    <!-- Variations fond -->
+    <div style="display:flex; flex-direction:column; gap:16px;">
+      <h3>Variations de fond</h3>
+      <div class="logo-preview on-dark">
+        <svg width="80" height="80" viewBox="0 0 280 280"><defs><linearGradient id="vvA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2D78"/><stop offset="100%" stop-color="#A855F7"/></linearGradient><linearGradient id="vvB" x1="100%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="100%" stop-color="#A855F7"/></linearGradient><linearGradient id="vvC" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="50%" stop-color="#A855F7"/><stop offset="100%" stop-color="#FF2D78"/></linearGradient></defs><polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="url(#vvA)" stroke-width="2"/><rect x="55" y="55" width="170" height="170" fill="none" stroke="url(#vvB)" stroke-width="1.5" opacity="0.45"/><rect x="136" y="14" width="8" height="8" fill="#FF2D78"/><rect x="254" y="136" width="8" height="8" fill="#A855F7"/><rect x="136" y="258" width="8" height="8" fill="#FF2D78"/><rect x="18" y="136" width="8" height="8" fill="#A855F7"/><circle cx="140" cy="140" r="72" fill="#06060A"/><text x="140" y="148" font-family="'Orbitron',sans-serif" font-weight="900" font-size="30" fill="url(#vvC)" text-anchor="middle" dominant-baseline="middle">EMVII</text></svg>
+        <span style="font-family:'Share Tech Mono';font-size:9px;color:#7B2FBE55;position:absolute;bottom:8px;right:12px;letter-spacing:2px;">Fond noir · Préféré</span>
+      </div>
+      <div class="logo-preview on-light" style="position:relative;">
+        <svg width="80" height="80" viewBox="0 0 280 280"><defs><linearGradient id="llA" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#7B2FBE"/><stop offset="100%" stop-color="#A855F7"/></linearGradient><linearGradient id="llC" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#7B2FBE"/><stop offset="100%" stop-color="#FF2D78"/></linearGradient></defs><polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="url(#llA)" stroke-width="2"/><rect x="55" y="55" width="170" height="170" fill="none" stroke="#A855F7" stroke-width="1.5" opacity="0.4"/><rect x="136" y="14" width="8" height="8" fill="#FF2D78"/><rect x="254" y="136" width="8" height="8" fill="#7B2FBE"/><rect x="136" y="258" width="8" height="8" fill="#FF2D78"/><rect x="18" y="136" width="8" height="8" fill="#7B2FBE"/><circle cx="140" cy="140" r="72" fill="white"/><text x="140" y="148" font-family="'Orbitron',sans-serif" font-weight="900" font-size="30" fill="url(#llC)" text-anchor="middle" dominant-baseline="middle">EMVII</text></svg>
+        <span style="font-family:'Share Tech Mono';font-size:9px;color:#7B2FBEaa;position:absolute;bottom:8px;right:12px;letter-spacing:2px;">Fond blanc · Toléré</span>
+      </div>
+      <div class="logo-preview on-violet" style="position:relative;">
+        <svg width="80" height="80" viewBox="0 0 280 280"><polygon points="140,18 258,140 140,262 22,140" fill="none" stroke="white" stroke-width="2" opacity="0.9"/><rect x="55" y="55" width="170" height="170" fill="none" stroke="white" stroke-width="1.5" opacity="0.4"/><rect x="136" y="14" width="8" height="8" fill="white"/><rect x="254" y="136" width="8" height="8" fill="white"/><rect x="136" y="258" width="8" height="8" fill="white"/><rect x="18" y="136" width="8" height="8" fill="white"/><circle cx="140" cy="140" r="72" fill="#7B2FBE"/><text x="140" y="148" font-family="'Orbitron',sans-serif" font-weight="900" font-size="30" fill="white" text-anchor="middle" dominant-baseline="middle">EMVII</text></svg>
+        <span style="font-family:'Share Tech Mono';font-size:9px;color:white;opacity:0.4;position:absolute;bottom:8px;right:12px;letter-spacing:2px;">Fond violet · Accidentel</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Zone d'exclusion -->
+  <div class="bloc">
+    <h3>Zone d'exclusion minimale</h3>
+    <p style="color:#9090A0; font-size:12px; margin-bottom:20px;">
+      Toujours laisser un espace autour du logo égal à la hauteur de la lettre <strong style="color:#A855F7">E</strong> d'EMVII.
+      Ne jamais coller le logo contre un bord ou un autre élément.
+    </p>
+    <svg width="300" height="200" viewBox="0 0 300 200" style="display:block;">
+      <defs>
+        <linearGradient id="zz1" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#FF2D78"/><stop offset="100%" stop-color="#A855F7"/></linearGradient>
+        <linearGradient id="zz3" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#00F5FF"/><stop offset="50%" stop-color="#A855F7"/><stop offset="100%" stop-color="#FF2D78"/></linearGradient>
+      </defs>
+      <!-- Zone d'exclusion -->
+      <rect x="30" y="20" width="240" height="160" fill="none" stroke="#FF2D7833" stroke-width="1" stroke-dasharray="4 3"/>
+      <rect x="30" y="20" width="240" height="160" fill="#FF2D7808"/>
+      <!-- Logo au centre -->
+      <polygon points="150,55 196,100 150,145 104,100" fill="none" stroke="url(#zz1)" stroke-width="1.5"/>
+      <rect x="122" y="122" width="56" height="56" fill="none" stroke="#00F5FF" stroke-width="1" opacity="0.35" transform="rotate(-45 150 100) translate(0 -28)"/>
+      <circle cx="150" cy="100" r="30" fill="#06060A"/>
+      <text x="150" y="104" font-family="'Orbitron',sans-serif" font-weight="900" font-size="13" fill="url(#zz3)" text-anchor="middle" dominant-baseline="middle">EMVII</text>
+      <!-- Accolades d'espace -->
+      <line x1="30" y1="100" x2="104" y2="100" stroke="#FF2D7866" stroke-width="1" stroke-dasharray="2 2"/>
+      <text x="67" y="93" font-family="'Share Tech Mono'" font-size="8" fill="#FF2D7899" text-anchor="middle">x</text>
+      <line x1="20" y1="20" x2="20" y2="180" stroke="#FF2D7844" stroke-width="1"/>
+      <text x="10" y="103" font-family="'Share Tech Mono'" font-size="8" fill="#FF2D7888" text-anchor="middle">x</text>
+    </svg>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     02 — COULEURS
+══════════════════════════════ -->
+<section id="couleurs">
+  <div class="section-tag">02 · Palette</div>
+  <h2>Couleurs</h2>
+
+  <!-- Couleurs primaires -->
+  <h3 style="margin-bottom:20px;">Primaires</h3>
+  <div class="grid-4" style="margin-bottom:48px;">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#06060A; border:1px solid #7B2FBE22;"></div>
+      <div class="color-info">
+        <div class="color-name">Noir Profond</div>
+        <div class="color-hex">#06060A</div>
+        <div class="color-role">Fond principal</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#7B2FBE;"></div>
+      <div class="color-info">
+        <div class="color-name">Violet</div>
+        <div class="color-hex">#7B2FBE</div>
+        <div class="color-role">Couleur structurelle</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background: linear-gradient(135deg, #7B2FBE, #A855F7);"></div>
+      <div class="color-info">
+        <div class="color-name">Violet Clair</div>
+        <div class="color-hex">#A855F7</div>
+        <div class="color-role">Textes, accents</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#F5F5F5;"></div>
+      <div class="color-info" style="border-top: 1px solid #7B2FBE22;">
+        <div class="color-name" style="color:#06060A;">Blanc Cassé</div>
+        <div class="color-hex" style="color:#7B2FBE;">#F5F5F5</div>
+        <div class="color-role">Texte principal</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Couleurs accent -->
+  <h3 style="margin-bottom:20px;">Accents</h3>
+  <div class="grid-4" style="margin-bottom:48px;">
+    <div class="color-card">
+      <div class="color-swatch" style="background:#00F5FF; box-shadow: 0 0 20px #00F5FF44;"></div>
+      <div class="color-info">
+        <div class="color-name">Cyan</div>
+        <div class="color-hex">#00F5FF</div>
+        <div class="color-role">Accent tech / liens</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#FF2D78; box-shadow: 0 0 20px #FF2D7844;"></div>
+      <div class="color-info">
+        <div class="color-name">Magenta</div>
+        <div class="color-hex">#FF2D78</div>
+        <div class="color-role">Accent CTA / alerte</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#0D0B14;"></div>
+      <div class="color-info">
+        <div class="color-name">Noir 2</div>
+        <div class="color-hex">#0D0B14</div>
+        <div class="color-role">Fonds secondaires</div>
+      </div>
+    </div>
+    <div class="color-card">
+      <div class="color-swatch" style="background:#2A2A3A;"></div>
+      <div class="color-info">
+        <div class="color-name">Gris Sombre</div>
+        <div class="color-hex">#2A2A3A</div>
+        <div class="color-role">Bordures, séparateurs</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Opacités -->
+  <h3 style="margin-bottom:20px;">Opacités autorisées (violet)</h3>
+  <div style="display:flex; gap:12px; flex-wrap:wrap;">
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBE;border-radius:2px;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">100%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBEcc;border-radius:2px;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">80%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBE99;border-radius:2px;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">60%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBE66;border-radius:2px;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">40%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBE33;border-radius:2px;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">20%</div>
+    </div>
+    <div style="text-align:center;">
+      <div style="width:60px;height:40px;background:#7B2FBE11;border-radius:2px; border:1px solid #7B2FBE22;"></div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE88;margin-top:4px;">7%</div>
+    </div>
+  </div>
+
+  <!-- Gradients -->
+  <h3 style="margin-top:40px; margin-bottom:20px;">Gradients officiels</h3>
+  <div class="grid-3">
+    <div>
+      <div class="grad-card" style="background: linear-gradient(135deg, #FF2D78, #A855F7);"></div>
+      <div class="grad-name">Gradient Principal</div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;margin-top:2px;">#FF2D78 → #A855F7 · 135°</div>
+    </div>
+    <div>
+      <div class="grad-card" style="background: linear-gradient(90deg, #00F5FF, #A855F7, #FF2D78);"></div>
+      <div class="grad-name">Gradient Texte</div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;margin-top:2px;">#00F5FF → #A855F7 → #FF2D78 · 90°</div>
+    </div>
+    <div>
+      <div class="grad-card" style="background: linear-gradient(135deg, #00F5FF, #A855F7);"></div>
+      <div class="grad-name">Gradient Secondaire</div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;margin-top:2px;">#00F5FF → #A855F7 · 135°</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     03 — TYPOGRAPHIE
+══════════════════════════════ -->
+<section id="typo">
+  <div class="section-tag">03 · Typographie</div>
+  <h2>Typographie</h2>
+
+  <div class="grid-2" style="margin-bottom:48px;">
+    <!-- Orbitron -->
+    <div class="type-specimen">
+      <div class="type-label">Police Display · Titres</div>
+      <div style="font-family:'Orbitron',sans-serif; font-size:48px; font-weight:900; color:white; margin-bottom:4px; line-height:1;">Orbitron</div>
+      <div style="font-family:'Share Tech Mono'; font-size:9px; color:#7B2FBE66; letter-spacing:3px; margin-bottom:24px;">GOOGLE FONTS · LIBRE</div>
+      <div style="font-family:'Orbitron',sans-serif; font-size:13px; color:#9090A0; line-height:1.6;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        0123456789 ! @ # $ % & * ( )
+      </div>
+      <div style="margin-top:20px; display:flex; gap:16px;">
+        <span style="font-family:'Orbitron';font-weight:400;font-size:11px;color:#7B2FBE88;">Regular 400</span>
+        <span style="font-family:'Orbitron';font-weight:500;font-size:11px;color:#A855F788;">Medium 500</span>
+        <span style="font-family:'Orbitron';font-weight:700;font-size:11px;color:#A855F7;">Bold 700</span>
+        <span style="font-family:'Orbitron';font-weight:900;font-size:11px;color:white;">Black 900</span>
+      </div>
+    </div>
+
+    <!-- Share Tech Mono -->
+    <div class="type-specimen">
+      <div class="type-label">Police Mono · Labels, Code</div>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:40px; color:white; margin-bottom:4px; line-height:1;">Share Tech</div>
+      <div style="font-family:'Share Tech Mono'; font-size:9px; color:#7B2FBE66; letter-spacing:3px; margin-bottom:24px;">GOOGLE FONTS · LIBRE</div>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:12px; color:#9090A0; line-height:1.6;">
+        ABCDEFGHIJKLMNOPQRSTUVWXYZ<br>
+        0123456789 · // { } [ ] = > &lt; |
+      </div>
+      <div style="margin-top:20px;">
+        <span style="font-family:'Share Tech Mono';font-size:11px;color:#A855F788;">Regular 400 (uniquement)</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hiérarchie -->
+  <h3 style="margin-bottom:20px;">Hiérarchie typographique</h3>
+  <div class="type-specimen">
+    <div class="scale-row">
+      <div class="scale-meta">H1 · 56px<br>Black 900</div>
+      <div style="font-family:'Orbitron',sans-serif; font-weight:900; font-size:56px; background: linear-gradient(90deg,#00F5FF,#A855F7,#FF2D78); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; line-height:1;">EMVII</div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-meta">H2 · 32px<br>Bold 700</div>
+      <div style="font-family:'Orbitron',sans-serif; font-weight:700; font-size:32px; color:white; line-height:1;">Digital Studio</div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-meta">H3 · 18px<br>Medium 500</div>
+      <div style="font-family:'Orbitron',sans-serif; font-weight:500; font-size:18px; color:#A855F7; line-height:1;">Titre de section</div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-meta">Label · 10px<br>Mono · 4px ls</div>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:4px; color:#A855F7; text-transform:uppercase; line-height:1;">01 · IDENTITÉ VISUELLE</div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-meta">Body · 14px<br>DM Sans 400</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:14px; color:#ccc; line-height:1.6;">Texte courant pour descriptions et contenus longs. Lisible et neutre.</div>
+    </div>
+    <div class="scale-row">
+      <div class="scale-meta">Caption · 9px<br>Mono · 3px ls</div>
+      <div style="font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:3px; color:#7B2FBE88; text-transform:uppercase;">// commentaire · métadonnée · version</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     04 — ESPACEMENTS
+══════════════════════════════ -->
+<section id="espacements">
+  <div class="section-tag">04 · Rythme</div>
+  <h2>Espacements</h2>
+
+  <div class="grid-2">
+    <div class="bloc">
+      <h3>Échelle de base · 8px</h3>
+      <div style="margin-top:8px;">
+        <div class="space-row">
+          <div class="space-label">4px</div>
+          <div class="space-bar" style="width:4px;"></div>
+          <div class="space-use">Micro · entre icône et label</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">8px</div>
+          <div class="space-bar" style="width:8px;"></div>
+          <div class="space-use">XS · espacement interne minimal</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">16px</div>
+          <div class="space-bar" style="width:16px;"></div>
+          <div class="space-use">SM · padding cards, gap grille serrée</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">24px</div>
+          <div class="space-bar" style="width:24px;"></div>
+          <div class="space-use">MD · gap composants</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">32px</div>
+          <div class="space-bar" style="width:32px;"></div>
+          <div class="space-use">LG · padding sections mobiles</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">48px</div>
+          <div class="space-bar" style="width:48px;"></div>
+          <div class="space-use">XL · entre groupes de contenu</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">64px</div>
+          <div class="space-bar" style="width:64px;"></div>
+          <div class="space-use">2XL · padding sections desktop</div>
+        </div>
+        <div class="space-row">
+          <div class="space-label">80px</div>
+          <div class="space-bar" style="width:80px;"></div>
+          <div class="space-use">3XL · marges de sections</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bloc">
+      <h3>Grilles</h3>
+      <table style="margin-top:8px;">
+        <thead>
+          <tr><th>Contexte</th><th>Colonnes</th><th>Gouttière</th><th>Marge</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Mobile</td><td>4</td><td>16px</td><td>16px</td></tr>
+          <tr><td>Tablette</td><td>8</td><td>24px</td><td>32px</td></tr>
+          <tr><td>Desktop</td><td>12</td><td>24px</td><td>64px</td></tr>
+          <tr><td>Large</td><td>12</td><td>32px</td><td>80px</td></tr>
+        </tbody>
+      </table>
+
+      <h3 style="margin-top:28px;">Breakpoints</h3>
+      <table>
+        <thead>
+          <tr><th>Nom</th><th>Largeur min</th><th>Usage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>xs</td><td>0px</td><td>Mobile portrait</td></tr>
+          <tr><td>sm</td><td>480px</td><td>Mobile paysage</td></tr>
+          <tr><td>md</td><td>768px</td><td>Tablette</td></tr>
+          <tr><td>lg</td><td>1024px</td><td>Desktop</td></tr>
+          <tr><td>xl</td><td>1280px</td><td>Large desktop</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     05 — ÉLÉMENTS UI
+══════════════════════════════ -->
+<section id="usages">
+  <div class="section-tag">05 · Composants</div>
+  <h2>Éléments UI</h2>
+
+  <!-- Boutons -->
+  <h3 style="margin-bottom:20px;">Boutons</h3>
+  <div style="display:flex; gap:16px; flex-wrap:wrap; align-items:center; margin-bottom:40px;">
+    <button style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;padding:12px 28px;background:linear-gradient(135deg,#FF2D78,#A855F7);color:white;border:none;cursor:pointer;">PRIMAIRE</button>
+    <button style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;padding:12px 28px;background:transparent;color:#A855F7;border:1px solid #A855F7;cursor:pointer;">SECONDAIRE</button>
+    <button style="font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:3px;padding:12px 28px;background:transparent;color:#00F5FF;border:1px solid #00F5FF44;cursor:pointer;">// tertiaire</button>
+    <button style="font-family:'Orbitron',sans-serif;font-weight:700;font-size:11px;letter-spacing:3px;padding:12px 28px;background:#7B2FBE22;color:#7B2FBE88;border:1px solid #7B2FBE22;cursor:not-allowed;">DÉSACTIVÉ</button>
+  </div>
+
+  <!-- Badges -->
+  <h3 style="margin-bottom:20px;">Badges & Tags</h3>
+  <div style="display:flex; gap:12px; flex-wrap:wrap; margin-bottom:40px; align-items:center;">
+    <span style="font-family:'Share Tech Mono';font-size:9px;letter-spacing:2px;padding:4px 10px;background:#00F5FF22;color:#00F5FF;border:1px solid #00F5FF44;">TECH</span>
+    <span style="font-family:'Share Tech Mono';font-size:9px;letter-spacing:2px;padding:4px 10px;background:#FF2D7822;color:#FF2D78;border:1px solid #FF2D7844;">URGENT</span>
+    <span style="font-family:'Share Tech Mono';font-size:9px;letter-spacing:2px;padding:4px 10px;background:#A855F722;color:#A855F7;border:1px solid #A855F744;">DESIGN</span>
+    <span style="font-family:'Share Tech Mono';font-size:9px;letter-spacing:2px;padding:4px 10px;background:#7B2FBE22;color:#7B2FBE88;border:1px solid #7B2FBE33;">DRAFT</span>
+  </div>
+
+  <!-- Input -->
+  <h3 style="margin-bottom:20px;">Champs de saisie</h3>
+  <div style="display:flex; gap:24px; flex-wrap:wrap; margin-bottom:40px;">
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;letter-spacing:3px;color:#A855F7;margin-bottom:6px;">LABEL</div>
+      <input placeholder="Placeholder..." style="font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 16px;background:#0D0B14;color:#ccc;border:1px solid #7B2FBE44;outline:none;width:240px;"/>
+    </div>
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;letter-spacing:3px;color:#A855F7;margin-bottom:6px;">FOCUS</div>
+      <input value="Valeur saisie" style="font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 16px;background:#0D0B14;color:#F5F5F5;border:1px solid #A855F7;outline:none;width:240px;box-shadow:0 0 0 2px #A855F722;"/>
+    </div>
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;letter-spacing:3px;color:#FF2D78;margin-bottom:6px;">ERREUR</div>
+      <input value="Valeur invalide" style="font-family:'Share Tech Mono',monospace;font-size:12px;padding:10px 16px;background:#0D0B14;color:#FF2D78;border:1px solid #FF2D7888;outline:none;width:240px;"/>
+    </div>
+  </div>
+
+  <!-- Séparateurs -->
+  <h3 style="margin-bottom:20px;">Séparateurs & Lignes déco</h3>
+  <div style="display:flex; flex-direction:column; gap:20px; max-width:600px;">
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;letter-spacing:2px;margin-bottom:6px;">Gradient</div>
+      <div style="height:1px; background:linear-gradient(90deg, transparent, #A855F7, transparent);"></div>
+    </div>
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;letter-spacing:2px;margin-bottom:6px;">Tirets</div>
+      <div style="height:1px; background:repeating-linear-gradient(90deg, #7B2FBE44 0, #7B2FBE44 4px, transparent 4px, transparent 8px);"></div>
+    </div>
+    <div>
+      <div style="font-family:'Share Tech Mono';font-size:8px;color:#7B2FBE55;letter-spacing:2px;margin-bottom:6px;">Accent latéral</div>
+      <div style="padding-left:16px; border-left:2px solid #A855F7; color:#9090A0; font-size:13px;">Citation ou mise en avant de contenu important.</div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════
+     06 — DO / DON'T
+══════════════════════════════ -->
+<section id="donts">
+  <div class="section-tag">06 · Règles</div>
+  <h2>Do / Don't</h2>
+
+  <div class="grid-2">
+    <!-- DO -->
+    <div>
+      <h3 style="color:#00F5FF; margin-bottom:16px;">✓ À faire</h3>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="padding:16px; background:#00F5FF11; border:1px solid #00F5FF33; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#00F5FF; flex-shrink:0;">→</span>
+          Toujours utiliser le logo sur fond sombre ou blanc pur
+        </div>
+        <div style="padding:16px; background:#00F5FF11; border:1px solid #00F5FF33; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#00F5FF; flex-shrink:0;">→</span>
+          Respecter la zone d'exclusion autour du logo
+        </div>
+        <div style="padding:16px; background:#00F5FF11; border:1px solid #00F5FF33; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#00F5FF; flex-shrink:0;">→</span>
+          Utiliser Orbitron 900 pour EMVII, jamais une graisse inférieure
+        </div>
+        <div style="padding:16px; background:#00F5FF11; border:1px solid #00F5FF33; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#00F5FF; flex-shrink:0;">→</span>
+          Maintenir le rapport de proportions du logo (carré, pas rectangulaire)
+        </div>
+        <div style="padding:16px; background:#00F5FF11; border:1px solid #00F5FF33; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#00F5FF; flex-shrink:0;">→</span>
+          Utiliser le gradient texte uniquement sur fond sombre pour le contraste
+        </div>
+      </div>
+    </div>
+
+    <!-- DON'T -->
+    <div>
+      <h3 style="color:#FF2D78; margin-bottom:16px;">✕ À ne pas faire</h3>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div style="padding:16px; background:#FF2D7811; border:1px solid #FF2D7833; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#FF2D78; flex-shrink:0;">✕</span>
+          Ne jamais déformer ou étirer le logo
+        </div>
+        <div style="padding:16px; background:#FF2D7811; border:1px solid #FF2D7833; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#FF2D78; flex-shrink:0;">✕</span>
+          Ne jamais changer les couleurs du logo (pas de vert, rouge, orange…)
+        </div>
+        <div style="padding:16px; background:#FF2D7811; border:1px solid #FF2D7833; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#FF2D78; flex-shrink:0;">✕</span>
+          Ne jamais placer le logo sur un fond photographique sans fond opaque derrière
+        </div>
+        <div style="padding:16px; background:#FF2D7811; border:1px solid #FF2D7833; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#FF2D78; flex-shrink:0;">✕</span>
+          Ne jamais écrire EMVII avec une autre police qu'Orbitron
+        </div>
+        <div style="padding:16px; background:#FF2D7811; border:1px solid #FF2D7833; font-size:12px; color:#ccc; display:flex; gap:12px; align-items:flex-start;">
+          <span style="color:#FF2D78; flex-shrink:0;">✕</span>
+          Ne jamais utiliser de couleurs vives non présentes dans la palette (jaune, vert, orange)
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">EMVII</div>
+  <div class="footer-note">Charte Graphique v1.0 · 2026 · Confidentiel</div>
+  <div class="footer-note">Mélanie Voymant · melanie.voymant@gmail.com</div>
+</footer>
+
+</body>
+</html>

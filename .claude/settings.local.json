@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import sys,json; data=json.load\\(sys.stdin\\); text=data[0]['text']; parsed=json.loads\\(text\\); print\\(f'Total nodes: {len\\(parsed\\)}'\\); names=[n.get\\('name',''\\) for n in parsed]; print\\('Sections:', [n for n in names if 'Section' in n or 'section' in n]\\)\")",
+      "Bash(node -e ':*)"
+    ]
+  }
+}
