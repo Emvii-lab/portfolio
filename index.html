@@ -450,18 +450,18 @@
     </div>
     <h2 class="contact-heading">Travaillons ensemble</h2>
     <p class="contact-sub">Vous avez un projet en tête&nbsp;? Discutons-en autour d'un pixel ou deux.</p>
-    <form class="form-wrapper" onsubmit="return false;">
+    <form class="form-wrapper" action="https://n8n.emvii.fr/webhook/8efdfc93-c75a-4f81-a2cc-04cacb263776" method="POST">
       <div class="field">
         <label class="field-label">NOM</label>
-        <input class="field-input" type="text" placeholder="Votre nom..." />
+        <input class="field-input" type="text" name="nom" placeholder="Votre nom..." />
       </div>
       <div class="field">
         <label class="field-label">EMAIL</label>
-        <input class="field-input" type="email" placeholder="votre@email.com" />
+        <input class="field-input" type="email" name="email" placeholder="votre@email.com" />
       </div>
       <div class="field">
         <label class="field-label">MESSAGE</label>
-        <textarea class="field-input" placeholder="Décrivez votre projet..."></textarea>
+        <textarea class="field-input" name="message" placeholder="Décrivez votre projet..."></textarea>
       </div>
       <button class="submit-btn" type="submit">
         <span>►</span>
