@@ -162,7 +162,11 @@ footer {
 }
 
 /* ── Contact confirmation ── */
+#contact-confirm[hidden] { display: none !important; }
+
 .contact-confirm {
+  position: relative;
+  overflow: hidden;
   background: var(--card-bg2);
   border: 1px solid rgba(0, 240, 255, 0.35);
   border-radius: 12px;
@@ -172,53 +176,114 @@ footer {
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  animation: confirmIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
-  box-shadow: 0 0 40px rgba(0, 240, 255, 0.12), 0 0 80px rgba(176, 38, 255, 0.08);
+  animation: confirmIn 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             borderFlow 3s 0.6s ease-in-out infinite;
+  box-shadow: 0 0 24px rgba(0, 240, 255, 0.1), 0 0 60px rgba(176, 38, 255, 0.06);
+}
+
+/* Scanline sweep on reveal */
+.contact-confirm::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    transparent 0px,
+    transparent 3px,
+    rgba(0, 240, 255, 0.03) 3px,
+    rgba(0, 240, 255, 0.03) 4px
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Neon border pulse */
+@keyframes borderFlow {
+  0%, 100% { border-color: rgba(0, 240, 255, 0.5); box-shadow: 0 0 24px rgba(0,240,255,0.1), 0 0 60px rgba(176,38,255,0.06); }
+  50%       { border-color: rgba(176, 38, 255, 0.5); box-shadow: 0 0 32px rgba(176,38,255,0.15), 0 0 80px rgba(0,240,255,0.08); }
 }
 
 @keyframes confirmIn {
-  from { opacity: 0; transform: scale(0.9) translateY(16px); }
+  from { opacity: 0; transform: scale(0.88) translateY(20px); }
   to   { opacity: 1; transform: scale(1) translateY(0); }
 }
 
 .confirm-icon {
-  width: 64px;
-  height: 64px;
+  position: relative;
+  z-index: 1;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
   background: linear-gradient(135deg, var(--cyan), var(--purple));
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 28px;
+  font-size: 30px;
   color: #fff;
-  box-shadow: 0 0 24px rgba(0, 240, 255, 0.5);
-  animation: iconPop 0.4s 0.2s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.5);
+  animation: iconPop 0.5s 0.15s cubic-bezier(0.34, 1.56, 0.64, 1) both,
+             iconPulse 2s 0.65s ease-in-out infinite;
 }
 
 @keyframes iconPop {
-  from { transform: scale(0); }
-  to   { transform: scale(1); }
+  from { transform: scale(0) rotate(-30deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0deg);  opacity: 1; }
+}
+
+@keyframes iconPulse {
+  0%, 100% { box-shadow: 0 0 16px rgba(0,240,255,0.5), 0 0 32px rgba(0,240,255,0.2); }
+  50%       { box-shadow: 0 0 32px rgba(0,240,255,0.8), 0 0 64px rgba(176,38,255,0.4); }
 }
 
 .confirm-title {
+  position: relative;
+  z-index: 1;
   font-family: var(--mono);
   font-size: 20px;
   font-weight: 700;
   color: var(--cyan);
   letter-spacing: 3px;
-  text-shadow: 0 0 20px rgba(0, 240, 255, 0.6);
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.8);
+  min-height: 1.4em;
+}
+
+.confirm-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  background: var(--cyan);
+  margin-left: 3px;
+  vertical-align: middle;
+  animation: cursorBlink 0.7s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .confirm-msg {
+  position: relative;
+  z-index: 1;
   font-family: var(--sans);
   font-size: 15px;
   color: var(--text-gray);
   text-align: center;
   max-width: 420px;
   line-height: 1.6;
+  animation: fadeUp 0.4s 0.7s both;
+  opacity: 0;
+  animation-fill-mode: both;
 }
 
 .confirm-reset {
+  position: relative;
+  z-index: 1;
   margin-top: 8px;
   background: none;
   border: 1px solid rgba(0, 240, 255, 0.3);
@@ -230,12 +295,16 @@ footer {
   color: var(--cyan);
   letter-spacing: 1px;
   cursor: pointer;
-  transition: border-color 0.2s, box-shadow 0.2s;
+  transition: border-color 0.2s, box-shadow 0.2s, color 0.2s;
+  animation: fadeUp 0.4s 1s both;
+  opacity: 0;
+  animation-fill-mode: both;
 }
 
 .confirm-reset:hover {
   border-color: var(--cyan);
-  box-shadow: 0 0 12px rgba(0, 240, 255, 0.3);
+  color: #fff;
+  box-shadow: 0 0 16px rgba(0, 240, 255, 0.4);
 }
 
 /* Loading state */

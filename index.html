@@ -516,9 +516,9 @@
     </form>
     <div id="contact-confirm" class="contact-confirm" hidden>
       <div class="confirm-icon">✔</div>
-      <p class="confirm-title">MESSAGE ENVOYÉ !</p>
+      <p class="confirm-title" data-text="MESSAGE ENVOYÉ !">MESSAGE ENVOYÉ !</p>
       <p class="confirm-msg">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
-      <button class="confirm-reset" onclick="document.getElementById('contact-form').hidden=false;this.closest('.contact-confirm').hidden=true;">
+      <button class="confirm-reset" id="confirm-reset-btn">
         ← ENVOYER UN AUTRE MESSAGE
       </button>
     </div>
