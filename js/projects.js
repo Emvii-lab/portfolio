@@ -54,12 +54,12 @@ function pixelScratch(imgEl) {
         const pw = PIXEL - GAP * 2;
         const ph = PIXEL - GAP * 2;
         const g  = ctx.createLinearGradient(px, py, px + pw, py + ph);
-        g.addColorStop(0,   'rgba(255,45,149,1)');
-        g.addColorStop(0.5, 'rgba(176,38,255,1)');
-        g.addColorStop(1,   'rgba(0,240,255,1)');
+        g.addColorStop(0,   'rgba(140,20,80,0.85)');
+        g.addColorStop(0.5, 'rgba(90,15,150,0.85)');
+        g.addColorStop(1,   'rgba(0,120,160,0.85)');
         ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 3); ctx.fillStyle = g; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = 'rgba(255,255,255,0.14)'; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = 'rgba(255,255,255,0.07)'; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = 'rgba(0,0,0,0.35)'; ctx.fill();
       }
     }
   }
@@ -93,12 +93,12 @@ function pixelScratch(imgEl) {
         const pw = PIXEL - GAP * 2;
         const ph = PIXEL - GAP * 2;
         const g = ctx.createLinearGradient(px, py, px + pw, py + ph);
-        g.addColorStop(0,   `rgba(255,45,149,${a})`);
-        g.addColorStop(0.5, `rgba(176,38,255,${a})`);
-        g.addColorStop(1,   `rgba(0,240,255,${a})`);
+        g.addColorStop(0,   `rgba(140,20,80,${a * 0.85})`);
+        g.addColorStop(0.5, `rgba(90,15,150,${a * 0.85})`);
+        g.addColorStop(1,   `rgba(0,120,160,${a * 0.85})`);
         ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 3); ctx.fillStyle = g; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = `rgba(255,255,255,${a * 0.14})`; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = `rgba(0,0,0,${a * 0.25})`; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = `rgba(255,255,255,${a * 0.07})`; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = `rgba(0,0,0,${a * 0.35})`; ctx.fill();
       }
     }
 
