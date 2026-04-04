@@ -162,7 +162,8 @@ footer {
 }
 
 /* ── Contact confirmation ── */
-#contact-confirm[hidden] { display: none !important; }
+#contact-confirm[hidden],
+#contact-form[hidden] { display: none !important; }
 
 .contact-confirm {
   position: relative;
