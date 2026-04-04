@@ -63,6 +63,12 @@ if (form) {
         body: JSON.stringify(data),
       });
 
+      /* Reset button state */
+      btn.classList.remove('loading');
+      btn.style.background = '';
+      icon.textContent = '►';
+      label.textContent = 'ENVOYER LE MESSAGE';
+
       /* Show confirmation */
       form.hidden = true;
       confirm.hidden = false;
