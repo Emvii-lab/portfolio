@@ -496,25 +496,32 @@
     </div>
     <h2 class="contact-heading">Travaillons ensemble</h2>
     <p class="contact-sub">Vous avez un projet en tête&nbsp;? Discutons-en autour d'un pixel ou deux.</p>
-    <form class="form-wrapper" action="https://n8n.emvii.fr/webhook-test/8efdfc93-c75a-4f81-a2cc-04cacb263776"
-      method="POST">
+    <form id="contact-form" class="form-wrapper">
       <div class="field">
         <label class="field-label">NOM</label>
-        <input class="field-input" type="text" name="nom" placeholder="Votre nom..." />
+        <input class="field-input" type="text" name="nom" placeholder="Votre nom..." required />
       </div>
       <div class="field">
         <label class="field-label">EMAIL</label>
-        <input class="field-input" type="email" name="email" placeholder="votre@email.com" />
+        <input class="field-input" type="email" name="email" placeholder="votre@email.com" required />
       </div>
       <div class="field">
         <label class="field-label">MESSAGE</label>
-        <textarea class="field-input" name="message" placeholder="Décrivez votre projet..."></textarea>
+        <textarea class="field-input" name="message" placeholder="Décrivez votre projet..." required></textarea>
       </div>
-      <button class="submit-btn" type="submit">
-        <span>►</span>
-        <span>ENVOYER LE MESSAGE</span>
+      <button class="submit-btn" type="submit" id="submit-btn">
+        <span id="submit-icon">►</span>
+        <span id="submit-label">ENVOYER LE MESSAGE</span>
       </button>
     </form>
+    <div id="contact-confirm" class="contact-confirm" hidden>
+      <div class="confirm-icon">✔</div>
+      <p class="confirm-title">MESSAGE ENVOYÉ !</p>
+      <p class="confirm-msg">Merci pour votre message. Je vous répondrai dans les plus brefs délais.</p>
+      <button class="confirm-reset" onclick="document.getElementById('contact-form').hidden=false;this.closest('.contact-confirm').hidden=true;">
+        ← ENVOYER UN AUTRE MESSAGE
+      </button>
+    </div>
     <div class="social-row">
       <a href="https://www.linkedin.com/in/melanie-voymant-a542a0139" target="_blank" rel="noopener noreferrer"
         class="social-link">
@@ -533,6 +540,7 @@
     </footer>
   </section>
 
+  <script src="js/contact.js"></script>
   <script src="js/particles.js"></script>
   <script src="js/scroll.js"></script>
   <script src="js/skills.js"></script>
