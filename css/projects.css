@@ -38,16 +38,16 @@
 .proj-card::before {
   content: '';
   position: absolute;
-  inset: -1px;
+  inset: -2px;
   border-radius: 13px;
   background: linear-gradient(135deg, var(--pink), var(--purple), var(--cyan));
   opacity: 0;
   transition: opacity .4s;
   z-index: -1;
-  filter: blur(8px);
+  filter: blur(12px);
 }
 
-.proj-card:hover::before { opacity: .5; }
+.proj-card:hover::before { opacity: .12; }
 
 .proj-card.border-pink   { border: 1px solid rgba(255, 45, 149, 0.2); }
 .proj-card.border-cyan   { border: 1px solid rgba(0, 240, 255, 0.2); }
@@ -95,6 +95,9 @@
   flex-direction: column;
   gap: 12px;
   flex: 1;
+  background: var(--card-bg);
+  position: relative;
+  z-index: 1;
 }
 
 .proj-name {
