@@ -58,8 +58,8 @@ function pixelScratch(imgEl) {
         g.addColorStop(0.5, 'rgba(176,38,255,1)');
         g.addColorStop(1,   'rgba(0,240,255,1)');
         ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 3); ctx.fillStyle = g; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = 'rgba(255,255,255,0.14)'; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = 'rgba(0,0,0,0.25)'; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.45, [3, 3, 0, 0]); ctx.fillStyle = 'rgba(255,255,255,0.32)'; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.65, pw, ph * 0.35, [0, 0, 3, 3]); ctx.fillStyle = 'rgba(0,0,0,0.12)'; ctx.fill();
       }
     }
   }
@@ -97,8 +97,8 @@ function pixelScratch(imgEl) {
         g.addColorStop(0.5, `rgba(176,38,255,${a})`);
         g.addColorStop(1,   `rgba(0,240,255,${a})`);
         ctx.beginPath(); ctx.roundRect(px, py, pw, ph, 3); ctx.fillStyle = g; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.4, [3, 3, 0, 0]); ctx.fillStyle = `rgba(255,255,255,${a * 0.14})`; ctx.fill();
-        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.62, pw, ph * 0.38, [0, 0, 3, 3]); ctx.fillStyle = `rgba(0,0,0,${a * 0.25})`; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py, pw, ph * 0.45, [3, 3, 0, 0]); ctx.fillStyle = `rgba(255,255,255,${a * 0.32})`; ctx.fill();
+        ctx.beginPath(); ctx.roundRect(px, py + ph * 0.65, pw, ph * 0.35, [0, 0, 3, 3]); ctx.fillStyle = `rgba(0,0,0,${a * 0.12})`; ctx.fill();
       }
     }
 
