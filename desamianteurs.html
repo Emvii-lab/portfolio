@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Désamianteurs.fr — Case Study | EMVII</title>
+  <link rel="icon" type="image/png" href="emvii-logo-nobg.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/case-study.css" />
+</head>
+
+<body>
+
+  <div class="cs-bg-grid"></div>
+  <div class="cs-glow-top"></div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="emvii-logo-nobg.png" alt="EMVII" class="nav-logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">Projet</a></li>
+      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#challenges">Défis</a></li>
+      <li><a href="#next">Perspectives</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">ME CONTACTER</a>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="cs-hero">
+    <div class="cs-container" style="display:flex;flex-direction:column;align-items:center;">
+      <a href="index.html#projects" class="cs-nav-back" style="margin-bottom:32px;">← RETOUR AUX PROJETS</a>
+      <span class="cs-hero-badge">Case Study</span>
+      <h1 class="cs-hero-title">DÉSAMIANTEURS.FR</h1>
+      <p class="cs-hero-sub">&lt; Marketplace / No-Code / B2B & B2C /&gt;<span style="color:var(--cyan);">█</span></p>
+      <p class="cs-hero-tagline">Plateforme de mise en relation entre clients et professionnels certifiés du secteur amiante — conçue et développée dans le cadre de l'examen CDA.</p>
+      <div class="cs-hero-cta">
+        <a href="#features" class="cs-btn-primary">VOIR LES FONCTIONNALITÉS</a>
+        <a href="#stack" class="cs-btn-outline">EXPLORER LA STACK</a>
+      </div>
+    </div>
+    <div class="cs-scroll-hint">
+      <span>Scroll</span>
+      <div class="cs-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── OVERVIEW ── -->
+  <section class="cs-section" id="overview">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Project_overview</span>
+        <h2 class="cs-section-title">Le projet</h2>
+        <p class="cs-section-desc">Un secteur réglementé, sans outil numérique dédié. Une marketplace pour combler ce vide.</p>
+      </div>
+      <div class="cs-overview-grid cs-fade">
+        <div class="cs-overview-text">
+          <p>En France, l'amiante est interdit depuis 1997 mais demeure présent dans des millions de bâtiments. La réglementation impose des diagnostics obligatoires réalisés exclusivement par des <strong>professionnels certifiés</strong> (SS3/SS4, Qualibat 1552, COFRAC).</p>
+          <p><strong>Désamianteurs.fr</strong> centralise l'offre et la demande sur une plateforme unique, sécurisée et transparente. Inspirée du modèle Travaux.com, elle est entièrement dédiée au secteur amiante avec des fonctionnalités métier spécifiques : vérification SIRET automatique, contrôle des certifications et algorithme de matching par abonnement.</p>
+          <p>Trois profils utilisateurs distincts — <strong>clients</strong>, <strong>partenaires PRO</strong> et <strong>administrateurs</strong> — avec des espaces et des droits d'accès séparés via Row Level Security.</p>
+        </div>
+        <div class="cs-meta-grid">
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Type</div>
+            <div class="cs-meta-value c-pink">Projet client & CDA</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Contexte</div>
+            <div class="cs-meta-value c-cyan">Examen CDA 2026/2027</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Rôle</div>
+            <div class="cs-meta-value c-purple">Full-Stack & Design</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Statut</div>
+            <div class="cs-meta-value c-cyan">En développement</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STATS ── -->
+  <section class="cs-section">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Key_metrics</span>
+        <h2 class="cs-section-title">En chiffres</h2>
+      </div>
+      <div class="cs-stats-row cs-fade">
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-pink">3</div>
+          <div class="cs-stat-label">Profils utilisateurs</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-cyan">6</div>
+          <div class="cs-stat-label">Tables PostgreSQL</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-purple">4</div>
+          <div class="cs-stat-label">Tiers d'abonnement</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-mix">5</div>
+          <div class="cs-stat-label">Étapes onboarding PRO</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── GALLERY ── -->
+  <section class="cs-section" id="gallery">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Screenshots</span>
+        <h2 class="cs-section-title">Aperçu de l'application</h2>
+        <p class="cs-section-desc">Cliquez sur une capture pour l'agrandir.</p>
+      </div>
+      <div class="cs-gallery cs-fade">
+
+        <div class="cs-gallery-item cs-gallery-wide" data-caption="Page d'accueil — Formulaire devis et présentation" onclick="openLightbox(this)">
+          <img src="screenshots/desam-home.png" alt="Accueil Désamianteurs.fr" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page d'accueil</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Annuaire des partenaires — Filtres et certifications" onclick="openLightbox(this)">
+          <img src="screenshots/desam-partners.png" alt="Annuaire partenaires" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Annuaire partenaires</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Formulaire devis multi-étapes avec Google Maps" onclick="openLightbox(this)">
+          <img src="screenshots/desam-quote.png" alt="Formulaire devis" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Formulaire devis</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Onboarding PRO — Vérification SIRET et certifications" onclick="openLightbox(this)">
+          <img src="screenshots/desam-onboarding.png" alt="Onboarding PRO" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Onboarding PRO</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Backoffice administrateur — KPI et validation des PRO" onclick="openLightbox(this)">
+          <img src="screenshots/desam-admin.png" alt="Backoffice admin" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Backoffice admin</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="cs-lightbox" class="cs-lightbox" onclick="closeLightbox()">
+    <button class="cs-lightbox-close" onclick="closeLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="cs-lightbox-content" onclick="event.stopPropagation()">
+      <img id="cs-lightbox-img" src="" alt="" />
+      <p id="cs-lightbox-caption"></p>
+    </div>
+    <button class="cs-lightbox-nav prev" onclick="event.stopPropagation(); navLightbox(-1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="cs-lightbox-nav next" onclick="event.stopPropagation(); navLightbox(1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── FEATURES ── -->
+  <section class="cs-section" id="features">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Features</span>
+        <h2 class="cs-section-title">Fonctionnalités clés</h2>
+      </div>
+      <div class="cs-features-grid cs-fade">
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+          </div>
+          <div class="cs-feature-title">Formulaire devis multi-étapes</div>
+          <div class="cs-feature-desc">Saisie guidée du besoin (prestation, surface, délai, budget), géolocalisation Google Maps et création de compte en 3 étapes.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+          </div>
+          <div class="cs-feature-title">Annuaire des partenaires</div>
+          <div class="cs-feature-desc">Recherche filtrée par type de prestation, zone géographique, certification et note moyenne.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-feature-title">Vérification SIRET automatique</div>
+          <div class="cs-feature-desc">Edge Function Supabase proxiant l'API gouvernementale avec cache intégré et gestion des SIRET non diffusibles.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <div class="cs-feature-title">Algorithme de matching</div>
+          <div class="cs-feature-desc">Classement des partenaires basé sur le tier d'abonnement (Élite → Freemium) — invisible pour les clients.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="cs-feature-title">Auth Google OAuth</div>
+          <div class="cs-feature-desc">Connexion sociale avec détection et redirection automatique selon le rôle (client / pro / admin).</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div class="cs-feature-title">Email automation</div>
+          <div class="cs-feature-desc">Notifications transactionnelles via n8n + Resend, hébergé sur VPS OVH (Roubaix, France).</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── PRICING ── -->
+  <section class="cs-section" id="pricing">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Business_model</span>
+        <h2 class="cs-section-title">Offres partenaires</h2>
+        <p class="cs-section-desc">Trois niveaux d'abonnement pour les professionnels certifiés — visibilité, leads et outils de suivi adaptés à chaque ambition.</p>
+      </div>
+      <div class="cs-pricing-grid cs-fade">
+
+        <!-- ESSENTIEL -->
+        <div class="cs-pricing-card tier-cyan">
+          <div class="cs-pricing-header">
+            <span class="cs-pricing-badge badge-cyan">ESSENTIEL</span>
+            <div class="cs-pricing-price"><span class="cs-pricing-amount">49 €</span><span class="cs-pricing-period">/mois</span></div>
+            <p class="cs-pricing-promise">Je veux tester la plateforme sans risque</p>
+          </div>
+          <ul class="cs-pricing-features">
+            <li><span class="cs-pi cyan">✓</span> Présence standard dans l'annuaire</li>
+            <li><span class="cs-pi cyan">✓</span> Zone locale — 1 département</li>
+            <li><span class="cs-pi cyan">✓</span> Alertes nouvelles demandes par email</li>
+            <li><span class="cs-pi cyan">✓</span> 2 visites / 2 devis simultanés</li>
+            <li><span class="cs-pi cyan">✓</span> 1 utilisateur</li>
+            <li><span class="cs-pi muted">–</span> Statistiques</li>
+            <li><span class="cs-pi muted">–</span> Tableau de bord</li>
+            <li><span class="cs-pi muted">–</span> Budget estimatif (bêta)</li>
+            <li class="cs-pricing-extra">+10 € / unité — zone supplémentaire</li>
+          </ul>
+          <div class="cs-pricing-foot">
+            <span class="cs-pricing-frais">Frais de dossier : 80 €</span>
+          </div>
+        </div>
+
+        <!-- PERFORMANCE -->
+        <div class="cs-pricing-card tier-purple">
+          <div class="cs-pricing-header">
+            <span class="cs-pricing-badge badge-purple">PERFORMANCE</span>
+            <div class="cs-pricing-price"><span class="cs-pricing-amount">99 €</span><span class="cs-pricing-period">/mois</span></div>
+            <p class="cs-pricing-promise">Je veux un flux régulier de leads</p>
+          </div>
+          <ul class="cs-pricing-features">
+            <li><span class="cs-pi purple">✓</span> Mise en avant par section / région</li>
+            <li><span class="cs-pi purple">✓</span> Zone régionale — 1 région</li>
+            <li><span class="cs-pi purple">✓</span> Alertes email + mobile</li>
+            <li><span class="cs-pi purple">✓</span> 5 visites / 5 devis simultanés</li>
+            <li><span class="cs-pi purple">✓</span> 3 utilisateurs</li>
+            <li><span class="cs-pi purple">✓</span> Statistiques détaillées</li>
+            <li><span class="cs-pi purple">✓</span> Tableau de bord standard</li>
+            <li><span class="cs-pi muted">–</span> Budget estimatif (bêta)</li>
+            <li class="cs-pricing-extra">+5 € / unité — zone supplémentaire</li>
+          </ul>
+          <div class="cs-pricing-foot">
+            <span class="cs-pricing-frais">Frais de dossier : 80 €</span>
+          </div>
+        </div>
+
+        <!-- PREMIUM -->
+        <div class="cs-pricing-card tier-pink featured">
+          <div class="cs-pricing-featured-label">RECOMMANDÉ</div>
+          <div class="cs-pricing-header">
+            <span class="cs-pricing-badge badge-pink">PREMIUM</span>
+            <div class="cs-pricing-price"><span class="cs-pricing-amount">219 €</span><span class="cs-pricing-period">/mois</span></div>
+            <p class="cs-pricing-promise">Je veux capter un maximum d'opportunités</p>
+          </div>
+          <ul class="cs-pricing-features">
+            <li><span class="cs-pi pink">✓</span> Mise en avant prioritaire — 1ère page</li>
+            <li><span class="cs-pi pink">✓</span> Zones nationale + option étranger</li>
+            <li><span class="cs-pi pink">✓</span> Alertes email + mobile + prioritaires</li>
+            <li><span class="cs-pi pink">✓</span> Visites &amp; devis illimités</li>
+            <li><span class="cs-pi pink">✓</span> 10 utilisateurs</li>
+            <li><span class="cs-pi pink">✓</span> Statistiques détaillées &amp; comparatives</li>
+            <li><span class="cs-pi pink">✓</span> Tableau de bord + export API</li>
+            <li><span class="cs-pi pink">✓</span> Budget estimatif de la demande (bêta)</li>
+            <li class="cs-pricing-extra">Zones supplémentaires incluses</li>
+          </ul>
+          <div class="cs-pricing-foot">
+            <span class="cs-pricing-frais">Frais de dossier : 80 €</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Matching note -->
+      <p class="cs-pricing-note cs-fade">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline;vertical-align:middle;margin-right:6px"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Le classement dans les résultats est basé sur le tier d'abonnement, la note client, la réactivité et la disponibilité locale — ce mécanisme est <strong>invisible pour les clients</strong>.
+      </p>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STACK ── -->
+  <section class="cs-section" id="stack">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Tech_stack</span>
+        <h2 class="cs-section-title">Architecture No-Code / Low-Code</h2>
+        <p class="cs-section-desc">Une stack orientée production, chaque outil choisi pour sa robustesse et sa pertinence métier.</p>
+      </div>
+      <div class="cs-stack-grid cs-fade">
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">⌨ Frontend</div>
+          <div class="cs-stack-title">WeWeb</div>
+          <div class="cs-stack-desc">Interface SPA no-code avec bindings formule, workflows visuels et collections de données. Déployé sur Vercel.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">SPA</span>
+            <span class="cs-tag t-pink">No-Code</span>
+            <span class="cs-tag t-pink">Vercel</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">🎨 Design</div>
+          <div class="cs-stack-title">Figma</div>
+          <div class="cs-stack-desc">Source de vérité du design system — DM Serif Display + DM Sans, palette noir/rouge, grille 8px.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">Design System</span>
+            <span class="cs-tag t-purple">Composants</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">🛠 Backend & BDD</div>
+          <div class="cs-stack-title">Supabase</div>
+          <div class="cs-stack-desc">PostgreSQL, Auth JWT + OAuth Google, Storage, Row Level Security par rôle, RPC fonctions et Edge Functions.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">PostgreSQL</span>
+            <span class="cs-tag t-cyan">RLS</span>
+            <span class="cs-tag t-cyan">Edge Functions</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">🔗 Logique métier</div>
+          <div class="cs-stack-title">API Gouvernementale</div>
+          <div class="cs-stack-desc">Vérification SIRET via <code style="color:var(--cyan);font-size:11px;">recherche-entreprises.api.gouv.fr</code> avec cache <code style="color:var(--cyan);font-size:11px;">siret_cache</code>.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">SIRET</span>
+            <span class="cs-tag t-pink">Cache</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">✉ Emails</div>
+          <div class="cs-stack-title">n8n + Resend</div>
+          <div class="cs-stack-desc">Notifications transactionnelles automatisées. n8n hébergé sur VPS OVH (Roubaix, France), données Supabase AWS eu-west-3 (Paris).</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">n8n</span>
+            <span class="cs-tag t-purple">Resend</span>
+            <span class="cs-tag t-purple">OVH VPS</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">🗺 Cartographie</div>
+          <div class="cs-stack-title">Google Maps API</div>
+          <div class="cs-stack-desc">Autocomplete adresse et marqueur interactif dans le formulaire devis multi-étapes.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">Maps</span>
+            <span class="cs-tag t-cyan">Geocoding</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cs-terminal cs-fade">
+        <span class="prompt">$</span> <span class="cmd">cat stack.txt</span><br>
+        <span class="out">→ Frontend   : <span class="hi-p">WeWeb (SPA no-code) → Vercel</span></span><br>
+        <span class="out">→ Design     : <span class="hi-m">Figma (design system DM Serif + DM Sans)</span></span><br>
+        <span class="out">→ Backend    : <span class="hi-c">Supabase (PostgreSQL + Auth + RLS + Edge Functions)</span></span><br>
+        <span class="out">→ Emails     : <span class="hi-m">n8n + Resend → VPS OVH Roubaix</span></span><br>
+        <span class="out">→ Maps       : <span class="hi-c">Google Maps API (autocomplete + geocoding)</span></span><br>
+        <span class="out">→ SIRET      : <span class="hi-p">recherche-entreprises.api.gouv.fr (via Edge Function)</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── CHALLENGES ── -->
+  <section class="cs-section" id="challenges">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Challenges</span>
+        <h2 class="cs-section-title">Défis & Solutions</h2>
+        <p class="cs-section-desc">Les points clés de l'implémentation et comment ils ont été résolus.</p>
+      </div>
+      <div class="cs-challenges-grid cs-fade">
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">RLS + DEFAULT auth.uid()</div>
+          <div class="cs-challenge-desc">Les politiques INSERT évaluent <code style="color:var(--cyan)">WITH CHECK</code> avant l'application des valeurs DEFAULT, bloquant l'insertion automatique de user_id.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">WITH CHECK (TRUE) TO authenticated</div>
+          <div class="cs-challenge-desc">Politique permissive qui laisse <code style="color:var(--cyan)">DEFAULT auth.uid()</code> s'appliquer automatiquement sans passer user_id explicitement depuis WeWeb.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="17 1 21 5 17 9"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><polyline points="7 23 3 19 7 15"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Préservation d'état entre étapes</div>
+          <div class="cs-challenge-desc">WeWeb détruit le DOM lors du Conditional Rendering, effaçant les valeurs saisies dans le formulaire multi-étapes.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Binding display au lieu de v-if</div>
+          <div class="cs-challenge-desc">Binding <code style="color:var(--cyan)">display</code> avec <code style="color:var(--cyan)">if(currentStep === 1, "flex", "none")</code> pour masquer sans démonter les composants.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Migration d'enum PostgreSQL</div>
+          <div class="cs-challenge-desc">Impossible de supprimer une valeur d'enum directement en PostgreSQL, bloquant l'évolution du schéma de données.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Pattern migratoire en 4 étapes</div>
+          <div class="cs-challenge-desc">Création d'un nouveau type → migration colonne avec <code style="color:var(--cyan)">USING</code> cast → <code style="color:var(--cyan)">DROP</code> ancien type → <code style="color:var(--cyan)">RENAME</code>. Vues et RLS recréées dans la même migration.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Syntaxe formule WeWeb</div>
+          <div class="cs-challenge-desc">Syntaxe propriétaire distincte de JavaScript : pas de <code style="color:var(--cyan)">===</code>, <code style="color:var(--cyan)">.replace()</code> natif, ni de chaînes de méthodes.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Maîtrise des helpers WeWeb</div>
+          <div class="cs-challenge-desc"><code style="color:var(--cyan)">filterByKey()</code>, <code style="color:var(--cyan)">getByIndex()</code>, <code style="color:var(--cyan)">if()</code> et comparaison avec <code style="color:var(--cyan)">=</code>. Documentation et expérimentation systématiques.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── LEARNINGS ── -->
+  <section class="cs-section" id="next">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Retrospective</span>
+        <h2 class="cs-section-title">Apprentissages & Perspectives</h2>
+      </div>
+      <div class="cs-two-col cs-fade">
+        <div class="cs-col-block">
+          <div class="cs-col-title t-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Ce que j'ai appris
+          </div>
+          <ul class="cs-col-list cyan-dots">
+            <li>Concevoir un schéma PostgreSQL multi-rôle avec Row Level Security dès la phase de design</li>
+            <li>Utiliser les Edge Functions Supabase comme proxy sécurisé vers des API tierces avec gestion du cache</li>
+            <li>Maîtriser la syntaxe formule WeWeb et ses subtilités vis-à-vis du JavaScript standard</li>
+            <li>Gérer les migrations de types enum PostgreSQL sans casser les relations existantes</li>
+            <li>Orchestrer un pipeline email complet avec n8n + Resend hébergé sur VPS</li>
+          </ul>
+        </div>
+        <div class="cs-col-block">
+          <div class="cs-col-title t-pink">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Prochaines étapes
+          </div>
+          <ul class="cs-col-list pink-dots">
+            <li>Intégrer le module de <strong style="color:#e2e8f0">paiement des abonnements</strong> via Stripe</li>
+            <li>Ajouter un <strong style="color:#e2e8f0">système de messagerie interne</strong> entre clients et partenaires</li>
+            <li>Développer le <strong style="color:#e2e8f0">tableau de bord PRO</strong> avec suivi des devis entrants et statistiques</li>
+            <li>Intégrer l'<strong style="color:#e2e8f0">API Universalis</strong> pour les données de certification en temps réel</li>
+            <li>Lancer la <strong style="color:#e2e8f0">phase bêta</strong> avec les premiers partenaires professionnels</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <div class="cs-glow-line"></div>
+  <footer class="cs-footer">
+    <img src="emvii-logo-nobg.png" alt="EMVII" style="height:60px;width:auto;opacity:0.7;margin:0 auto 16px;filter:drop-shadow(0 0 8px rgba(0,240,255,0.4));" />
+    <p class="cs-footer-text">© 2026 EMVII — Désamianteurs.fr Case Study</p>
+    <div class="cs-footer-links">
+      <a href="index.html">← Portfolio</a>
+      <a href="index.html#contact">Me contacter</a>
+    </div>
+  </footer>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const csObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.cs-fade').forEach(el => csObserver.observe(el));
+
+    /* Lightbox */
+    const lightbox     = document.getElementById('cs-lightbox');
+    const lbImg        = document.getElementById('cs-lightbox-img');
+    const lbCaption    = document.getElementById('cs-lightbox-caption');
+    const galleryItems = () => [...document.querySelectorAll('.cs-gallery-item:not(.cs-placeholder)')];
+    let currentIndex   = 0;
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      if (!img || el.classList.contains('cs-placeholder')) return;
+      currentIndex = galleryItems().indexOf(el);
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = el.dataset.caption || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      const items = galleryItems();
+      if (!items.length) return;
+      currentIndex = (currentIndex + dir + items.length) % items.length;
+      const el  = items[currentIndex];
+      const img = el.querySelector('img');
+      lbImg.style.animation = 'none';
+      requestAnimationFrame(() => {
+        lbImg.style.animation = '';
+        lbImg.src = img.src;
+        lbCaption.textContent = el.dataset.caption || '';
+      });
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
+
+</body>
+</html>

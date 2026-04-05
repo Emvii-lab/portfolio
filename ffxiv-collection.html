@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FFXIV Collection — Case Study | EMVII</title>
+  <link rel="icon" type="image/png" href="emvii-logo-nobg.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/case-study.css" />
+</head>
+
+<body>
+
+  <!-- Background -->
+  <div class="cs-bg-grid"></div>
+  <div class="cs-glow-top"></div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="emvii-logo-nobg.png" alt="EMVII" class="nav-logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">Projet</a></li>
+      <li><a href="#process">Processus</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#challenges">Challenges</a></li>
+      <li><a href="#next">Perspectives</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">ME CONTACTER</a>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="cs-hero">
+    <div class="cs-container" style="display:flex;flex-direction:column;align-items:center;">
+      <a href="index.html#projects" class="cs-nav-back" style="margin-bottom:32px;">← RETOUR AUX PROJETS</a>
+      <span class="cs-hero-badge">Case Study</span>
+      <h1 class="cs-hero-title">FFXIV COLLECTION</h1>
+      <p class="cs-hero-sub">&lt; Collection Tracker / Web App /&gt;<span style="color:var(--cyan);">█</span></p>
+      <p class="cs-hero-tagline">Un tracker de collection FFXIV personnel, pensé pour les joueurs passionnés. De l'idée
+        au produit, retour sur le processus de création.</p>
+      <div class="cs-hero-cta">
+        <a href="#process" class="cs-btn-primary">VOIR LE PROCESSUS</a>
+        <a href="#stack" class="cs-btn-outline">EXPLORER LA STACK</a>
+      </div>
+    </div>
+    <div class="cs-scroll-hint">
+      <span>Scroll</span>
+      <div class="cs-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── OVERVIEW ── -->
+  <section class="cs-section" id="overview">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Project_overview</span>
+        <h2 class="cs-section-title">Le projet</h2>
+        <p class="cs-section-desc">Un outil sur mesure, conçu par une joueuse, pour les joueurs.</p>
+      </div>
+      <div class="cs-overview-grid cs-fade">
+        <div class="cs-overview-text">
+          <p><strong>FFXIV Collection</strong> est une application web qui permet de suivre sa progression de collection
+            dans Final Fantasy XIV : mascottes, montures et bardes de chocobo.</p>
+          <p>Le jeu propose des centaines d'objets de collection dispersés à travers le monde d'Eorzea. L'idée était de
+            créer un espace personnel où visualiser en un coup d'œil ce qu'on possède, ce qu'il nous manque, et comment
+            l'obtenir.</p>
+          <p>L'application se synchronise avec <strong>FFXIV Collect</strong>, intègre les tooltips officiels d'Eorzea
+            Database, et propose une interface immersive inspirée de l'univers du jeu — avec musiques et sons iconiques.
+          </p>
+        </div>
+        <div class="cs-meta-grid">
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Type</div>
+            <div class="cs-meta-value c-cyan">Projet personnel</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Durée</div>
+            <div class="cs-meta-value c-pink">~3 mois</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Rôle</div>
+            <div class="cs-meta-value c-purple">Full-Stack & Design</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Statut</div>
+            <div class="cs-meta-value c-cyan">En production</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STATS ── -->
+  <section class="cs-section">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Key_metrics</span>
+        <h2 class="cs-section-title">En chiffres</h2>
+      </div>
+      <div class="cs-stats-row cs-fade">
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-pink">7</div>
+          <div class="cs-stat-label">Pages</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-cyan">3</div>
+          <div class="cs-stat-label">Collections</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-purple">18</div>
+          <div class="cs-stat-label">Modules JS</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-mix">20+</div>
+          <div class="cs-stat-label">Migrations SQL</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── GALLERY ── -->
+  <section class="cs-section" id="gallery">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Screenshots</span>
+        <h2 class="cs-section-title">Aperçu de l'application</h2>
+        <p class="cs-section-desc">Cliquez sur une capture pour l'agrandir.</p>
+      </div>
+      <div class="cs-gallery cs-fade">
+
+        <div class="cs-gallery-item cs-gallery-wide" data-caption="Dashboard — Vue d'ensemble de la collection" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-dashboard.png" alt="Dashboard FFXIV Collection" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Dashboard — Vue d'ensemble</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Page Mascottes — Filtres et cartes de collection" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-minions.png" alt="Page Mascottes" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page Mascottes</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Page Montures — Vue grille avec états d'acquisition" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-mounts.png" alt="Page Montures" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page Montures</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Modale de détail — Informations et source d'obtention" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-detail.png" alt="Modale détail" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Modale de détail</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Page Bardes de chocobo — Collection et filtres" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-bardes.png" alt="Page Bardes" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page Bardes de chocobo</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Page de connexion — Sprites flottants et thème sombre" onclick="openLightbox(this)">
+          <img src="screenshots/ffxiv-login.png" alt="Page connexion" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page de connexion</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="cs-lightbox" class="cs-lightbox" onclick="closeLightbox()">
+    <button class="cs-lightbox-close" onclick="closeLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="cs-lightbox-content" onclick="event.stopPropagation()">
+      <img id="cs-lightbox-img" src="" alt="" />
+      <p id="cs-lightbox-caption"></p>
+    </div>
+    <button class="cs-lightbox-nav prev" onclick="event.stopPropagation(); navLightbox(-1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="cs-lightbox-nav next" onclick="event.stopPropagation(); navLightbox(1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── FEATURES ── -->
+  <section class="cs-section" id="features">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Features</span>
+        <h2 class="cs-section-title">Fonctionnalités clés</h2>
+      </div>
+      <div class="cs-features-grid cs-fade">
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg></div>
+          <div class="cs-feature-title">Authentification</div>
+          <div class="cs-feature-desc">Login sécurisé via Supabase Auth avec gestion de session persistante et
+            protection des routes.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg></div>
+          <div class="cs-feature-title">Suivi de collection</div>
+          <div class="cs-feature-desc">Marquer chaque objet comme acquis ou non. L'état est synchronisé en base et
+            persistant entre les sessions.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="8" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg></div>
+          <div class="cs-feature-title">Filtres avancés</div>
+          <div class="cs-feature-desc">Filtrage par statut, par patch (2.x à 7.x), et recherche textuelle en temps réel.
+            Combinables entre eux.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="23 4 23 10 17 10" />
+              <polyline points="1 20 1 14 7 14" />
+              <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+            </svg></div>
+          <div class="cs-feature-title">Sync FFXIV Collect</div>
+          <div class="cs-feature-desc">Synchronisation en un clic avec l'API FFXIV Collect pour importer automatiquement
+            sa collection.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+            </svg></div>
+          <div class="cs-feature-title">Thème clair / sombre</div>
+          <div class="cs-feature-desc">Détection des préférences système, bascule manuelle, logos adaptés dynamiquement
+            au thème.</div>
+        </div>
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 18V5l12-2v13" />
+              <circle cx="6" cy="18" r="3" />
+              <circle cx="18" cy="16" r="3" />
+            </svg></div>
+          <div class="cs-feature-title">Ambiance sonore</div>
+          <div class="cs-feature-desc">Musique de fond, jingles de connexion/déconnexion et effets sonores inspirés du
+            jeu original.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── PROCESS ── -->
+  <section class="cs-section" id="process">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Dev_process</span>
+        <h2 class="cs-section-title">Processus & Évolution</h2>
+        <p class="cs-section-desc">De la première ligne de code au produit fini — retour sur les étapes clés du
+          développement.</p>
+      </div>
+      <div class="cs-timeline cs-fade">
+
+        <div class="cs-timeline-item">
+          <div class="cs-timeline-phase">Phase 01 — Fondations</div>
+          <div class="cs-timeline-title">Architecture & authentification</div>
+          <div class="cs-timeline-desc">Le projet a démarré par le choix d'une architecture <strong>multi-page
+              (MPA)</strong> avec Vite comme bundler. Plutôt qu'un framework lourd, j'ai opté pour du <strong>JavaScript
+              vanilla en ES modules</strong> — suffisant pour la complexité du projet et parfait pour garder le contrôle
+            total. Supabase a été choisi comme backend pour son auth intégrée et sa base PostgreSQL. Les premiers jours
+            ont été consacrés à la mise en place de la connexion, la gestion de session, et la protection des pages avec
+            <strong>Row Level Security</strong>.
+          </div>
+        </div>
+
+        <div class="cs-timeline-item">
+          <div class="cs-timeline-phase">Phase 02 — Premier module</div>
+          <div class="cs-timeline-title">Les Mascottes (Minions)</div>
+          <div class="cs-timeline-desc">La page Mascottes a servi de <strong>prototype fonctionnel</strong> pour tout le
+            projet. C'est ici que j'ai construit le système de filtres (acquis/non acquis, par patch, recherche
+            textuelle), le rendu dynamique des cartes, la modale de détails, et surtout la <strong>synchronisation avec
+              l'API FFXIV Collect</strong>. Le modèle de données Supabase s'est construit itérativement — d'où les 20+
+            scripts de migration SQL.</div>
+        </div>
+
+        <div class="cs-timeline-item">
+          <div class="cs-timeline-phase">Phase 03 — Montée en puissance</div>
+          <div class="cs-timeline-title">Montures & Bardes par parité</div>
+          <div class="cs-timeline-desc">Une fois le module Mascottes stabilisé, j'ai répliqué le pattern sur les
+            <strong>Montures</strong> puis les <strong>Bardes de chocobo</strong>. Chaque module a bénéficié des
+            enseignements du précédent : meilleur découpage du code, requêtes Supabase optimisées avec jointures
+            relationnelles, et cache client pour éviter les appels répétés. L'historique Git montre clairement cette
+            progression par parité fonctionnelle.
+          </div>
+        </div>
+
+        <div class="cs-timeline-item">
+          <div class="cs-timeline-phase">Phase 04 — Immersion</div>
+          <div class="cs-timeline-title">Audio, thèmes & polish</div>
+          <div class="cs-timeline-desc">L'expérience utilisateur ne s'arrête pas aux données. J'ai intégré un
+            <strong>système audio complet</strong> : musique de fond (Prelude FFXIV), jingles de connexion/déconnexion,
+            sons de navigation et de collection. Le <strong>thème clair/sombre</strong> détecte les préférences système
+            et adapte même les logos dynamiquement. Les sprites flottants sur la page de login ajoutent une touche de
+            magie.
+          </div>
+        </div>
+
+        <div class="cs-timeline-item">
+          <div class="cs-timeline-phase">Phase 05 — Production</div>
+          <div class="cs-timeline-title">CI/CD & déploiement</div>
+          <div class="cs-timeline-desc">Le déploiement est automatisé via <strong>GitHub Actions</strong> : chaque push
+            sur <code
+              style="color:var(--cyan);background:rgba(0,240,255,0.08);padding:2px 6px;border-radius:3px;">main</code>
+            déclenche un build Vite avec injection sécurisée des secrets Supabase, puis un déploiement sur GitHub Pages.
+            Les clés API ne transitent jamais par le repo. La branche <code
+              style="color:var(--cyan);background:rgba(0,240,255,0.08);padding:2px 6px;border-radius:3px;">dev</code>
+            sert d'environnement de staging.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STACK ── -->
+  <section class="cs-section" id="stack">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Tech_stack</span>
+        <h2 class="cs-section-title">Outils & Technologies</h2>
+        <p class="cs-section-desc">Une stack légère et efficace, chaque outil choisi pour une raison précise.</p>
+      </div>
+      <div class="cs-stack-grid cs-fade">
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">⌨ Frontend</div>
+          <div class="cs-stack-title">HTML / CSS / JS Vanilla</div>
+          <div class="cs-stack-desc">Architecture multi-page avec ES modules. Pas de framework : contrôle total,
+            performances optimales, zéro overhead.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">HTML5</span>
+            <span class="cs-tag t-pink">CSS3</span>
+            <span class="cs-tag t-pink">ES Modules</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">⚡ Build & Tooling</div>
+          <div class="cs-stack-title">Vite 5</div>
+          <div class="cs-stack-desc">Bundler ultra-rapide avec HMR. Gestion des variables d'environnement (VITE_ prefix)
+            et multi-entry points Rollup.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">Vite</span>
+            <span class="cs-tag t-cyan">Rollup</span>
+            <span class="cs-tag t-cyan">ESBuild</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">🛠 Backend & BDD</div>
+          <div class="cs-stack-title">Supabase</div>
+          <div class="cs-stack-desc">PostgreSQL hébergé avec authentification, Row Level Security, et requêtes
+            relationnelles complexes via le SDK JavaScript.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">PostgreSQL</span>
+            <span class="cs-tag t-purple">Auth</span>
+            <span class="cs-tag t-purple">RLS</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">☁ Hébergement</div>
+          <div class="cs-stack-title">GitHub Pages + Actions</div>
+          <div class="cs-stack-desc">CI/CD automatisé : build, injection de secrets, et déploiement sur chaque push.
+            Zéro intervention manuelle.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">CI/CD</span>
+            <span class="cs-tag t-cyan">GitHub Actions</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">🎨 Médias</div>
+          <div class="cs-stack-title">Cloudinary</div>
+          <div class="cs-stack-desc">CDN d'images et fichiers audio. Toutes les icônes, logos, screenshots et sons FFXIV
+            sont servis depuis Cloudinary.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">CDN</span>
+            <span class="cs-tag t-pink">Images</span>
+            <span class="cs-tag t-pink">Audio</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">🔗 Intégrations</div>
+          <div class="cs-stack-title">APIs FFXIV</div>
+          <div class="cs-stack-desc">Synchronisation des collections avec FFXIV Collect et tooltips en jeu via Eorzea
+            Database (SDK officiel Square Enix).</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">FFXIV Collect</span>
+            <span class="cs-tag t-purple">Eorzea DB</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cs-terminal cs-fade">
+        <span class="prompt">$</span> <span class="cmd">cat stack.txt</span><br>
+        <span class="out">→ Frontend : <span class="hi-p">HTML / CSS / JavaScript (ES Modules)</span></span><br>
+        <span class="out">→ Build : <span class="hi-c">Vite 5 / Rollup</span></span><br>
+        <span class="out">→ Backend : <span class="hi-m">Supabase (PostgreSQL + Auth + RLS)</span></span><br>
+        <span class="out">→ Médias : <span class="hi-p">Cloudinary CDN</span></span><br>
+        <span class="out">→ Deploy : <span class="hi-c">GitHub Actions → GitHub Pages</span></span><br>
+        <span class="out">→ APIs : <span class="hi-m">FFXIV Collect / Eorzea Database</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── CHALLENGES ── -->
+  <section class="cs-section" id="challenges">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Challenges</span>
+        <h2 class="cs-section-title">Défis & Solutions</h2>
+        <p class="cs-section-desc">Les problèmes rencontrés et comment ils ont été résolus.</p>
+      </div>
+      <div class="cs-challenges-grid cs-fade">
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="11" width="18" height="11" rx="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </svg></div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Sécuriser les clés API</div>
+          <div class="cs-challenge-desc">Les clés Supabase ne devaient jamais apparaître dans le repository public, tout
+            en étant disponibles au moment du build.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Secrets GitHub + Vite env</div>
+          <div class="cs-challenge-desc">Les variables sont stockées dans les GitHub Secrets et injectées uniquement au
+            moment du build via le préfixe VITE_ et le workflow CI/CD.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg></div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Modèle de données évolutif</div>
+          <div class="cs-challenge-desc">Le schéma de la base a dû évoluer constamment : ajout de colonnes, refonte des
+            sources d'obtention, gestion des devises.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Migrations SQL itératives</div>
+          <div class="cs-challenge-desc">Plus de 20 scripts de migration versionnés, permettant de faire évoluer le
+            schéma sans perdre de données ni casser les relations existantes.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+              <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+              <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+            </svg></div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Autoplay audio bloqué</div>
+          <div class="cs-challenge-desc">Les navigateurs modernes bloquent la lecture audio automatique. Impossible de
+            lancer la musique de fond sans interaction utilisateur.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Interaction différée</div>
+          <div class="cs-challenge-desc">Détection du premier clic pour débloquer l'audio, sons de transition stockés en
+            localStorage entre les pages, et gestion manuelle de l'état audio.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+            </svg></div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Performance des listes</div>
+          <div class="cs-challenge-desc">Afficher des centaines d'objets avec images, états de collection et filtres
+            multiples sans ralentir l'interface.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+              stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg></div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Cache client & filtrage local</div>
+          <div class="cs-challenge-desc">Les données sont chargées une seule fois via Supabase puis mises en cache côté
+            client. Les filtres opèrent sur le cache sans requêtes supplémentaires.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── LEARNINGS ── -->
+  <section class="cs-section" id="next">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Retrospective</span>
+        <h2 class="cs-section-title">Apprentissages & Perspectives</h2>
+      </div>
+      <div class="cs-two-col cs-fade">
+        <div class="cs-col-block">
+          <div class="cs-col-title t-cyan"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="flex-shrink:0">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg> Ce que j'ai appris</div>
+          <ul class="cs-col-list cyan-dots">
+            <li>Concevoir un modèle de données relationnel qui évolue avec le produit, en s'appuyant sur des migrations
+              SQL itératives</li>
+            <li>Mettre en place une authentification sécurisée et des politiques Row Level Security sur Supabase</li>
+            <li>Gérer l'audio dans les navigateurs modernes avec les contraintes d'autoplay et les transitions entre
+              pages</li>
+            <li>Construire une architecture modulaire en JavaScript vanilla sans framework, en gardant le code
+              maintenable</li>
+            <li>Automatiser un pipeline CI/CD complet avec GitHub Actions, secrets et déploiement continu</li>
+          </ul>
+        </div>
+        <div class="cs-col-block">
+          <div class="cs-col-title t-pink"><svg width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              style="flex-shrink:0">
+              <circle cx="12" cy="12" r="10" />
+              <circle cx="12" cy="12" r="6" />
+              <circle cx="12" cy="12" r="2" />
+            </svg> Prochaines étapes</div>
+          <ul class="cs-col-list pink-dots">
+            <li>Compléter la page <strong style="color:#e2e8f0">Orchestrion</strong> pour le suivi des rouleaux de
+              musique en jeu</li>
+            <li>Ajouter un système d'inscription pour ouvrir l'application à d'autres joueurs</li>
+            <li>Enrichir la page de détail avec les prix en temps réel du marché en jeu (Universalis API)</li>
+            <li>Améliorer le responsive design et créer une version PWA pour mobile</li>
+            <li>Explorer une possible migration vers un framework (React ou Vue) si la complexité augmente</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <div class="cs-glow-line"></div>
+  <footer class="cs-footer">
+    <img src="emvii-logo-nobg.png" alt="EMVII"
+      style="height:60px;width:auto;opacity:0.7;margin:0 auto 16px;filter:drop-shadow(0 0 8px rgba(0,240,255,0.4));" />
+    <p class="cs-footer-text">© 2026 EMVII — FFXIV Collection Case Study</p>
+    <div class="cs-footer-links">
+      <a href="index.html">← Portfolio</a>
+      <a href="index.html#contact">Me contacter</a>
+    </div>
+  </footer>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    /* ── Scroll fade-in ── */
+    const csObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.cs-fade').forEach(el => csObserver.observe(el));
+
+    /* ── Lightbox ── */
+    const lightbox    = document.getElementById('cs-lightbox');
+    const lbImg       = document.getElementById('cs-lightbox-img');
+    const lbCaption   = document.getElementById('cs-lightbox-caption');
+    const galleryItems = () => [...document.querySelectorAll('.cs-gallery-item:not(.cs-placeholder)')];
+    let currentIndex  = 0;
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      if (!img || el.classList.contains('cs-placeholder')) return;
+      currentIndex = galleryItems().indexOf(el);
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = el.dataset.caption || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      const items = galleryItems();
+      if (!items.length) return;
+      currentIndex = (currentIndex + dir + items.length) % items.length;
+      const el  = items[currentIndex];
+      const img = el.querySelector('img');
+      lbImg.style.animation = 'none';
+      requestAnimationFrame(() => {
+        lbImg.style.animation = '';
+        lbImg.src = img.src;
+        lbCaption.textContent = el.dataset.caption || '';
+      });
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape')      closeLightbox();
+      if (e.key === 'ArrowLeft')   navLightbox(-1);
+      if (e.key === 'ArrowRight')  navLightbox(1);
+    });
+  </script>
+
+</body>
+
+</html>

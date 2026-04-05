@@ -201,12 +201,13 @@
 }
 
 /* ── Typing cursor ── */
-.hero-subtitle::after {
-  content: '█';
+.hero-type-cursor {
   color: var(--cyan);
-  animation: blink 1s step-end infinite;
-  margin-left: 4px;
+  margin-left: 2px;
   font-size: .9em;
+}
+.hero-type-cursor.blink {
+  animation: blink 1s step-end infinite;
 }
 
 @keyframes blink {
