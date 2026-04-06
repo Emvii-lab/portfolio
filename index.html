@@ -97,7 +97,7 @@
         <span class="stat-label">ANNÉES D'EXP.</span>
       </div>
       <div class="stat-card cyan">
-        <span class="stat-val cyan">2+</span>
+        <span class="stat-val cyan" id="stat-projects">…</span>
         <span class="stat-label">PROJETS</span>
       </div>
       <div class="stat-card purple">
@@ -146,7 +146,38 @@
         </div>
       </div>
 
-      <!-- Card 2 -->
+      <!-- Card 2 — Sunwave Hub -->
+      <div class="proj-card border-purple">
+        <div class="proj-img">
+          <img src="screenshots/sunwave-home.png" alt="Sunwave Hub — Page d'accueil"
+            style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'" />
+        </div>
+        <div class="proj-content">
+          <span class="proj-name">SUNWAVE HUB</span>
+          <p class="proj-desc">Plateforme communautaire retrowave & synthwave — radio live pilotée par l'YouTube IFrame
+            API, galerie générée par IA (Gemini) et soumission de playlists via Supabase. Entièrement statique, déployée
+            sur GitHub Pages.</p>
+          <div class="proj-tags">
+            <span class="tag pink">VITE</span>
+            <span class="tag cyan">SUPABASE</span>
+            <span class="tag purple">GEMINI API</span>
+          </div>
+          <div class="proj-links-row">
+            <a href="sunwave-hub.html" class="proj-link">VOIR LE PROJET &gt;</a>
+            <a href="https://sunwave-hub.emvii.fr" class="proj-link-site" target="_blank" rel="noopener noreferrer">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10" />
+                <line x1="2" y1="12" x2="22" y2="12" />
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+              </svg>
+              SITE LIVE
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
       <div class="proj-card border-cyan">
         <div class="proj-img">
           <img src="screenshots/desam-home.png" alt="Désamianteurs.fr — Page d'accueil"
@@ -458,6 +489,10 @@
   <script src="js/projects.js"></script>
   <script src="js/portrait.js"></script>
   <script src="js/nav.js"></script>
+  <script>
+    const count = document.querySelectorAll('.proj-card').length;
+    document.getElementById('stat-projects').textContent = count + '+';
+  </script>
 
 </body>
 

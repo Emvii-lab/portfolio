@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sunwave Hub — Portfolio & Documentation</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Audiowide&family=Oxanium:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --neon-pink: #ff2d55;
+      --neon-cyan: #00f2ff;
+      --sunset-pink: #ff5a87;
+      --sunset-orange: #ffb347;
+      --sunset-yellow: #fdf497;
+      --bg-dark: #071018;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Oxanium', sans-serif;
+      background-color: var(--bg-dark);
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4, .font-display {
+      font-family: 'Audiowide', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    .sunset-text {
+      background: linear-gradient(180deg, var(--sunset-pink) 0%, var(--sunset-orange) 50%, var(--sunset-yellow) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      display: inline-block;
+    }
+
+    .sunset-bar {
+      background: linear-gradient(90deg, var(--sunset-pink), var(--sunset-orange), var(--sunset-yellow));
+    }
+
+    .glass-card {
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: border-color 0.3s ease;
+    }
+
+    .glass-card:hover {
+      border-color: rgba(0,242,255,0.25);
+    }
+
+    .tag {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: rgba(255,255,255,0.04);
+      color: rgba(255,255,255,0.5);
+    }
+
+    .tag.pink  { border-color: rgba(255,90,135,0.4); color: var(--sunset-pink); background: rgba(255,90,135,0.08); }
+    .tag.cyan  { border-color: rgba(0,242,255,0.4);  color: var(--neon-cyan);   background: rgba(0,242,255,0.08); }
+    .tag.orange{ border-color: rgba(255,179,71,0.4); color: var(--sunset-orange);background: rgba(255,179,71,0.08);}
+
+    .step-num {
+      font-family: 'Audiowide', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(255,255,255,0.15);
+    }
+
+    /* Timeline line */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--sunset-pink), var(--sunset-orange));
+      box-shadow: 0 0 10px rgba(255,90,135,0.5);
+    }
+
+    /* Grid retrowave déco */
+    .retro-grid {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 200%;
+      height: 300px;
+      background:
+        linear-gradient(transparent 0%, rgba(112,0,255,0.15) 2%, transparent 5%),
+        linear-gradient(90deg, transparent 0%, rgba(0,242,255,0.15) 2%, transparent 5%);
+      background-size: 60px 60px;
+      transform: perspective(300px) rotateX(60deg) translateX(-25%);
+      z-index: -1;
+      mask-image: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+      pointer-events: none;
+      animation: grid-scroll 20s linear infinite;
+    }
+
+    @keyframes grid-scroll {
+      from { background-position: 0 0; }
+      to   { background-position: 0 60px; }
+    }
+
+    .scanlines {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(rgba(0,0,0,0) 50%, rgba(0,0,0,0.08) 50%);
+      background-size: 100% 3px;
+      pointer-events: none;
+      z-index: 100;
+      opacity: 0.3;
+    }
+
+    /* Code block */
+    pre {
+      background: rgba(0,0,0,0.5);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 20px;
+      overflow-x: auto;
+      font-size: 13px;
+      line-height: 1.7;
+    }
+
+    code {
+      font-family: 'Courier New', monospace;
+      color: var(--neon-cyan);
+    }
+
+    code .kw  { color: var(--sunset-pink); }
+    code .str { color: var(--sunset-yellow); }
+    code .cm  { color: rgba(255,255,255,0.25); font-style: italic; }
+
+    /* Section anchor offset */
+    [id] { scroll-margin-top: 80px; }
+  </style>
+</head>
+
+<body class="relative">
+
+  <div class="scanlines"></div>
+  <div class="retro-grid"></div>
+
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 backdrop-blur-xl bg-black/50 border-b border-white/5">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-4">
+      <div class="font-display text-sm tracking-widest">
+        <span class="sunset-text">Sunwave</span><span class="text-white/20"> HUB</span>
+        <span class="text-white/10 mx-3">/</span>
+        <span class="text-white/40 text-xs normal-case font-sans">Documentation</span>
+      </div>
+      <nav class="hidden sm:flex items-center gap-6 text-[11px] font-bold uppercase tracking-widest text-white/30">
+        <a href="#overview"    class="hover:text-white transition">Overview</a>
+        <a href="#features"    class="hover:text-white transition">Features</a>
+        <a href="#stack"       class="hover:text-white transition">Stack</a>
+        <a href="#architecture"class="hover:text-white transition">Architecture</a>
+        <a href="#decisions"   class="hover:text-white transition">Choix</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="max-w-5xl mx-auto px-4 sm:px-6 py-16 space-y-32">
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section class="pt-8 pb-4">
+      <div class="inline-block tag mb-6">Projet personnel — 2026</div>
+      <h1 class="text-3xl sm:text-5xl font-display leading-tight mb-5">
+        <span class="sunset-text">Sunwave Hub</span>
+      </h1>
+      <p class="text-white/50 text-base sm:text-lg max-w-2xl leading-relaxed font-light mb-8">
+        Plateforme communautaire dédiée à l'univers retrowave & synthwave. Radio live, galerie visuelle générée par IA, soumission de playlists et espace événementiel — le tout déployé en static sur GitHub Pages.
+      </p>
+      <div class="flex flex-wrap gap-3">
+        <span class="tag pink">Frontend</span>
+        <span class="tag cyan">API YouTube</span>
+        <span class="tag orange">Supabase</span>
+        <span class="tag cyan">Vite</span>
+        <span class="tag pink">GitHub Actions</span>
+        <span class="tag orange">Gemini API</span>
+        <span class="tag">GitHub Pages</span>
+      </div>
+      <div class="mt-10 w-full h-px sunset-bar opacity-20 rounded-full"></div>
+    </section>
+
+    <!-- ═══════════════════ OVERVIEW ═══════════════════ -->
+    <section id="overview">
+      <div class="step-num mb-3">01 — Vue d'ensemble</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-8">Pourquoi ce projet ?</h2>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Contexte</div>
+          <p class="text-white/60 text-sm leading-relaxed">
+            La communauté retrowave existe principalement sur Discord, Reddit et YouTube — sans espace centralisé qui réunisse musique, visuels et actualités. Sunwave Hub est pensé comme ce point de convergence.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Objectif</div>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Créer une expérience immersive à forte identité visuelle, entièrement statique (zéro serveur à maintenir), avec une base de données légère via Supabase et un pipeline de génération de contenu automatisé.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Contrainte principale</div>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Site statique hébergé sur GitHub Pages — aucun backend custom. Tous les besoins dynamiques (soumissions, playlists) transitent par Supabase via l'API REST côté client.
+          </p>
+        </div>
+        <div class="glass-card rounded-2xl p-6 space-y-3">
+          <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Résultat</div>
+          <p class="text-white/60 text-sm leading-relaxed">
+            Une SPA sans framework, responsive, avec un design system retrowave cohérent — déployée automatiquement à chaque push sur <code>main</code> via GitHub Actions.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ FEATURES ═══════════════════ -->
+    <section id="features">
+      <div class="step-num mb-3">02 — Fonctionnalités</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-10">Ce que fait le site</h2>
+
+      <!-- Radio -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 mb-6">
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,90,135,0.12); border: 1px solid rgba(255,90,135,0.3);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5a87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7-7-9.5 9.5"/><rect x="1" y="11" width="15" height="13" rx="2"/><circle cx="8.5" cy="17.5" r="2.5"/><line x1="18" y1="11" x2="18" y2="24"/><line x1="21" y1="11" x2="21" y2="24"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-display mb-2">Radio Live — Obsidian Receiver '84</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">
+              Un lecteur radio custom à l'esthétique CRT/synthwave, piloté par l'<strong class="text-white/70">YouTube IFrame API</strong>. Trois chaînes (Neon Drift, Sunset Vibes, Cyberpunk Nights) correspondant à des playlists YouTube curées. Affichage de la fréquence, du nom de station, du titre en marquee, et VU-mètres animés.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag cyan">YouTube IFrame API</span>
+              <span class="tag">Vanilla JS ES Modules</span>
+              <span class="tag pink">AudioContext API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gallery -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 mb-6">
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(0,242,255,0.08); border: 1px solid rgba(0,242,255,0.25);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#00f2ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-display mb-2">Galerie Visuelle — Génération Automatisée</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">
+              Les images de la galerie sont générées automatiquement chaque semaine via un <strong class="text-white/70">workflow GitHub Actions</strong> qui appelle l'<strong class="text-white/70">API Gemini</strong> (Google). Le script génère des visuels rétrowave avec des prompts contrôlés, les commit directement dans le repo, et déclenche un redéploiement. Lightbox intégré avec téléchargement.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag orange">Gemini API</span>
+              <span class="tag pink">GitHub Actions (cron)</span>
+              <span class="tag">GitHub Pages</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Playlists -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 mb-6">
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,179,71,0.08); border: 1px solid rgba(255,179,71,0.25);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ffb347" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-display mb-2">Soumission de Playlists</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">
+              Formulaire de soumission (URL Spotify ou YouTube + titre) persisté dans <strong class="text-white/70">Supabase</strong> via le client JS côté navigateur. Les 4 playlists les plus récentes approuvées sont affichées dynamiquement sur la page d'accueil. Schéma dédié <code>sunwave</code> dans Supabase pour l'isolation.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag orange">Supabase (PostgreSQL)</span>
+              <span class="tag cyan">@supabase/supabase-js</span>
+              <span class="tag">Row Level Security</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Design -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8">
+        <div class="flex items-start gap-6">
+          <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0" style="background: rgba(255,90,135,0.08); border: 1px solid rgba(255,90,135,0.2);">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#ff5a87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div class="flex-1">
+            <h3 class="text-lg font-display mb-2">Design System Retrowave</h3>
+            <p class="text-white/50 text-sm leading-relaxed mb-4">
+              Design entièrement custom : palette sunset (pink → orange → yellow), overlays scanlines CRT, grille rétro-perspective animée, glassmorphism, typographie Audiowide + Oxanium. Variables CSS centralisées, classes utilitaires <code>sunset-bg</code> / <code>sunset-text</code> / <code>sunset-static</code> pour une cohérence à travers tout le site. Responsive mobile-first.
+            </p>
+            <div class="flex flex-wrap gap-2">
+              <span class="tag">Tailwind CSS (CDN)</span>
+              <span class="tag pink">CSS Custom Properties</span>
+              <span class="tag cyan">Google Fonts</span>
+              <span class="tag">Feather Icons</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ STACK ═══════════════════ -->
+    <section id="stack">
+      <div class="step-num mb-3">03 — Stack Technique</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-10">Technologies utilisées</h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">Build</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">Vite</span>
+              <span class="tag">Bundler</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Build rapide, injection des variables d'environnement (<code>VITE_</code>) pour Supabase, sortie statique dans <code>/dist</code>.</p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">Frontend</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">HTML + CSS + JS</span>
+              <span class="tag cyan">Vanilla</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Aucun framework UI. ES Modules natifs. Tailwind via CDN pour la rapidité de développement.</p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">Base de données</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">Supabase</span>
+              <span class="tag orange">PostgreSQL</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Schéma isolé <code>sunwave</code>. Client JS direct depuis le navigateur. Anon key + RLS pour sécuriser les écritures.</p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">Audio</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">YouTube IFrame API</span>
+              <span class="tag pink">Streaming</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Lecture de playlists en arrière-plan (iframe 0×0). Gestion des états, changement de station à chaud, récupération du titre en cours.</p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">Contenu IA</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">Gemini API</span>
+              <span class="tag orange">Génération image</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Workflow Actions hebdomadaire. Génère 6 visuels retrowave, les commit dans <code>/public/images/gallery/</code> et redéploie.</p>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl p-5">
+          <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-3">CI/CD</div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-sm font-bold">GitHub Actions</span>
+              <span class="tag cyan">Deploy</span>
+            </div>
+            <p class="text-[11px] text-white/40 leading-relaxed">Deux workflows : déploiement sur push <code>main</code> → GitHub Pages. Génération galerie sur cron hebdomadaire.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════ ARCHITECTURE ═══════════════════ -->
+    <section id="architecture">
+      <div class="step-num mb-3">04 — Architecture</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-10">Comment ça fonctionne</h2>
+
+      <!-- Flow diagram (ASCII-style) -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8 mb-8 overflow-x-auto">
+        <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-6">Flux principal</div>
+        <div class="min-w-[500px]">
+          <!-- User -->
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-28 h-10 rounded-xl flex items-center justify-center text-[10px] font-bold uppercase tracking-wider" style="background:rgba(255,90,135,0.12);border:1px solid rgba(255,90,135,0.3);color:var(--sunset-pink)">Visiteur</div>
+            <div class="flex-1 h-px bg-white/10 relative"><div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t border-r border-white/20 rotate-45"></div></div>
+            <div class="w-32 h-10 rounded-xl flex items-center justify-center text-[10px] font-bold uppercase tracking-wider" style="background:rgba(0,242,255,0.08);border:1px solid rgba(0,242,255,0.25);color:var(--neon-cyan)">GitHub Pages</div>
+            <div class="flex-1 h-px bg-white/10 relative"><div class="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 border-t border-r border-white/20 rotate-45"></div></div>
+            <div class="w-28 h-10 rounded-xl flex items-center justify-center text-[10px] font-bold uppercase tracking-wider" style="background:rgba(255,179,71,0.08);border:1px solid rgba(255,179,71,0.25);color:var(--sunset-orange)">index.html</div>
+          </div>
+          <!-- Split -->
+          <div class="grid grid-cols-3 gap-4 pl-4">
+            <div class="glass-card rounded-xl p-4 border-l-2" style="border-left-color:var(--sunset-pink)">
+              <div class="text-[9px] font-bold uppercase tracking-widest mb-2" style="color:var(--sunset-pink)">Radio</div>
+              <div class="text-[10px] text-white/40 leading-relaxed">radio.js charge l'IFrame API YouTube → lecture playlist en arrière-plan → titre récupéré via <code>getVideoData()</code></div>
+            </div>
+            <div class="glass-card rounded-xl p-4 border-l-2" style="border-left-color:var(--neon-cyan)">
+              <div class="text-[9px] font-bold uppercase tracking-widest mb-2" style="color:var(--neon-cyan)">Playlists</div>
+              <div class="text-[10px] text-white/40 leading-relaxed">Supabase JS → <code>select()</code> sur le schéma <code>sunwave</code> → affichage des 4 dernières entrées approuvées</div>
+            </div>
+            <div class="glass-card rounded-xl p-4 border-l-2" style="border-left-color:var(--sunset-orange)">
+              <div class="text-[9px] font-bold uppercase tracking-widest mb-2" style="color:var(--sunset-orange)">Galerie</div>
+              <div class="text-[10px] text-white/40 leading-relaxed">Images statiques dans <code>/public/images/gallery/</code> — générées par Actions cron + Gemini API</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pipeline CI/CD -->
+      <div class="glass-card rounded-3xl p-6 sm:p-8">
+        <div class="text-[9px] font-bold uppercase tracking-widest text-white/25 mb-6">Pipeline CI/CD</div>
+        <div class="space-y-6">
+
+          <div class="flex gap-4 items-start relative pl-5 timeline-item">
+            <div class="flex-1">
+              <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Push sur main</div>
+              <p class="text-sm text-white/60">Le workflow <code>deploy.yml</code> se déclenche. Node 20 installé, <code>npm install && npm run build</code> exécuté. Variables Supabase injectées depuis les GitHub Secrets (<code>VITE_SUPABASE_URL</code>, <code>VITE_SUPABASE_ANON_KEY</code>).</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start relative pl-5 timeline-item">
+            <div class="flex-1">
+              <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Build Vite</div>
+              <p class="text-sm text-white/60">Vite bundle le JS (<code>radio.js</code> + imports Supabase), génère les assets optimisés dans <code>/dist</code>. Le HTML et les images sont copiés tels quels.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start relative pl-5 timeline-item">
+            <div class="flex-1">
+              <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Déploiement Pages</div>
+              <p class="text-sm text-white/60"><code>upload-pages-artifact</code> + <code>deploy-pages</code> publient le contenu de <code>/dist</code>. Aucun serveur, CDN GitHub uniquement.</p>
+            </div>
+          </div>
+
+          <div class="flex gap-4 items-start relative pl-5 timeline-item">
+            <div class="flex-1">
+              <div class="text-[10px] font-bold uppercase tracking-widest text-white/30 mb-1">Cron hebdomadaire — Galerie IA</div>
+              <p class="text-sm text-white/60"><code>generate-gallery.yml</code> s'exécute chaque semaine. Appelle l'API Gemini avec des prompts retrowave définis, enregistre les PNGs dans <code>/public/images/gallery/</code>, commit et push → déclenche automatiquement le pipeline de déploiement.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════════════ DECISIONS ═══════════════════ -->
+    <section id="decisions">
+      <div class="step-num mb-3">05 — Choix techniques</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-10">Pourquoi ces décisions ?</h2>
+
+      <div class="space-y-4">
+
+        <details class="glass-card rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-display text-sm">Pourquoi aucun framework (React, Vue…) ?</span>
+            <svg class="w-4 h-4 text-white/30 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Le site est principalement du contenu statique avec deux points dynamiques simples (radio + Supabase). Un framework aurait ajouté de la complexité (virtual DOM, state management, hydration) pour un gain nul. Le JS vanilla ES Modules suffit, le bundle final est plus léger, et le déploiement reste un simple dossier de fichiers plats.
+          </div>
+        </details>
+
+        <details class="glass-card rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-display text-sm">Pourquoi Tailwind en CDN plutôt qu'installé ?</span>
+            <svg class="w-4 h-4 text-white/30 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Le design utilise abondamment des valeurs arbitraires Tailwind (<code>text-[9px]</code>, <code>tracking-[0.5em]</code>, <code>bg-pink-500/10</code>…). En CDN, toutes les classes arbitraires sont générées à la volée sans configuration. En production, on basculerait sur Tailwind CLI avec <code>content</code> configuré pour purger les classes inutilisées — mais pour ce projet, la simplicité prime.
+          </div>
+        </details>
+
+        <details class="glass-card rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-display text-sm">Pourquoi Supabase plutôt que Firebase ou une API maison ?</span>
+            <svg class="w-4 h-4 text-white/30 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Supabase expose une API REST auto-générée depuis PostgreSQL, ce qui permet de travailler directement depuis le navigateur sans écrire un seul endpoint. Le Row Level Security (RLS) remplace la couche d'authentification serveur. Firebase aurait été viable mais moins familier du SQL ; une API custom aurait cassé la contrainte "zéro serveur".
+          </div>
+        </details>
+
+        <details class="glass-card rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-display text-sm">Pourquoi GitHub Actions pour la galerie plutôt qu'un CMS ?</span>
+            <svg class="w-4 h-4 text-white/30 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">
+            Le contenu de la galerie est généré, pas édité manuellement. Un CMS aurait introduit un admin à maintenir et une interface dont personne n'avait besoin. Le pipeline Actions est plus élégant : <strong class="text-white/70">la source de vérité c'est le repo Git</strong>. Chaque image générée est tracée, versionnée et le rollback est natif (<code>git revert</code>).
+          </div>
+        </details>
+
+        <details class="glass-card rounded-2xl overflow-hidden group">
+          <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+            <span class="font-display text-sm">Gestion de la radio : YouTube vs SoundCloud vs Icecast ?</span>
+            <svg class="w-4 h-4 text-white/30 transition-transform group-open:rotate-180" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </summary>
+          <div class="px-6 pb-6 text-white/50 text-sm leading-relaxed border-t border-white/5 pt-4">
+            YouTube IFrame API offre un accès gratuit à des milliers d'heures de contenu retrowave déjà curé par la communauté, sans droits à gérer. SoundCloud aurait nécessité des accords artistes. Icecast/Azuracast implique un serveur de streaming dédié — incompatible avec la contrainte static. La contrepartie : dépendance aux politiques YouTube et publicités potentielles.
+          </div>
+        </details>
+
+      </div>
+    </section>
+
+    <!-- ═══════════════════ STRUCTURE ═══════════════════ -->
+    <section>
+      <div class="step-num mb-3">06 — Structure du projet</div>
+      <h2 class="text-2xl sm:text-3xl font-display mb-8">Arborescence</h2>
+      <pre><code><span class="kw">sunwave_hub/</span>
+├── <span class="str">index.html</span>          <span class="cm">← Page principale</span>
+├── <span class="str">style.css</span>           <span class="cm">← Design system retrowave</span>
+├── <span class="str">radio.js</span>            <span class="cm">← Logique radio (ES module)</span>
+├── <span class="str">sunwave-logo.svg</span>    <span class="cm">← Favicon + logo</span>
+├── <span class="str">.env.example</span>        <span class="cm">← Template variables Supabase</span>
+│
+├── <span class="kw">public/</span>
+│   └── <span class="kw">images/gallery/</span>
+│       ├── neon_horizon.png    <span class="cm">← Générée par Gemini API</span>
+│       ├── vhs_dreams.png
+│       └── ...
+│
+└── <span class="kw">.github/workflows/</span>
+    ├── <span class="str">deploy.yml</span>          <span class="cm">← CI/CD → GitHub Pages</span>
+    └── <span class="str">generate-gallery.yml</span><span class="cm">← Cron + Gemini</span></code></pre>
+    </section>
+
+    <!-- ═══════════════════ FOOTER ═══════════════════ -->
+    <section class="pb-8">
+      <div class="w-full h-px sunset-bar opacity-20 rounded-full mb-12"></div>
+      <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+        <div>
+          <div class="font-display text-lg mb-1"><span class="sunset-text">Sunwave Hub</span></div>
+          <p class="text-[11px] text-white/25 uppercase tracking-widest">Projet personnel — Est. 2026 — Synthetic Dreams</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="./index.html" class="tag pink hover:opacity-80 transition cursor-pointer">Voir le site</a>
+          <a href="https://github.com" class="tag cyan hover:opacity-80 transition cursor-pointer">GitHub</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>

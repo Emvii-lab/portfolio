@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunwave Hub — Case Study | EMVII</title>
+  <link rel="icon" type="image/png" href="emvii-logo-nobg.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/nav.css" />
+  <link rel="stylesheet" href="css/case-study.css" />
+</head>
+
+<body>
+
+  <div class="cs-bg-grid"></div>
+  <div class="cs-glow-top"></div>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <a class="nav-logo" href="index.html">
+      <img src="emvii-logo-nobg.png" alt="EMVII" class="nav-logo-img" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="#overview">Projet</a></li>
+      <li><a href="#features">Fonctionnalités</a></li>
+      <li><a href="#stack">Stack</a></li>
+      <li><a href="#challenges">Défis</a></li>
+      <li><a href="#next">Perspectives</a></li>
+    </ul>
+    <a href="index.html#contact" class="nav-cta">ME CONTACTER</a>
+    <button class="nav-burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="cs-hero">
+    <div class="cs-container" style="display:flex;flex-direction:column;align-items:center;">
+      <a href="index.html#projects" class="cs-nav-back" style="margin-bottom:32px;">← RETOUR AUX PROJETS</a>
+      <span class="cs-hero-badge">Case Study</span>
+      <h1 class="cs-hero-title">SUNWAVE HUB</h1>
+      <p class="cs-hero-sub">&lt; Frontend / Vite / Supabase / GitHub Pages /&gt;<span style="color:var(--cyan);">█</span></p>
+      <p class="cs-hero-tagline">Plateforme communautaire dédiée à l'univers retrowave & synthwave — radio live, galerie visuelle générée par IA, soumission de playlists et espace événementiel, entièrement statique.</p>
+      <div class="cs-hero-cta">
+        <a href="#features" class="cs-btn-primary">VOIR LES FONCTIONNALITÉS</a>
+        <a href="#stack" class="cs-btn-outline">EXPLORER LA STACK</a>
+      </div>
+    </div>
+    <div class="cs-scroll-hint">
+      <span>Scroll</span>
+      <div class="cs-scroll-arrow"></div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── OVERVIEW ── -->
+  <section class="cs-section" id="overview">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Project_overview</span>
+        <h2 class="cs-section-title">Le projet</h2>
+        <p class="cs-section-desc">Une communauté dispersée sur Discord, YouTube et Reddit — un espace centralisé pour la réunir.</p>
+      </div>
+      <div class="cs-overview-grid cs-fade">
+        <div class="cs-overview-text">
+          <p>La communauté retrowave existe principalement sur Discord, Reddit et YouTube, sans espace centralisé réunissant musique, visuels et actualités. <strong>Sunwave Hub</strong> est pensé comme ce point de convergence : une expérience immersive à forte identité visuelle.</p>
+          <p>L'objectif était de créer un site entièrement <strong>statique</strong> (zéro serveur à maintenir), avec une base de données légère via <strong>Supabase</strong> et un pipeline de génération de contenu automatisé par <strong>IA</strong>. Déployé automatiquement à chaque push sur <code style="color:var(--cyan)">main</code> via GitHub Actions.</p>
+          <p>Tous les besoins dynamiques — soumissions de playlists, lecture des données — transitent par l'API REST Supabase directement côté client, sans aucun backend custom.</p>
+        </div>
+        <div class="cs-meta-grid">
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Type</div>
+            <div class="cs-meta-value c-pink">Projet personnel</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Contexte</div>
+            <div class="cs-meta-value c-cyan">2026</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Rôle</div>
+            <div class="cs-meta-value c-purple">Full-Stack & Design</div>
+          </div>
+          <div class="cs-meta-card">
+            <div class="cs-meta-label">Statut</div>
+            <div class="cs-meta-value c-cyan">En ligne</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STATS ── -->
+  <section class="cs-section">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Key_metrics</span>
+        <h2 class="cs-section-title">En chiffres</h2>
+      </div>
+      <div class="cs-stats-row cs-fade">
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-pink">4</div>
+          <div class="cs-stat-label">Modules principaux</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-cyan">2</div>
+          <div class="cs-stat-label">Workflows GitHub Actions</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-purple">0</div>
+          <div class="cs-stat-label">Serveur à maintenir</div>
+        </div>
+        <div class="cs-stat-box">
+          <div class="cs-stat-number c-mix">∞</div>
+          <div class="cs-stat-label">Visuels IA générables</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── GALLERY ── -->
+  <section class="cs-section" id="gallery">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Screenshots</span>
+        <h2 class="cs-section-title">Aperçu de l'application</h2>
+        <p class="cs-section-desc">Cliquez sur une capture pour l'agrandir.</p>
+      </div>
+      <div class="cs-gallery cs-fade">
+
+        <div class="cs-gallery-item cs-gallery-wide" data-caption="Page d'accueil — Radio live et design retrowave" onclick="openLightbox(this)">
+          <img src="screenshots/sunwave-home.png" alt="Sunwave Hub — Page d'accueil" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Page d'accueil</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Radio live — Obsidian Receiver '84 avec VU-mètres" onclick="openLightbox(this)">
+          <img src="screenshots/sunwave-radio.png" alt="Radio Sunwave Hub" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Radio live</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Galerie visuelle — Images générées par l'API Gemini" onclick="openLightbox(this)">
+          <img src="screenshots/sunwave-gallery.png" alt="Galerie Sunwave Hub" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Galerie IA</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Soumission de playlists — Formulaire et affichage dynamique" onclick="openLightbox(this)">
+          <img src="screenshots/sunwave-playlists.png" alt="Playlists Sunwave Hub" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Soumission playlists</div>
+        </div>
+
+        <div class="cs-gallery-item" data-caption="Communauté Discord — Rejoindre le serveur Sunwave" onclick="openLightbox(this)">
+          <img src="screenshots/sunwave-discord.png" alt="Sunwave Hub — Rejoindre le Discord" onerror="this.parentElement.classList.add('cs-placeholder')" />
+          <div class="cs-gallery-overlay">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg>
+          </div>
+          <div class="cs-gallery-caption">Communauté Discord</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Lightbox -->
+  <div id="cs-lightbox" class="cs-lightbox" onclick="closeLightbox()">
+    <button class="cs-lightbox-close" onclick="closeLightbox()">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <div class="cs-lightbox-content" onclick="event.stopPropagation()">
+      <img id="cs-lightbox-img" src="" alt="" />
+      <p id="cs-lightbox-caption"></p>
+    </div>
+    <button class="cs-lightbox-nav prev" onclick="event.stopPropagation(); navLightbox(-1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <button class="cs-lightbox-nav next" onclick="event.stopPropagation(); navLightbox(1)">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
+  </div>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── FEATURES ── -->
+  <section class="cs-section" id="features">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Features</span>
+        <h2 class="cs-section-title">Fonctionnalités clés</h2>
+      </div>
+      <div class="cs-features-grid cs-fade">
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7-7-9.5 9.5"/><rect x="1" y="11" width="15" height="13" rx="2"/><circle cx="8.5" cy="17.5" r="2.5"/><line x1="18" y1="11" x2="18" y2="24"/><line x1="21" y1="11" x2="21" y2="24"/></svg>
+          </div>
+          <div class="cs-feature-title">Radio Live — Obsidian Receiver '84</div>
+          <div class="cs-feature-desc">Lecteur radio custom à l'esthétique CRT/synthwave, piloté par l'YouTube IFrame API. Trois stations (Neon Drift, Sunset Vibes, Cyberpunk Nights) avec VU-mètres animés et affichage du titre en marquee.</div>
+        </div>
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="cs-feature-title">Galerie Visuelle Automatisée</div>
+          <div class="cs-feature-desc">Images générées automatiquement chaque semaine via un workflow GitHub Actions qui appelle l'API Gemini. Les visuels sont commit directement dans le repo et déclenchent un redéploiement. Lightbox avec téléchargement intégré.</div>
+        </div>
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+          </div>
+          <div class="cs-feature-title">Soumission de Playlists</div>
+          <div class="cs-feature-desc">Formulaire de soumission (URL Spotify ou YouTube + titre) persisté dans Supabase via le client JS côté navigateur. Les 4 dernières entrées approuvées sont affichées dynamiquement. Schéma dédié <code style="color:var(--cyan)">sunwave</code> pour l'isolation.</div>
+        </div>
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-cyan">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/><path d="M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+          </div>
+          <div class="cs-feature-title">Design System Retrowave</div>
+          <div class="cs-feature-desc">Palette sunset (pink → orange → yellow), overlays scanlines CRT, grille rétro-perspective animée, glassmorphism. Typographie Audiowide + Oxanium. Variables CSS centralisées, responsive mobile-first.</div>
+        </div>
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-pink">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+          </div>
+          <div class="cs-feature-title">Pipeline CI/CD automatisé</div>
+          <div class="cs-feature-desc">Deux workflows : déploiement automatique sur push <code style="color:var(--cyan)">main</code> vers GitHub Pages, et cron hebdomadaire pour la génération de la galerie IA. Variables Supabase injectées depuis les GitHub Secrets.</div>
+        </div>
+
+        <div class="cs-feature-card">
+          <div class="cs-feature-icon ic-purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="cs-feature-title">Sécurité côté client</div>
+          <div class="cs-feature-desc">Row Level Security Supabase configurée pour autoriser les lectures publiques et restreindre les écritures aux soumissions approuvées. Clé anonyme exposée sans risque grâce aux politiques RLS.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── STACK ── -->
+  <section class="cs-section" id="stack">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Tech_stack</span>
+        <h2 class="cs-section-title">Stack technique</h2>
+        <p class="cs-section-desc">Une stack statique-first, chaque outil choisi pour sa légèreté et sa compatibilité GitHub Pages.</p>
+      </div>
+      <div class="cs-stack-grid cs-fade">
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">⌨ Build</div>
+          <div class="cs-stack-title">Vite</div>
+          <div class="cs-stack-desc">Build rapide, injection des variables d'environnement (<code style="color:var(--cyan);font-size:11px;">VITE_</code>) pour Supabase, sortie statique dans <code style="color:var(--cyan);font-size:11px;">/dist</code>.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">Bundler</span>
+            <span class="cs-tag t-pink">Statique</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">🎨 Frontend</div>
+          <div class="cs-stack-title">HTML + CSS + JS</div>
+          <div class="cs-stack-desc">Aucun framework UI. ES Modules natifs. Tailwind via CDN pour la rapidité de développement. Vanilla JS pur.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">Vanilla</span>
+            <span class="cs-tag t-cyan">ES Modules</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">🛠 Base de données</div>
+          <div class="cs-stack-title">Supabase</div>
+          <div class="cs-stack-desc">Schéma isolé <code style="color:var(--cyan);font-size:11px;">sunwave</code>. Client JS direct depuis le navigateur. Anon key + RLS pour sécuriser les écritures.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">PostgreSQL</span>
+            <span class="cs-tag t-purple">RLS</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-pink">
+          <div class="cs-stack-header">🎵 Audio</div>
+          <div class="cs-stack-title">YouTube IFrame API</div>
+          <div class="cs-stack-desc">Lecture de playlists en arrière-plan (iframe 0×0). Gestion des états, changement de station à chaud, récupération du titre via <code style="color:var(--cyan);font-size:11px;">getVideoData()</code>.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-pink">Streaming</span>
+            <span class="cs-tag t-pink">AudioContext</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-purple">
+          <div class="cs-stack-header">🤖 Contenu IA</div>
+          <div class="cs-stack-title">Gemini API</div>
+          <div class="cs-stack-desc">Workflow Actions hebdomadaire. Génère 6 visuels retrowave, les commit dans <code style="color:var(--cyan);font-size:11px;">/public/images/gallery/</code> et redéploie automatiquement.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-purple">Génération image</span>
+            <span class="cs-tag t-purple">Cron</span>
+          </div>
+        </div>
+
+        <div class="cs-stack-card a-cyan">
+          <div class="cs-stack-header">🚀 CI/CD</div>
+          <div class="cs-stack-title">GitHub Actions</div>
+          <div class="cs-stack-desc">Déploiement sur push <code style="color:var(--cyan);font-size:11px;">main</code> → GitHub Pages. Génération galerie sur cron hebdomadaire. Secrets injectés à la volée.</div>
+          <div class="cs-tags">
+            <span class="cs-tag t-cyan">Deploy</span>
+            <span class="cs-tag t-cyan">GitHub Pages</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="cs-terminal cs-fade">
+        <span class="prompt">$</span> <span class="cmd">cat stack.txt</span><br>
+        <span class="out">→ Build      : <span class="hi-p">Vite → /dist statique</span></span><br>
+        <span class="out">→ Frontend   : <span class="hi-c">HTML + CSS + JS Vanilla (ES Modules)</span></span><br>
+        <span class="out">→ Database   : <span class="hi-m">Supabase (PostgreSQL + RLS, schéma sunwave)</span></span><br>
+        <span class="out">→ Radio      : <span class="hi-p">YouTube IFrame API (playlists rétrowave)</span></span><br>
+        <span class="out">→ Galerie IA : <span class="hi-c">Gemini API → GitHub Actions cron hebdo</span></span><br>
+        <span class="out">→ CI/CD      : <span class="hi-m">GitHub Actions → GitHub Pages</span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── CHALLENGES ── -->
+  <section class="cs-section" id="challenges">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Challenges</span>
+        <h2 class="cs-section-title">Défis & Solutions</h2>
+        <p class="cs-section-desc">Les contraintes d'un site statique face à des besoins dynamiques — et comment elles ont été surmontées.</p>
+      </div>
+      <div class="cs-challenges-grid cs-fade">
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Variables d'env. sur GitHub Pages</div>
+          <div class="cs-challenge-desc">GitHub Pages déploie du contenu statique, impossible d'injecter des variables côté serveur — la clé Supabase ne peut pas être cachée.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Anon key + Row Level Security</div>
+          <div class="cs-challenge-desc">La clé anonyme exposée est sans danger si les politiques RLS sont correctement configurées. Lectures publiques autorisées, écritures restreintes par politique.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Mise à jour du contenu sans CMS</div>
+          <div class="cs-challenge-desc">Un site statique ne peut pas récupérer de nouvelles images à la volée — la galerie serait figée sans intervention manuelle.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Pipeline IA git-natif</div>
+          <div class="cs-challenge-desc">Workflow Actions cron (hebdomadaire) : Gemini génère les visuels → commit dans le repo → push → redéploiement GitHub Pages déclenché automatiquement.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7-7-9.5 9.5"/><rect x="1" y="11" width="15" height="13" rx="2"/><circle cx="8.5" cy="17.5" r="2.5"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Radio YouTube sans CORS visible</div>
+          <div class="cs-challenge-desc">Récupérer le titre de la piste en cours via l'IFrame API nécessite une synchronisation précise avec les événements du lecteur caché.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Polling sur onStateChange</div>
+          <div class="cs-challenge-desc">Écoute de <code style="color:var(--cyan)">onStateChange</code> (état PLAYING) puis <code style="color:var(--cyan)">getVideoData().title</code> pour mettre à jour le marquee. Interval de fallback si l'événement est retardé.</div>
+        </div>
+
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-problem">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
+          </div>
+          <div class="cs-challenge-label problem">Défi</div>
+          <div class="cs-challenge-title">Isolation du schéma Supabase</div>
+          <div class="cs-challenge-desc">Sunwave Hub partage une instance Supabase existante — risque de collision entre tables de projets différents.</div>
+        </div>
+        <div class="cs-challenge-card">
+          <div class="cs-challenge-icon icon-solution">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+          </div>
+          <div class="cs-challenge-label solution">Solution</div>
+          <div class="cs-challenge-title">Schéma PostgreSQL dédié</div>
+          <div class="cs-challenge-desc">Création d'un schéma <code style="color:var(--cyan)">sunwave</code> distinct du schéma <code style="color:var(--cyan)">public</code>. Les requêtes JS ciblent explicitement ce schéma — aucune interférence possible.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="cs-glow-line"></div>
+
+  <!-- ── LEARNINGS ── -->
+  <section class="cs-section" id="next">
+    <div class="cs-container">
+      <div class="cs-fade">
+        <span class="cs-section-tag">Retrospective</span>
+        <h2 class="cs-section-title">Apprentissages & Perspectives</h2>
+      </div>
+      <div class="cs-two-col cs-fade">
+        <div class="cs-col-block">
+          <div class="cs-col-title t-cyan">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+            Ce que j'ai appris
+          </div>
+          <ul class="cs-col-list cyan-dots">
+            <li>Architecturer un pipeline de contenu IA entièrement géré par git — génération, versioning et rollback natifs</li>
+            <li>Configurer des politiques Row Level Security pour sécuriser un client JS public sans backend</li>
+            <li>Orchestrer l'YouTube IFrame API en mode "radio" avec gestion des états et récupération des métadonnées</li>
+            <li>Isoler plusieurs projets dans une seule instance Supabase via des schémas PostgreSQL dédiés</li>
+            <li>Concevoir un design system cohérent avec CSS custom properties et classes utilitaires sans framework</li>
+          </ul>
+        </div>
+        <div class="cs-col-block">
+          <div class="cs-col-title t-pink">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+            Prochaines étapes
+          </div>
+          <ul class="cs-col-list pink-dots">
+            <li>Ajouter un <strong style="color:#e2e8f0">espace événementiel</strong> avec agenda des concerts et sorties retrowave</li>
+            <li>Implémenter un <strong style="color:#e2e8f0">système de votes</strong> sur les playlists soumises par la communauté</li>
+            <li>Migrer vers <strong style="color:#e2e8f0">Tailwind CLI</strong> configuré pour purger les classes inutilisées en production</li>
+            <li>Ajouter un <strong style="color:#e2e8f0">mode hors-ligne</strong> via Service Worker pour la radio et les dernières images</li>
+            <li>Explorer <strong style="color:#e2e8f0">Web Audio API</strong> pour des visualisations audio plus avancées (spectrum analyser)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <div class="cs-glow-line"></div>
+  <footer class="cs-footer">
+    <img src="emvii-logo-nobg.png" alt="EMVII" style="height:60px;width:auto;opacity:0.7;margin:0 auto 16px;filter:drop-shadow(0 0 8px rgba(0,240,255,0.4));" />
+    <p class="cs-footer-text">© 2026 EMVII — Sunwave Hub Case Study</p>
+    <div class="cs-footer-links">
+      <a href="index.html">← Portfolio</a>
+      <a href="index.html#contact">Me contacter</a>
+    </div>
+  </footer>
+
+  <script src="js/scroll.js"></script>
+  <script src="js/nav.js"></script>
+  <script>
+    const csObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) e.target.classList.add('visible');
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.cs-fade').forEach(el => csObserver.observe(el));
+
+    /* Lightbox */
+    const lightbox     = document.getElementById('cs-lightbox');
+    const lbImg        = document.getElementById('cs-lightbox-img');
+    const lbCaption    = document.getElementById('cs-lightbox-caption');
+    const galleryItems = () => [...document.querySelectorAll('.cs-gallery-item:not(.cs-placeholder)')];
+    let currentIndex   = 0;
+
+    function openLightbox(el) {
+      const img = el.querySelector('img');
+      if (!img || el.classList.contains('cs-placeholder')) return;
+      currentIndex = galleryItems().indexOf(el);
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbCaption.textContent = el.dataset.caption || '';
+      lightbox.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+
+    function navLightbox(dir) {
+      const items = galleryItems();
+      if (!items.length) return;
+      currentIndex = (currentIndex + dir + items.length) % items.length;
+      const el  = items[currentIndex];
+      const img = el.querySelector('img');
+      lbImg.style.animation = 'none';
+      requestAnimationFrame(() => {
+        lbImg.style.animation = '';
+        lbImg.src = img.src;
+        lbCaption.textContent = el.dataset.caption || '';
+      });
+    }
+
+    document.addEventListener('keydown', e => {
+      if (!lightbox.classList.contains('active')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowLeft')  navLightbox(-1);
+      if (e.key === 'ArrowRight') navLightbox(1);
+    });
+  </script>
+
+</body>
+</html>
