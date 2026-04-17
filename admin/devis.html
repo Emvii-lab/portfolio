@@ -332,10 +332,15 @@
   async function loadServices() {
     const { data } = await db.from('services').select('*').order('titre');
     servicesList = data || [];
+    populateCatalog();
+  }
+
+  function populateCatalog() {
     const sel = document.getElementById('catalog-select');
+    if (!sel) return;
     sel.innerHTML = '<option value="">— Choisir une prestation —</option>' +
       servicesList.map(s =>
-        `<option value="${s.id}">${esc(s.titre)}${s.prix_ht ? ` — ${eur(s.prix_ht)}` : ''}</option>`
+        '<option value="' + s.id + '">' + esc(s.titre) + (s.prix_ht ? ' \u2014 ' + eur(s.prix_ht) : '') + '</option>'
       ).join('');
   }
 
@@ -412,9 +417,10 @@
   }
 
   function addFromCatalog(sel) {
-    if (!sel.value) return;
-    addLine(sel.value);
-    sel.value = '';
+    const id = sel.value;
+    if (!id) return;
+    addLine(id);
+    populateCatalog(); // rehydrate options après manipulation DOM
   }
 
   function addLine(serviceId = null) {
