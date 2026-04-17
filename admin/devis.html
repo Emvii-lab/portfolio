@@ -202,7 +202,8 @@
       <div class="preview-actions">
         <button class="btn btn-outline" id="btn-save" onclick="saveDocument()">💾 SAUVEGARDER</button>
         <button class="btn btn-primary" id="btn-new" onclick="newDocument()">✦ NOUVEAU</button>
-        <button class="btn btn-cyan"   id="btn-pdf"  onclick="downloadPDF()">⬇ TÉLÉCHARGER PDF</button>
+        <button class="btn btn-cyan"   id="btn-pdf"       onclick="downloadPDF()">⬇ TÉLÉCHARGER PDF</button>
+        <button class="btn btn-outline" id="btn-pdf-light" onclick="downloadPDFLight()">☀ VERSION CLAIRE</button>
       </div>
 
       <!-- Zone PDF — mise à jour en temps réel -->
@@ -833,6 +834,74 @@
     }).from(el).save();
 
     btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
+  }
+
+  // ── Download PDF (version claire / imprimable) ──────────────────────────────
+  async function downloadPDFLight() {
+    const btn = document.getElementById('btn-pdf-light');
+    btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
+
+    const el = document.getElementById('pdf-content');
+    const W  = 794;
+    const H  = el.scrollHeight;
+
+    const lightCSS = `
+      #pdf-content, #pdf-content * { box-sizing: border-box; }
+      #pdf-content {
+        background: #FFFFFF !important;
+        color: #0A0A1A !important;
+      }
+      .pdf-header { background: #FFFFFF !important; border-bottom: 2px solid #FF2D95 !important; }
+      .pdf-logo-name { color: #0A0A1A !important; }
+      .pdf-logo-tag, .pdf-meta-label, .pdf-client-label, .pdf-sep-text { color: #555 !important; }
+      .pdf-meta-value, .pdf-client-value, .pdf-number { color: #0A0A1A !important; }
+      .pdf-number { background: transparent !important; border: 1px solid #FF2D95 !important; }
+      .pdf-section-title { color: #FF2D95 !important; border-bottom-color: #FF2D95 !important; }
+      .pdf-table thead tr { background: linear-gradient(135deg, #FF2D95, #B026FF) !important; color: #fff !important; }
+      .pdf-table tbody tr { background: #F5F5FA !important; color: #0A0A1A !important; }
+      .pdf-table tbody tr:nth-child(even) { background: #EBEBF5 !important; }
+      .pdf-table td, .pdf-table th { border-color: #ddd !important; color: inherit !important; }
+      .pdf-sub-detail { color: #444 !important; }
+      .pdf-totals { background: #F5F5FA !important; border-left: 3px solid #B026FF !important; }
+      .pdf-ttc { color: #B026FF !important; }
+      .pdf-payment { background: #F5F5FA !important; border: 1px solid #ddd !important; }
+      .pdf-payment-title { color: #FF2D95 !important; }
+      .pdf-mentions { color: #555 !important; background: #F5F5FA !important; border-left-color: #00AACC !important; }
+      .pdf-footer { background: #F5F5FA !important; color: #555 !important; border-top: 1px solid #ddd !important; }
+      .pdf-signature-box { background: #fff !important; border: 1.5px solid #B026FF !important; color: #0A0A1A !important; }
+      .pdf-badge { background: #eee !important; color: #0A0A1A !important; }
+    `;
+
+    await html2pdf().set({
+      margin:      0,
+      filename:    `${state.numero || 'document'}-clair.pdf`,
+      image:       { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#FFFFFF',
+        logging: false,
+        onclone: (clonedDoc) => {
+          clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#FFFFFF';
+          clonedDoc.documentElement.style.background = '#FFFFFF';
+          const style = clonedDoc.createElement('style');
+          style.textContent = lightCSS;
+          clonedDoc.head.appendChild(style);
+          const cloned = clonedDoc.getElementById('pdf-content');
+          if (cloned) {
+            cloned.style.background   = '#FFFFFF';
+            cloned.style.boxShadow    = 'none';
+            cloned.style.borderRadius = '0';
+            cloned.style.width        = W + 'px';
+            cloned.style.height       = H + 'px';
+          }
+        },
+      },
+      jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
+    }).from(el).save();
+
+    btn.disabled = false; btn.textContent = '☀ VERSION CLAIRE';
   }
 
   // ── Toast ────────────────────────────────────────────────────────────────────
