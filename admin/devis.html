@@ -849,45 +849,50 @@
       #pdf-content, #pdf-content * { box-sizing: border-box; }
       #pdf-content { background: #FFFFFF !important; color: #0A0A1A !important; }
 
-      /* Header */
-      .pdf-header { background: #FFFFFF !important; border-bottom: 2px solid #FF2D95 !important; }
-      .pdf-logo-name { color: #0A0A1A !important; }
-      .pdf-logo-tag { color: #FF2D95 !important; }
-      .pdf-meta-label, .pdf-sep-text { color: #777 !important; }
-      .pdf-meta-value, .pdf-number { color: #0A0A1A !important; }
-      .pdf-number { background: #F5F5FA !important; border: 1px solid #FF2D95 !important; }
+      /* ── Header : fond sombre conservé, textes lisibles ── */
+      .pdf-header { background: #1A1A2E !important; padding: 20px 30px !important; }
+      .pdf-info .tagline { color: #FF2D95 !important; }
+      .pdf-info .name { color: #FFFFFF !important; }
+      .pdf-info .contact { color: #BCC8D8 !important; }
+      .pdf-doc-type { color: #FFFFFF !important; }
+      .pdf-meta { color: #BCC8D8 !important; }
+      .pdf-meta span { color: #FFFFFF !important; }
+
+      /* Séparateur dégradé : inchangé */
 
       /* Parties prestataire / client */
-      .pdf-party { background: #F0F0F8 !important; border: 1px solid #E0E0EE !important; }
+      .pdf-party { background: #F0F0F8 !important; border: 1px solid #DDDDF0 !important; }
       .pdf-party-name { color: #0A0A1A !important; }
       .pdf-party-detail { color: #444 !important; }
-      .pdf-party-label.c { color: #0099BB !important; }
-      .pdf-party-label.p { color: #FF2D95 !important; }
+      .pdf-party-label.c { color: #007FAA !important; }
+      .pdf-party-label.p { color: #CC1A77 !important; }
 
       /* Objet */
-      .pdf-objet { background: #F0F0F8 !important; border: 1px solid #E0E0EE !important; }
-      .pdf-objet-label { color: #00AACC !important; }
+      .pdf-objet { background: #F0F0F8 !important; border: 1px solid #DDDDF0 !important; }
+      .pdf-objet-label { color: #007FAA !important; }
       .pdf-objet-text { color: #0A0A1A !important; }
 
       /* Tableau */
-      .pdf-section-title { color: #FF2D95 !important; border-bottom-color: #FF2D95 !important; }
+      .pdf-section-title { color: #CC1A77 !important; border-bottom-color: #CC1A77 !important; }
       .pdf-table thead tr { background: linear-gradient(135deg, #FF2D95, #B026FF) !important; }
       .pdf-table thead th { color: #fff !important; }
       .pdf-table tbody tr { background: #F8F8FC !important; }
       .pdf-table tbody tr:nth-child(even) { background: #EEEEF6 !important; }
       .pdf-table td { color: #0A0A1A !important; border-color: #ddd !important; }
-      .pdf-item-title { color: #0A0A1A !important; }
+      .pdf-item-title { color: #0A0A1A !important; font-weight: 700 !important; }
       .pdf-sub-detail { color: #555 !important; }
 
       /* Totaux */
       .pdf-totals { background: #F0F0F8 !important; border-left: 3px solid #B026FF !important; }
       .pdf-totals td { color: #0A0A1A !important; }
-      .pdf-ttc { color: #B026FF !important; }
+      .pdf-ttc { color: #8800CC !important; }
 
       /* Paiement */
-      .pdf-payment { background: #F0F0F8 !important; border: 1px solid #E0E0EE !important; }
-      .pdf-payment-title { color: #FF2D95 !important; }
-      .pdf-payment p, .pdf-payment div { color: #333 !important; }
+      .pdf-payment { background: #F0F0F8 !important; border: 1px solid #DDDDF0 !important; }
+      .pdf-payment-title { color: #CC1A77 !important; }
+      .pdf-payment * { color: #222 !important; }
+      /* Conserver couleurs acompte/solde */
+      .pdf-payment .c { color: #CC1A77 !important; }
 
       /* Signature */
       .pdf-signature { background: #FFFFFF !important; border: 1.5px solid #B026FF !important; color: #0A0A1A !important; }
@@ -895,10 +900,10 @@
       /* Footer */
       .pdf-footer { background: #F8F8FC !important; border-top: 1px solid #ddd !important; }
       .pdf-footer .mentions { color: #555 !important; }
-      .pdf-footer .footer-line { color: #777 !important; }
+      .pdf-footer .footer-line { color: #666 !important; }
 
-      /* Misc */
-      .pdf-mentions { color: #555 !important; background: #F0F0F8 !important; border-left-color: #00AACC !important; }
+      /* Mentions légales */
+      .pdf-mentions { color: #555 !important; background: #F0F0F8 !important; border-left-color: #007FAA !important; }
       .pdf-badge { background: #eee !important; color: #0A0A1A !important; }
     `;
 
