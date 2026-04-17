@@ -289,18 +289,25 @@
     const doc = allDocs.find(d => d.id === id);
     if (!doc) return;
 
-    // Build a temporary hidden render div
+    // Élément rendu dans le viewport (opacity:0) — html2canvas ne capture pas hors-écran
     const wrap = document.createElement('div');
-    wrap.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:794px;background:#0A0A1A;padding:30px 32px;font-family:Inter,sans-serif;font-size:12px;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;';
+    wrap.style.cssText = 'position:fixed;top:0;left:0;width:794px;opacity:0;pointer-events:none;z-index:-1;background:#0A0A1A;padding:30px 32px;font-family:Inter,sans-serif;font-size:12px;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;';
     wrap.innerHTML = buildPdfHTML(doc);
     document.body.appendChild(wrap);
 
     await html2pdf().set({
-      margin:     0,
-      filename:   `${doc.numero}.pdf`,
-      image:      { type:'jpeg', quality:0.98 },
-      html2canvas:{ scale:2, useCORS:true, backgroundColor:'#0A0A1A', logging:false },
-      jsPDF:      { unit:'mm', format:'a4', orientation:'portrait' },
+      margin:      0,
+      filename:    `${doc.numero}.pdf`,
+      image:       { type:'jpeg', quality:0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#0A0A1A',
+        logging: false,
+        onclone: (_d, el) => { el.style.opacity = '1'; el.style.background = '#0A0A1A'; },
+      },
+      jsPDF: { unit:'mm', format:'a4', orientation:'portrait' },
     }).from(wrap).save();
 
     document.body.removeChild(wrap);

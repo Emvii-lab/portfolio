@@ -802,23 +802,25 @@
     const btn = document.getElementById('btn-pdf');
     btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
 
-    const source = document.getElementById('pdf-content');
-    const clone  = source.cloneNode(true);
-    Object.assign(clone.style, {
-      position: 'fixed', top: '-9999px', left: '-9999px',
-      width: '794px', transform: 'none', boxShadow: 'none',
-    });
-    document.body.appendChild(clone);
-
     await html2pdf().set({
-      margin:     0,
-      filename:   `${state.numero || 'document'}.pdf`,
-      image:      { type: 'jpeg', quality: 0.98 },
-      html2canvas:{ scale: 2, useCORS: true, backgroundColor: '#0A0A1A', logging: false },
-      jsPDF:      { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    }).from(clone).save();
+      margin:      0,
+      filename:    `${state.numero || 'document'}.pdf`,
+      image:       { type: 'jpeg', quality: 0.98 },
+      html2canvas: {
+        scale: 2,
+        useCORS: true,
+        allowTaint: true,
+        backgroundColor: '#0A0A1A',
+        logging: false,
+        onclone: (_doc, el) => {
+          el.style.background  = '#0A0A1A';
+          el.style.boxShadow   = 'none';
+          el.style.borderRadius = '0';
+        },
+      },
+      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
+    }).from(document.getElementById('pdf-content')).save();
 
-    document.body.removeChild(clone);
     btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
   }
 
