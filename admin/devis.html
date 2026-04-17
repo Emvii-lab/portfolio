@@ -812,10 +812,9 @@
         allowTaint: true,
         backgroundColor: '#0A0A1A',
         logging: false,
-        onclone: (_doc, el) => {
-          el.style.background  = '#0A0A1A';
-          el.style.boxShadow   = 'none';
-          el.style.borderRadius = '0';
+        onclone: (clonedDoc) => {
+          const el = clonedDoc.getElementById('pdf-content');
+          if (el) { el.style.background = '#0A0A1A'; el.style.boxShadow = 'none'; el.style.borderRadius = '0'; }
         },
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },

@@ -305,7 +305,10 @@
         allowTaint: true,
         backgroundColor: '#0A0A1A',
         logging: false,
-        onclone: (_d, el) => { el.style.opacity = '1'; el.style.background = '#0A0A1A'; },
+        onclone: (clonedDoc) => {
+          const el = clonedDoc.querySelector('[style*="opacity:0"]') || clonedDoc.body.firstElementChild;
+          if (el) { el.style.opacity = '1'; el.style.background = '#0A0A1A'; }
+        },
       },
       jsPDF: { unit:'mm', format:'a4', orientation:'portrait' },
     }).from(wrap).save();
