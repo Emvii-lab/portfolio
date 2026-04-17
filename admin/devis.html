@@ -330,7 +330,9 @@
   }
 
   async function loadServices() {
-    const { data } = await db.from('services').select('*').order('titre');
+    const { data } = await db.from('services')
+      .select('id, titre, prix_ht, details, actif')
+      .order('titre');
     servicesList = data || [];
     populateCatalog();
   }
@@ -427,7 +429,18 @@
     const line = { id: lineIdSeq++, titre: '', description: '', qte: 1, prix_ht: 0 };
     if (serviceId) {
       const s = servicesList.find(x => x.id === serviceId);
-      if (s) { line.titre = s.titre; line.description = s.description || ''; line.prix_ht = s.prix_ht || 0; }
+      if (s) {
+        line.titre    = s.titre;
+        line.prix_ht  = s.prix_ht || 0;
+        // details est un tableau text[] depuis Supabase
+        if (Array.isArray(s.details) && s.details.length > 0) {
+          line.description = s.details
+            .map(d => d.startsWith('>') ? d : '> ' + d)
+            .join('\n');
+        } else {
+          line.description = '';
+        }
+      }
     }
     state.lignes.push(line);
     renderLines();
