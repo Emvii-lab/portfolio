@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMVII — Documents</title>
+  <link rel="icon" type="image/png" href="../emvii-logo-nobg.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+
+  <nav class="admin-nav">
+    <a class="nav-logo" href="index.html">
+      <img src="../emvii-logo-nobg.png" alt="EMVII">
+      EMVII <span class="nav-badge">ADMIN</span>
+    </a>
+    <div class="nav-links">
+      <a href="documents.html" class="active">📁 MES DOCUMENTS</a>
+      <a href="devis.html" class="btn-new">✏️ NOUVEAU</a>
+    </div>
+  </nav>
+
+  <div class="docs-wrap">
+
+    <div class="docs-header">
+      <h1 class="docs-page-title">&gt; MES DOCUMENTS</h1>
+      <a href="devis.html" class="btn btn-cyan">✏️ NOUVEAU DOCUMENT</a>
+    </div>
+
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-label">TOTAL DEVIS</div>
+        <div class="stat-val" id="stat-devis">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">TOTAL FACTURES</div>
+        <div class="stat-val pink" id="stat-factures">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">CA ENCAISSÉ (HT)</div>
+        <div class="stat-val" id="stat-ca">—</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">EN ATTENTE (HT)</div>
+        <div class="stat-val pink" id="stat-attente">—</div>
+      </div>
+    </div>
+
+    <!-- Filtres -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-type="all"     onclick="setFilter('type','all',this)">Tous</button>
+      <button class="filter-btn"        data-type="devis"   onclick="setFilter('type','devis',this)">Devis</button>
+      <button class="filter-btn"        data-type="facture" onclick="setFilter('type','facture',this)">Factures</button>
+      <select class="form-control" id="filter-statut" onchange="setFilter('statut',this.value)" style="width:auto;font-size:11px;padding:6px 12px;margin-left:8px">
+        <option value="all">Tous les statuts</option>
+        <option value="brouillon">Brouillon</option>
+        <option value="envoye">Envoyé</option>
+        <option value="accepte">Accepté</option>
+        <option value="refuse">Refusé</option>
+        <option value="paye">Payé</option>
+        <option value="annule">Annulé</option>
+      </select>
+      <input type="text" class="form-control" id="filter-search" placeholder="🔍  Rechercher (N°, client, objet)…"
+        oninput="onSearch(this.value)" style="width:260px;font-size:12px">
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <table class="docs-table">
+        <thead>
+          <tr>
+            <th>N° / TYPE</th>
+            <th>CLIENT</th>
+            <th>OBJET</th>
+            <th>DATE</th>
+            <th>MONTANT HT</th>
+            <th>STATUT</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody id="docs-tbody">
+          <tr><td colspan="7"><div class="empty-state">Chargement…</div></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <!-- Modale changement statut -->
+  <div id="status-modal" style="
+    display:none; position:fixed; inset:0; background:rgba(0,0,0,.7);
+    z-index:1000; align-items:center; justify-content:center;">
+    <div style="background:var(--card-bg);border:1px solid rgba(0,240,255,.2);border-radius:12px;padding:28px;min-width:320px">
+      <h3 style="font-family:var(--mono);font-size:13px;color:var(--cyan);margin-bottom:20px;letter-spacing:2px">CHANGER LE STATUT</h3>
+      <input type="hidden" id="modal-doc-id">
+      <select id="modal-statut" class="form-control" style="margin-bottom:20px">
+        <option value="brouillon">Brouillon</option>
+        <option value="envoye">Envoyé</option>
+        <option value="accepte">Accepté</option>
+        <option value="refuse">Refusé</option>
+        <option value="paye">Payé</option>
+        <option value="annule">Annulé</option>
+      </select>
+      <div style="display:flex;gap:10px">
+        <button class="btn btn-cyan" style="flex:1" onclick="applyStatus()">CONFIRMER</button>
+        <button class="btn btn-outline" style="flex:1" onclick="closeModal()">ANNULER</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
+  <script>
+  const SUPABASE_URL = 'https://supabase.emvii.fr';
+  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE';
+  const SESSION_KEY  = 'emvii_admin_session';
+  const SESSION_TTL  = 8 * 60 * 60 * 1000;
+
+  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+  let allDocs  = [];
+  let filters  = { type: 'all', statut: 'all', search: '' };
+
+  function checkAuth() {
+    const ts = sessionStorage.getItem(SESSION_KEY);
+    if (!ts || Date.now() - parseInt(ts) > SESSION_TTL) window.location.href = 'index.html';
+  }
+
+  function eur(n) {
+    return (parseFloat(n)||0).toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}) + '\u00a0€';
+  }
+
+  function fmtDate(d) {
+    if (!d) return '—';
+    const [y,m,day] = d.split('-');
+    return `${day}/${m}/${y}`;
+  }
+
+  function esc(s) {
+    return String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  const BADGE_CLASS = {
+    brouillon:'badge-brouillon', envoye:'badge-envoye', accepte:'badge-accepte',
+    refuse:'badge-refuse', paye:'badge-paye', annule:'badge-annule',
+  };
+  const BADGE_LABEL = {
+    brouillon:'Brouillon', envoye:'Envoyé', accepte:'Accepté',
+    refuse:'Refusé', paye:'Payé', annule:'Annulé',
+  };
+
+  async function init() {
+    checkAuth();
+    await loadDocs();
+  }
+
+  async function loadDocs() {
+    const { data, error } = await db.from('documents')
+      .select('*')
+      .order('created_at', { ascending: false });
+    if (error) { toast('Erreur Supabase : ' + error.message, true); return; }
+    allDocs = data || [];
+    updateStats();
+    renderTable();
+  }
+
+  function updateStats() {
+    const devis    = allDocs.filter(d => d.type === 'devis').length;
+    const factures = allDocs.filter(d => d.type === 'facture').length;
+    const caEnc    = allDocs.filter(d => d.statut === 'paye').reduce((s,d) => s + (d.total_ht||0), 0);
+    const caAtt    = allDocs.filter(d => ['envoye','accepte'].includes(d.statut)).reduce((s,d) => s + (d.total_ht||0), 0);
+    document.getElementById('stat-devis').textContent    = devis;
+    document.getElementById('stat-factures').textContent = factures;
+    document.getElementById('stat-ca').textContent       = eur(caEnc);
+    document.getElementById('stat-attente').textContent  = eur(caAtt);
+  }
+
+  function setFilter(key, val, btn) {
+    filters[key] = val;
+    if (btn) {
+      btn.closest('.filter-bar').querySelectorAll('[data-type]').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+    renderTable();
+  }
+
+  function onSearch(val) {
+    filters.search = val.toLowerCase();
+    renderTable();
+  }
+
+  function renderTable() {
+    const tbody = document.getElementById('docs-tbody');
+    let docs = allDocs;
+
+    if (filters.type   !== 'all') docs = docs.filter(d => d.type === filters.type);
+    if (filters.statut !== 'all') docs = docs.filter(d => d.statut === filters.statut);
+    if (filters.search) {
+      docs = docs.filter(d => {
+        const client = d.client_snapshot?.nom || '';
+        return (d.numero||'').toLowerCase().includes(filters.search)
+            || client.toLowerCase().includes(filters.search)
+            || (d.objet||'').toLowerCase().includes(filters.search);
+      });
+    }
+
+    if (docs.length === 0) {
+      tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state">Aucun document trouvé.</div></td></tr>`;
+      return;
+    }
+
+    tbody.innerHTML = docs.map(d => {
+      const client = d.client_snapshot?.nom || '—';
+      const co     = d.client_snapshot?.entreprise ? `<br><small style="color:var(--text-muted)">${esc(d.client_snapshot.entreprise)}</small>` : '';
+      return `
+        <tr>
+          <td>
+            <div class="td-num">${esc(d.numero)}</div>
+            <span class="badge ${d.type === 'devis' ? 'badge-devis' : 'badge-facture'}" style="margin-top:4px">
+              ${d.type === 'devis' ? 'Devis' : 'Facture'}
+            </span>
+          </td>
+          <td class="td-client">${esc(client)}${co}</td>
+          <td style="color:var(--text-gray);font-size:12px;max-width:200px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">
+            ${esc(d.objet||'—')}
+          </td>
+          <td>${fmtDate(d.date_creation)}</td>
+          <td class="td-montant">${eur(d.total_ht)}</td>
+          <td>
+            <span class="badge ${BADGE_CLASS[d.statut]||'badge-brouillon'}"
+              style="cursor:pointer" onclick="openModal('${d.id}','${d.statut}')"
+              title="Cliquer pour changer le statut">
+              ${BADGE_LABEL[d.statut]||d.statut}
+            </span>
+          </td>
+          <td>
+            <div class="td-actions">
+              <a href="devis.html?id=${d.id}" class="btn btn-ghost btn-sm" title="Modifier">✏️</a>
+              <button class="btn btn-outline btn-sm" onclick="downloadDocPDF('${d.id}')" title="Télécharger PDF">⬇</button>
+              <button class="btn btn-danger btn-sm" onclick="deleteDoc('${d.id}','${esc(d.numero)}')" title="Supprimer">🗑</button>
+            </div>
+          </td>
+        </tr>`;
+    }).join('');
+  }
+
+  async function deleteDoc(id, num) {
+    if (!confirm(`Supprimer le document "${num}" ? Cette action est irréversible.`)) return;
+    const { error } = await db.from('documents').delete().eq('id', id);
+    if (error) { toast('Erreur : ' + error.message, true); return; }
+    allDocs = allDocs.filter(d => d.id !== id);
+    updateStats();
+    renderTable();
+    toast(`Document "${num}" supprimé.`);
+  }
+
+  // ── Status modal ─────────────────────────────────────────────────────────────
+  function openModal(id, currentStatut) {
+    document.getElementById('modal-doc-id').value   = id;
+    document.getElementById('modal-statut').value   = currentStatut;
+    document.getElementById('status-modal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('status-modal').style.display = 'none';
+  }
+
+  async function applyStatus() {
+    const id     = document.getElementById('modal-doc-id').value;
+    const statut = document.getElementById('modal-statut').value;
+    const { error } = await db.from('documents').update({ statut }).eq('id', id);
+    if (error) { toast('Erreur : ' + error.message, true); return; }
+    const doc = allDocs.find(d => d.id === id);
+    if (doc) doc.statut = statut;
+    updateStats();
+    renderTable();
+    closeModal();
+    toast('Statut mis à jour ✓');
+  }
+
+  // ── Download PDF from archive ─────────────────────────────────────────────────
+  async function downloadDocPDF(id) {
+    const doc = allDocs.find(d => d.id === id);
+    if (!doc) return;
+
+    // Build a temporary hidden render div
+    const wrap = document.createElement('div');
+    wrap.style.cssText = 'position:fixed;top:-9999px;left:-9999px;width:794px;background:#0A0A1A;padding:30px 32px;font-family:Inter,sans-serif;font-size:12px;color:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact;';
+    wrap.innerHTML = buildPdfHTML(doc);
+    document.body.appendChild(wrap);
+
+    await html2pdf().set({
+      margin:     0,
+      filename:   `${doc.numero}.pdf`,
+      image:      { type:'jpeg', quality:0.98 },
+      html2canvas:{ scale:2, useCORS:true, backgroundColor:'#0A0A1A', logging:false },
+      jsPDF:      { unit:'mm', format:'a4', orientation:'portrait' },
+    }).from(wrap).save();
+
+    document.body.removeChild(wrap);
+    toast('PDF téléchargé ✓');
+  }
+
+  function buildPdfHTML(d) {
+    const c = d.client_snapshot || {};
+    const totalHT = parseFloat(d.total_ht) || 0;
+    const acomptePct = parseInt(d.modalites_paiement?.acompte) || 0;
+    const acompteAmt = totalHT * acomptePct / 100;
+    const soldeAmt   = totalHT - acompteAmt;
+
+    const fmtD  = (s) => { if (!s) return '—'; const [y,m,day]=s.split('-'); return `${day}/${m}/${y}`; };
+    const fmtE  = (n) => (parseFloat(n)||0).toLocaleString('fr-FR',{minimumFractionDigits:2,maximumFractionDigits:2}) + '\u00a0€';
+    const e     = (s) => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+
+    const lignes = (d.lignes || []).map(l => {
+      const tot = l.qte * l.prix_ht;
+      const descs = (l.description||'').split('\n').filter(Boolean)
+        .map(x => `<div style="font-size:10px;color:#64748B">${e(x)}</div>`).join('');
+      return `<tr style="border-bottom:1px solid rgba(255,255,255,.04)">
+        <td style="padding:9px 12px;vertical-align:top"><div style="font-weight:700">${e(l.titre)||'—'}</div>${descs}</td>
+        <td style="padding:9px 12px;text-align:right">${l.qte}</td>
+        <td style="padding:9px 12px;text-align:right">${fmtE(l.prix_ht)}</td>
+        <td style="padding:9px 12px;text-align:right;font-family:JetBrains Mono,monospace;font-weight:700;color:#00F0FF">${fmtE(tot)}</td>
+      </tr>`;
+    }).join('');
+
+    const mentions = d.mentions || {};
+    const mentParts = [];
+    if (mentions.tva_293b)  mentParts.push('TVA non applicable, art. 293B du CGI');
+    if (mentions.ei)         mentParts.push('Entreprise Individuelle — EMVII');
+    if (mentions.penalites)  mentParts.push('Pénalités de retard applicables (taux légal × 3)');
+    if (mentions.custom && mentions.custom_text) mentParts.push(e(mentions.custom_text));
+
+    const dateLabel = d.type === 'devis'
+      ? `Valable jusqu'au : <span style="color:#fff">${fmtD(d.date_validite)}</span>`
+      : `Échéance : <span style="color:#fff">${fmtD(d.date_echeance)}</span>`;
+
+    const payHTML = acomptePct > 0 && acomptePct < 100
+      ? `<div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Acompte ${acomptePct}% à la signature</div>
+         <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95;margin-bottom:10px">${fmtE(acompteAmt)} — À la commande</div>
+         <div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Solde ${100-acomptePct}% à la livraison</div>
+         <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95">${fmtE(soldeAmt)} — À la livraison</div>`
+      : `<div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Paiement à la livraison</div>
+         <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95">${fmtE(totalHT)}</div>`;
+
+    return `
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;background:#111122;border-radius:8px;padding:18px 22px;margin-bottom:14px;gap:16px">
+        <div style="display:flex;align-items:center;gap:14px">
+          <img src="../emvii-logo-nobg.png" style="height:50px;object-fit:contain" alt="EMVII">
+          <div>
+            <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:#FF2D95;font-weight:600;letter-spacing:1px;margin-bottom:4px">&lt; DEVELOPPEUSE NO-CODE / LOW-CODE / IA /&gt;</div>
+            <div style="font-size:15px;font-weight:700;color:#fff;margin-bottom:2px">Mélanie Voymant</div>
+            <div style="font-size:10px;color:#94A3B8">contact@emvii.fr<br>www.emvii.fr</div>
+          </div>
+        </div>
+        <div style="text-align:right;flex-shrink:0">
+          <div style="font-family:JetBrains Mono,monospace;font-size:38px;font-weight:700;color:#fff;letter-spacing:6px;line-height:1;margin-bottom:10px">${d.type === 'devis' ? 'DEVIS' : 'FACTURE'}</div>
+          <div style="font-size:11px;color:#94A3B8;line-height:1.9">
+            <div>N°&nbsp;<span style="color:#fff">${e(d.numero)}</span></div>
+            <div>Date : <span style="color:#fff">${fmtD(d.date_creation)}</span></div>
+            <div>${dateLabel}</div>
+          </div>
+        </div>
+      </div>
+
+      <div style="height:2px;background:linear-gradient(90deg,#FF2D95,#B026FF,#00F0FF);margin:12px 0;border-radius:1px;-webkit-print-color-adjust:exact"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div style="background:#111122;border-radius:8px;padding:14px 16px">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;font-weight:700;color:#00F0FF;letter-spacing:3px;margin-bottom:8px">PRESTATAIRE</div>
+          <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">Mélanie Voymant</div>
+          <div style="font-size:10px;color:#94A3B8;line-height:1.8">EMVII — Entreprise Individuelle<br>contact@emvii.fr</div>
+        </div>
+        <div style="background:#111122;border-radius:8px;padding:14px 16px">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;font-weight:700;color:#FF2D95;letter-spacing:3px;margin-bottom:8px">CLIENT</div>
+          <div style="font-size:14px;font-weight:700;color:#fff;margin-bottom:4px">${e(c.nom)||'—'}</div>
+          <div style="font-size:10px;color:#94A3B8;line-height:1.8">
+            ${c.entreprise ? e(c.entreprise)+'<br>' : ''}${c.secteur ? e(c.secteur)+'<br>' : ''}${c.email ? e(c.email) : ''}
+          </div>
+        </div>
+      </div>
+
+      ${d.objet ? `<div style="background:#111122;border-radius:8px;padding:11px 16px;margin-bottom:10px;display:flex;align-items:baseline;gap:10px"><span style="font-family:JetBrains Mono,monospace;font-size:8px;font-weight:700;color:#00F0FF;letter-spacing:2px;white-space:nowrap">OBJET :</span><span style="font-size:12px;color:#fff">${e(d.objet)}</span></div>` : ''}
+
+      <table style="width:100%;border-collapse:collapse;margin-bottom:10px">
+        <thead>
+          <tr style="background:linear-gradient(90deg,#FF2D95,#B026FF 50%,#00F0FF);-webkit-print-color-adjust:exact;print-color-adjust:exact">
+            <th style="font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:#fff;padding:9px 12px;text-align:left;width:54%">PRESTATION</th>
+            <th style="font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:#fff;padding:9px 12px;text-align:right;width:9%">QTÉ</th>
+            <th style="font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:#fff;padding:9px 12px;text-align:right;width:17%">PU HT</th>
+            <th style="font-family:JetBrains Mono,monospace;font-size:9px;font-weight:700;letter-spacing:2px;color:#fff;padding:9px 12px;text-align:right;width:20%">TOTAL HT</th>
+          </tr>
+        </thead>
+        <tbody>${lignes || '<tr><td colspan="4" style="color:#475569;font-style:italic;padding:16px 12px;text-align:center">Aucune prestation</td></tr>'}</tbody>
+      </table>
+
+      <div style="height:2px;background:linear-gradient(90deg,#FF2D95,#B026FF,#00F0FF);margin:12px 0;border-radius:1px;-webkit-print-color-adjust:exact"></div>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
+        <div style="background:#111122;border-radius:8px;padding:14px 16px">
+          <div style="font-family:JetBrains Mono,monospace;font-size:8px;font-weight:700;color:#FF2D95;letter-spacing:3px;margin-bottom:12px">MODALITÉS DE PAIEMENT</div>
+          ${payHTML}
+        </div>
+        <div style="background:#111122;border-radius:8px;padding:14px 16px">
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#94A3B8;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05)">
+            <span>Total HT</span><span style="font-family:JetBrains Mono,monospace;font-weight:600;color:#fff;font-size:12px">${fmtE(totalHT)}</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;font-size:11px;color:#94A3B8;padding-bottom:8px;margin-bottom:8px;border-bottom:1px solid rgba(255,255,255,.05)">
+            <span>TVA non applicable (art. 293B du CGI)</span><span style="font-family:JetBrains Mono,monospace;font-weight:600;color:#fff;font-size:12px">0,00&nbsp;€</span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;padding-top:2px">
+            <span style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#00F0FF">TOTAL TTC</span>
+            <span style="font-family:JetBrains Mono,monospace;font-size:22px;font-weight:700;color:#FF2D95">${fmtE(totalHT)}</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:#111122;border-radius:8px;padding:13px 16px;font-size:11px;color:#94A3B8;min-height:56px;margin-bottom:10px">
+        Bon pour accord — Date et signature du client :
+      </div>
+
+      <div style="text-align:center;padding-top:10px;border-top:1px solid rgba(255,255,255,.04)">
+        ${mentParts.length ? `<div style="font-style:italic;font-size:9px;color:#475569;margin-bottom:6px">${mentParts.join(' — ')}</div>` : ''}
+        <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:#2A2A4E;letter-spacing:2px">EMVII | contact@emvii.fr | www.emvii.fr</div>
+        <div style="font-family:JetBrains Mono,monospace;font-size:8px;color:#2A2A4E;letter-spacing:4px;margin-top:4px">■■■ EMVII STUDIO ■■■</div>
+      </div>
+    `;
+  }
+
+  // ── Toast ────────────────────────────────────────────────────────────────────
+  function toast(msg, isErr = false) {
+    const el = document.getElementById('toast');
+    el.textContent = msg;
+    el.className = isErr ? 'err show' : 'show';
+    clearTimeout(el._t);
+    el._t = setTimeout(() => el.className = '', 3200);
+  }
+
+  // Close modal on backdrop click
+  document.getElementById('status-modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  init();
+  </script>
+</body>
+</html>

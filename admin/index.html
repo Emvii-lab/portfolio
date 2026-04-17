@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMVII — Admin</title>
+  <link rel="icon" type="image/png" href="../emvii-logo-nobg.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+  <style>
+    .login-card { position: relative; overflow: hidden; }
+    .login-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(176,38,255,.12) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .error-msg {
+      color: var(--pink);
+      font-size: 11px;
+      font-family: var(--mono);
+      margin-bottom: 12px;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-wrap">
+    <div class="login-card">
+      <div class="login-logo">
+        <img src="../emvii-logo-nobg.png" alt="EMVII">
+        <h1>ADMIN PANEL</h1>
+      </div>
+
+      <!-- Première connexion : créer un mot de passe -->
+      <div id="setup-view" style="display:none">
+        <p class="login-title">Créer votre accès</p>
+        <p class="login-sub">Première connexion — définissez votre mot de passe</p>
+        <div class="form-group">
+          <label>Nouveau mot de passe</label>
+          <input type="password" id="setup-pwd" class="form-control" placeholder="Min. 8 caractères" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label>Confirmer</label>
+          <input type="password" id="setup-confirm" class="form-control" placeholder="Répéter le mot de passe">
+        </div>
+        <p class="error-msg" id="setup-err"></p>
+        <button class="btn btn-cyan btn-full" onclick="createPassword()">CRÉER LE MOT DE PASSE</button>
+      </div>
+
+      <!-- Connexion classique -->
+      <div id="login-view" style="display:none">
+        <p class="login-title">Accès restreint</p>
+        <p class="login-sub">Zone privée — EMVII Studio</p>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <input type="password" id="login-pwd" class="form-control" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <p class="error-msg" id="login-err">Mot de passe incorrect.</p>
+        <button class="btn btn-cyan btn-full" onclick="doLogin()">ACCÉDER →</button>
+        <p style="text-align:center; margin-top:16px; font-size:11px; color:var(--text-dimmer);">
+          <a href="#" onclick="resetPassword()" style="color:var(--text-muted); text-decoration:none;">Réinitialiser le mot de passe</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="toast"></div>
+
+  <script>
+    const HASH_KEY    = 'emvii_admin_hash';
+    const SESSION_KEY = 'emvii_admin_session';
+    const SESSION_TTL = 8 * 60 * 60 * 1000; // 8h
+
+    async function sha256(str) {
+      const buf = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+      return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2,'0')).join('');
+    }
+
+    function isSessionValid() {
+      const ts = sessionStorage.getItem(SESSION_KEY);
+      return ts && Date.now() - parseInt(ts) < SESSION_TTL;
+    }
+
+    async function init() {
+      if (isSessionValid()) { window.location.href = 'devis.html'; return; }
+
+      const hash = localStorage.getItem(HASH_KEY);
+      document.getElementById(hash ? 'login-view' : 'setup-view').style.display = 'block';
+
+      document.addEventListener('keydown', e => {
+        if (e.key !== 'Enter') return;
+        if (document.getElementById('setup-view').style.display !== 'none') createPassword();
+        else doLogin();
+      });
+    }
+
+    async function createPassword() {
+      const pwd     = document.getElementById('setup-pwd').value;
+      const confirm = document.getElementById('setup-confirm').value;
+      const err     = document.getElementById('setup-err');
+
+      if (pwd.length < 8) { showErr(err, 'Minimum 8 caractères requis.'); return; }
+      if (pwd !== confirm) { showErr(err, 'Les mots de passe ne correspondent pas.'); return; }
+
+      localStorage.setItem(HASH_KEY, await sha256(pwd));
+      sessionStorage.setItem(SESSION_KEY, Date.now().toString());
+      window.location.href = 'devis.html';
+    }
+
+    async function doLogin() {
+      const pwd  = document.getElementById('login-pwd').value;
+      const err  = document.getElementById('login-err');
+      const hash = await sha256(pwd);
+
+      if (hash === localStorage.getItem(HASH_KEY)) {
+        sessionStorage.setItem(SESSION_KEY, Date.now().toString());
+        window.location.href = 'devis.html';
+      } else {
+        showErr(err, 'Mot de passe incorrect.');
+        document.getElementById('login-pwd').value = '';
+      }
+    }
+
+    function resetPassword() {
+      if (!confirm('Réinitialiser le mot de passe ? Vous devrez en créer un nouveau.')) return;
+      localStorage.removeItem(HASH_KEY);
+      document.getElementById('login-view').style.display  = 'none';
+      document.getElementById('setup-view').style.display  = 'block';
+    }
+
+    function showErr(el, msg) {
+      el.textContent = msg;
+      el.style.display = 'block';
+      setTimeout(() => el.style.display = 'none', 4000);
+    }
+
+    init();
+  </script>
+</body>
+</html>
