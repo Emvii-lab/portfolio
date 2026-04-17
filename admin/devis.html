@@ -849,14 +849,14 @@
       #pdf-content, #pdf-content * { box-sizing: border-box; }
       #pdf-content { background: #FFFFFF !important; color: #0A0A1A !important; }
 
-      /* ── Header : fond sombre conservé, textes lisibles ── */
-      .pdf-header { background: #1A1A2E !important; padding: 20px 30px !important; }
-      .pdf-info .tagline { color: #FF2D95 !important; }
-      .pdf-info .name { color: #FFFFFF !important; }
-      .pdf-info .contact { color: #BCC8D8 !important; }
-      .pdf-doc-type { color: #FFFFFF !important; }
-      .pdf-meta { color: #BCC8D8 !important; }
-      .pdf-meta span { color: #FFFFFF !important; }
+      /* ── Header : fond gris clair, textes sombres ── */
+      .pdf-header { background: #EEEEF6 !important; border-bottom: 2px solid #DDDDF0 !important; }
+      .pdf-info .tagline { color: #CC1A77 !important; }
+      .pdf-info .name { color: #0A0A1A !important; }
+      .pdf-info .contact { color: #444 !important; }
+      .pdf-doc-type { color: #0A0A1A !important; }
+      .pdf-meta { color: #555 !important; }
+      .pdf-meta span { color: #0A0A1A !important; }
 
       /* Séparateur dégradé : inchangé */
 
@@ -884,15 +884,17 @@
 
       /* Totaux */
       .pdf-totals { background: #F0F0F8 !important; border-left: 3px solid #B026FF !important; }
-      .pdf-totals td { color: #0A0A1A !important; }
-      .pdf-ttc { color: #8800CC !important; }
+      .pdf-total-row .lbl { color: #555 !important; }
+      .pdf-total-row .val { color: #0A0A1A !important; }
+      .pdf-total-row { border-bottom-color: #ddd !important; }
+      .pdf-ttc .lbl { color: #007FAA !important; }
+      .pdf-ttc .amt { color: #CC1A77 !important; }
 
       /* Paiement */
       .pdf-payment { background: #F0F0F8 !important; border: 1px solid #DDDDF0 !important; }
       .pdf-payment-title { color: #CC1A77 !important; }
-      .pdf-payment * { color: #222 !important; }
-      /* Conserver couleurs acompte/solde */
-      .pdf-payment .c { color: #CC1A77 !important; }
+      .pdf-payment-line { color: #444 !important; }
+      .pdf-payment-amount { color: #CC1A77 !important; }
 
       /* Signature */
       .pdf-signature { background: #FFFFFF !important; border: 1.5px solid #B026FF !important; color: #0A0A1A !important; }
