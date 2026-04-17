@@ -341,12 +341,15 @@
       ? `Valable jusqu'au : <span style="color:#fff">${fmtD(d.date_validite)}</span>`
       : `Échéance : <span style="color:#fff">${fmtD(d.date_echeance)}</span>`;
 
+    const moyenLabels = { virement:'par virement bancaire', cb:'par carte bancaire', paypal:'par PayPal', cheque:'par chèque' };
+    const moyen = moyenLabels[d.modalites_paiement?.moyen] || '';
     const payHTML = acomptePct > 0 && acomptePct < 100
-      ? `<div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Acompte ${acomptePct}% à la signature</div>
+      ? `<div style="font-size:11px;color:#94A3B8;margin-bottom:8px">Règlement ${moyen}</div>
+         <div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Acompte ${acomptePct}% à la signature</div>
          <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95;margin-bottom:10px">${fmtE(acompteAmt)} — À la commande</div>
          <div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Solde ${100-acomptePct}% à la livraison</div>
          <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95">${fmtE(soldeAmt)} — À la livraison</div>`
-      : `<div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Paiement à la livraison</div>
+      : `<div style="font-size:11px;color:#94A3B8;margin-bottom:2px">Paiement ${moyen} à la livraison</div>
          <div style="font-family:JetBrains Mono,monospace;font-size:13px;font-weight:700;color:#FF2D95">${fmtE(totalHT)}</div>`;
 
     return `
@@ -421,7 +424,7 @@
         </div>
       </div>
 
-      <div style="background:#111122;border-radius:8px;padding:13px 16px;font-size:11px;color:#94A3B8;min-height:56px;margin-bottom:10px">
+      <div style="background:#111122;border-radius:8px;padding:13px 16px;font-size:11px;color:#94A3B8;min-height:90px;margin-bottom:10px">
         Bon pour accord — Date et signature du client :
       </div>
 

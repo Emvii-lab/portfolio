@@ -556,20 +556,22 @@
       ? `<div>Valable jusqu'au&nbsp;: <span>${fmtDate(state.date_validite)}</span></div>`
       : `<div>Échéance&nbsp;: <span>${fmtDate(state.date_echeance)}</span></div>`;
 
+    const moyen = moyenLabel[state.moyen] || '';
     let paymentHTML = '';
     if (acomptePct > 0 && acomptePct < 100) {
       paymentHTML = `
-        <div class="pdf-payment-line">Acompte ${acomptePct}&nbsp;% à la signature</div>
+        <div class="pdf-payment-line">Règlement ${moyen}</div>
+        <div class="pdf-payment-line" style="margin-top:8px">Acompte ${acomptePct}&nbsp;% à la signature</div>
         <div class="pdf-payment-amount">${eur(acompteAmt)} — À la commande</div>
         <div class="pdf-payment-line">Solde ${100 - acomptePct}&nbsp;% à la livraison</div>
         <div class="pdf-payment-amount">${eur(soldeAmt)} — À la livraison</div>`;
     } else if (acomptePct === 100) {
       paymentHTML = `
-        <div class="pdf-payment-line">Paiement intégral ${moyenLabel[state.moyen]||''}</div>
+        <div class="pdf-payment-line">Paiement intégral ${moyen}</div>
         <div class="pdf-payment-amount">${eur(totalHT)} — À la commande</div>`;
     } else {
       paymentHTML = `
-        <div class="pdf-payment-line">Paiement ${moyenLabel[state.moyen]||''} à la livraison</div>
+        <div class="pdf-payment-line">Paiement ${moyen} à la livraison</div>
         <div class="pdf-payment-amount">${eur(totalHT)}</div>`;
     }
 
@@ -657,7 +659,7 @@
         </div>
       </div>
 
-      <div class="pdf-signature">
+      <div class="pdf-signature" style="min-height:90px">
         Bon pour accord — Date et signature du client&nbsp;:
       </div>
 
