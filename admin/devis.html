@@ -813,8 +813,16 @@
         backgroundColor: '#0A0A1A',
         logging: false,
         onclone: (clonedDoc) => {
+          clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#0A0A1A';
+          clonedDoc.documentElement.style.background = '#0A0A1A';
           const el = clonedDoc.getElementById('pdf-content');
-          if (el) { el.style.background = '#0A0A1A'; el.style.boxShadow = 'none'; el.style.borderRadius = '0'; }
+          if (el) {
+            el.style.background    = '#0A0A1A';
+            el.style.boxShadow     = 'none';
+            el.style.borderRadius  = '0';
+            el.style.minHeight     = '1122px'; // A4 @ 96 dpi
+            el.style.width         = '794px';
+          }
         },
       },
       jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
