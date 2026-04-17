@@ -295,6 +295,9 @@
     wrap.innerHTML = buildPdfHTML(doc);
     document.body.appendChild(wrap);
 
+    const W = 794;
+    const H = wrap.scrollHeight;
+
     await html2pdf().set({
       margin:      0,
       filename:    `${doc.numero}.pdf`,
@@ -309,14 +312,10 @@
           clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#0A0A1A';
           clonedDoc.documentElement.style.background = '#0A0A1A';
           const el = clonedDoc.body.firstElementChild;
-          if (el) {
-            el.style.opacity   = '1';
-            el.style.background = '#0A0A1A';
-            el.style.minHeight  = '1122px';
-          }
+          if (el) { el.style.opacity = '1'; el.style.background = '#0A0A1A'; el.style.height = H + 'px'; }
         },
       },
-      jsPDF: { unit:'mm', format:'a4', orientation:'portrait' },
+      jsPDF: { unit:'px', format:[W, H], orientation:'portrait' },
     }).from(wrap).save();
 
     document.body.removeChild(wrap);

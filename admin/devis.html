@@ -802,6 +802,10 @@
     const btn = document.getElementById('btn-pdf');
     btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
 
+    const el = document.getElementById('pdf-content');
+    const W  = 794;
+    const H  = el.scrollHeight; // hauteur réelle du contenu
+
     await html2pdf().set({
       margin:      0,
       filename:    `${state.numero || 'document'}.pdf`,
@@ -815,18 +819,18 @@
         onclone: (clonedDoc) => {
           clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#0A0A1A';
           clonedDoc.documentElement.style.background = '#0A0A1A';
-          const el = clonedDoc.getElementById('pdf-content');
-          if (el) {
-            el.style.background    = '#0A0A1A';
-            el.style.boxShadow     = 'none';
-            el.style.borderRadius  = '0';
-            el.style.minHeight     = '1122px'; // A4 @ 96 dpi
-            el.style.width         = '794px';
+          const cloned = clonedDoc.getElementById('pdf-content');
+          if (cloned) {
+            cloned.style.background   = '#0A0A1A';
+            cloned.style.boxShadow    = 'none';
+            cloned.style.borderRadius = '0';
+            cloned.style.width        = W + 'px';
+            cloned.style.height       = H + 'px'; // fige la hauteur mesurée
           }
         },
       },
-      jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' },
-    }).from(document.getElementById('pdf-content')).save();
+      jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
+    }).from(el).save();
 
     btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
   }
