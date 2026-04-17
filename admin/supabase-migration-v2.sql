@@ -30,9 +30,12 @@ WHERE titre = 'Conception & cadrage du projet'
 
 UPDATE public.services
 SET details = ARRAY[
-  'Interface personnalisée aux couleurs du client',
-  'Fonctionnalités sur mesure',
-  'Tests et recettage'
+  'Gestion des dossiers clients',
+  'Checklist des tâches par intervention',
+  'Ajout de photos par dossier client',
+  'Notifications familles en fin de prestation',
+  'Compte rendu automatique par e-mail',
+  'Interface aux couleurs de LYZA'
 ]
 WHERE titre = 'Développement application mobile'
   AND array_length(details, 1) IS NULL;
