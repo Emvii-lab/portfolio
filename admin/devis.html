@@ -454,7 +454,9 @@
   function renderLines() {
     const container = document.getElementById('lines-container');
     if (state.lignes.length === 0) { container.innerHTML = ''; return; }
-    container.innerHTML = state.lignes.map(l => `
+    container.innerHTML = state.lignes.map(l => {
+      const descRows = Math.max(2, (l.description || '').split('\n').length + 1);
+      return `
       <div class="line-item">
         <div class="line-header">
           <input type="text" class="form-control" placeholder="Titre de la prestation"
@@ -462,8 +464,13 @@
           <button class="line-remove" onclick="removeLine(${l.id})" title="Supprimer">×</button>
         </div>
         <div class="line-desc">
-          <textarea class="form-control" placeholder="> Détails (optionnel, une ligne par détail)"
-            oninput="updateLine(${l.id},'description',this.value)">${esc(l.description)}</textarea>
+          <textarea id="desc-${l.id}" class="form-control" rows="${descRows}"
+            placeholder="> Détail 1&#10;> Détail 2&#10;> Détail 3…"
+            oninput="updateLine(${l.id},'description',this.value);autoResize(this)"
+          >${esc(l.description)}</textarea>
+          <button class="btn-add-detail" onclick="addDetail(${l.id})" title="Ajouter un sous-détail">
+            + sous-détail
+          </button>
         </div>
         <div class="line-meta">
           <div>
@@ -478,8 +485,24 @@
           </div>
           <div class="line-total" data-lt="${l.id}">${eur(l.qte * l.prix_ht)}</div>
         </div>
-      </div>
-    `).join('');
+      </div>`;
+    }).join('');
+  }
+
+  function addDetail(lineId) {
+    const line = state.lignes.find(l => l.id === lineId);
+    if (!line) return;
+    line.description = (line.description ? line.description.trimEnd() + '\n' : '') + '> ';
+    renderLines();
+    renderPreview();
+    // Focus + place cursor à la fin
+    const ta = document.getElementById('desc-' + lineId);
+    if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+  }
+
+  function autoResize(ta) {
+    ta.style.height = 'auto';
+    ta.style.height = ta.scrollHeight + 'px';
   }
 
   // ── Render PDF preview ───────────────────────────────────────────────────────

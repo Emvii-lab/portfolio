@@ -359,7 +359,27 @@ textarea.form-control { resize: vertical; min-height: 64px; }
 .line-header .form-control { flex: 1; }
 
 .line-desc { margin-bottom: 8px; }
-.line-desc .form-control { font-size: 12px; min-height: 48px; }
+.line-desc .form-control { font-size: 12px; min-height: 48px; resize: none; overflow: hidden; }
+
+.btn-add-detail {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 5px;
+  background: none;
+  border: 1px dashed rgba(0,240,255,.25);
+  border-radius: 4px;
+  color: var(--cyan);
+  font-family: var(--mono);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  padding: 3px 10px;
+  cursor: pointer;
+  opacity: .7;
+  transition: opacity .15s, border-color .15s;
+}
+.btn-add-detail:hover { opacity: 1; border-color: var(--cyan); }
 
 .line-meta {
   display: grid;
