@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +8,12 @@
   <link rel="icon" type="image/png" href="../emvii-logo-nobg.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="admin.css">
 </head>
+
 <body>
 
   <nav class="admin-nav">
@@ -30,8 +34,8 @@
 
       <!-- Type -->
       <div class="type-toggle">
-        <button id="btn-devis"   class="active" onclick="setType('devis')">DEVIS</button>
-        <button id="btn-facture"            onclick="setType('facture')">FACTURE</button>
+        <button id="btn-devis" class="active" onclick="setType('devis')">DEVIS</button>
+        <button id="btn-facture" onclick="setType('facture')">FACTURE</button>
       </div>
 
       <!-- Infos document -->
@@ -111,8 +115,7 @@
         </div>
         <div class="form-group">
           <label>Adresse postale</label>
-          <textarea id="client-adresse" class="form-control" rows="2"
-            placeholder="12 rue de la Paix&#10;75001 Paris"
+          <textarea id="client-adresse" class="form-control" rows="2" placeholder="12 rue de la Paix&#10;75001 Paris"
             oninput="onField('client_adresse', this.value)"></textarea>
         </div>
         <button class="btn btn-ghost btn-sm" onclick="saveClient()" style="margin-top:4px">
@@ -151,10 +154,14 @@
         <div class="form-group">
           <label>Acompte</label>
           <div class="radio-group">
-            <label class="radio-pill"><input type="radio" name="acompte" value="0"   onchange="onField('acompte','0')">Aucun</label>
-            <label class="radio-pill"><input type="radio" name="acompte" value="30"  onchange="onField('acompte','30')">30 %</label>
-            <label class="radio-pill"><input type="radio" name="acompte" value="50"  onchange="onField('acompte','50')">50 %</label>
-            <label class="radio-pill"><input type="radio" name="acompte" value="100" onchange="onField('acompte','100')">100 %</label>
+            <label class="radio-pill"><input type="radio" name="acompte" value="0"
+                onchange="onField('acompte','0')">Aucun</label>
+            <label class="radio-pill"><input type="radio" name="acompte" value="30"
+                onchange="onField('acompte','30')">30 %</label>
+            <label class="radio-pill"><input type="radio" name="acompte" value="50"
+                onchange="onField('acompte','50')">50 %</label>
+            <label class="radio-pill"><input type="radio" name="acompte" value="100"
+                onchange="onField('acompte','100')">100 %</label>
           </div>
         </div>
         <div class="form-group">
@@ -208,13 +215,14 @@
       <div class="preview-actions">
         <button class="btn btn-outline" id="btn-save" onclick="saveDocument()">💾 SAUVEGARDER</button>
         <button class="btn btn-primary" id="btn-new" onclick="newDocument()">✦ NOUVEAU</button>
-        <button class="btn btn-cyan"   id="btn-pdf"       onclick="downloadPDF()">⬇ TÉLÉCHARGER PDF</button>
+        <button class="btn btn-cyan" id="btn-pdf" onclick="downloadPDF()">⬇ TÉLÉCHARGER PDF</button>
         <button class="btn btn-outline" id="btn-pdf-light" onclick="downloadPDFLight()">☀ VERSION CLAIRE</button>
       </div>
 
       <!-- Zone PDF — mise à jour en temps réel -->
       <div id="pdf-content">
-        <div style="padding:60px; text-align:center; color:var(--text-dimmer); font-family:var(--mono); font-size:13px;">
+        <div
+          style="padding:60px; text-align:center; color:var(--text-dimmer); font-family:var(--mono); font-size:13px;">
           Chargement...
         </div>
       </div>
@@ -229,257 +237,257 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
   <script>
-  // ── Config ──────────────────────────────────────────────────────────────────
-  const SUPABASE_URL = 'https://supabase.emvii.fr';
-  const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE';
-  const SESSION_KEY  = 'emvii_admin_session';
-  const SESSION_TTL  = 8 * 60 * 60 * 1000;
+    // ── Config ──────────────────────────────────────────────────────────────────
+    const SUPABASE_URL = 'https://supabase.emvii.fr';
+    const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyAgCiAgICAicm9sZSI6ICJhbm9uIiwKICAgICJpc3MiOiAic3VwYWJhc2UtZGVtbyIsCiAgICAiaWF0IjogMTY0MTc2OTIwMCwKICAgICJleHAiOiAxNzk5NTM1NjAwCn0.dc_X5iR_VP_qT0zsiyj_I_OZ2T9FtRU2BBNWN8Bu4GE';
+    const SESSION_KEY = 'emvii_admin_session';
+    const SESSION_TTL = 8 * 60 * 60 * 1000;
 
-  const PRESTATAIRE = {
-    nom:      'Mélanie Voymant',
-    tagline:  '< DEVELOPPEUSE NO-CODE / LOW-CODE / IA />',
-    email:    'contact@emvii.fr',
-    website:  'www.emvii.fr',
-    adresse:  '',
-  };
+    const PRESTATAIRE = {
+      nom: 'Mélanie Voymant',
+      tagline: '< DEVELOPPEUSE NO-CODE / LOW-CODE / IA />',
+      adresse: '5 rue de Monceau, 75008 PARIS',
+      email: 'contact@emvii.fr',
+      website: 'www.emvii.fr',
+    };
 
-  const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+    const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-  // ── State ────────────────────────────────────────────────────────────────────
-  let state = {
-    type:           'devis',
-    numero:         '',
-    date_creation:  today(),
-    date_validite:  addDays(30),
-    date_echeance:  addDays(30),
-    siret:          localStorage.getItem('emvii_siret') || '',
-    client_id:      null,
-    client:         { nom:'', entreprise:'', secteur:'', email:'', adresse:'' },
-    objet:          '',
-    lignes:         [],
-    acompte:        '50',
-    moyen:          'virement',
-    mentions:       { tva_293b: true, ei: true, penalites: false, custom: false, custom_text: '' },
-    notes:          '',
-    statut:         'brouillon',
-    savedId:        null,
-  };
+    // ── State ────────────────────────────────────────────────────────────────────
+    let state = {
+      type: 'devis',
+      numero: '',
+      date_creation: today(),
+      date_validite: addDays(30),
+      date_echeance: addDays(30),
+      siret: localStorage.getItem('emvii_siret') || '',
+      client_id: null,
+      client: { nom: '', entreprise: '', secteur: '', email: '', adresse: '' },
+      objet: '',
+      lignes: [],
+      acompte: '50',
+      moyen: 'virement',
+      mentions: { tva_293b: true, ei: true, penalites: false, custom: false, custom_text: '' },
+      notes: '',
+      statut: 'brouillon',
+      savedId: null,
+    };
 
-  let clientsList  = [];
-  let servicesList = [];
-  let lineIdSeq    = 1;
+    let clientsList = [];
+    let servicesList = [];
+    let lineIdSeq = 1;
 
-  // ── Utils ────────────────────────────────────────────────────────────────────
-  function today() { return new Date().toISOString().split('T')[0]; }
+    // ── Utils ────────────────────────────────────────────────────────────────────
+    function today() { return new Date().toISOString().split('T')[0]; }
 
-  function addDays(n) {
-    const d = new Date();
-    d.setDate(d.getDate() + n);
-    return d.toISOString().split('T')[0];
-  }
-
-  function eur(n) {
-    return (parseFloat(n) || 0).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '\u00a0€';
-  }
-
-  function fmtDate(d) {
-    if (!d) return '—';
-    const [y,m,day] = d.split('-');
-    return `${day}/${m}/${y}`;
-  }
-
-  function esc(s) {
-    return String(s || '')
-      .replace(/&/g,'&amp;')
-      .replace(/</g,'&lt;')
-      .replace(/>/g,'&gt;')
-      .replace(/"/g,'&quot;');
-  }
-
-  function setVal(id, val) {
-    const el = document.getElementById(id);
-    if (el) el.value = val || '';
-  }
-
-  // ── Auth guard ───────────────────────────────────────────────────────────────
-  function checkAuth() {
-    const ts = sessionStorage.getItem(SESSION_KEY);
-    if (!ts || Date.now() - parseInt(ts) > SESSION_TTL) {
-      window.location.href = 'index.html';
+    function addDays(n) {
+      const d = new Date();
+      d.setDate(d.getDate() + n);
+      return d.toISOString().split('T')[0];
     }
-  }
 
-  // ── Init ─────────────────────────────────────────────────────────────────────
-  async function init() {
-    checkAuth();
-    await Promise.all([loadClients(), loadServices()]);
+    function eur(n) {
+      return (parseFloat(n) || 0).toLocaleString('fr-FR', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + '\u00a0€';
+    }
 
-    const params  = new URLSearchParams(window.location.search);
-    const editId  = params.get('id');
+    function fmtDate(d) {
+      if (!d) return '—';
+      const [y, m, day] = d.split('-');
+      return `${day}/${m}/${y}`;
+    }
 
-    if (editId) {
-      await loadDocument(editId);
-    } else {
-      state.numero = await genNumber(state.type);
-      populateForm();
+    function esc(s) {
+      return String(s || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;');
+    }
+
+    function setVal(id, val) {
+      const el = document.getElementById(id);
+      if (el) el.value = val || '';
+    }
+
+    // ── Auth guard ───────────────────────────────────────────────────────────────
+    function checkAuth() {
+      const ts = sessionStorage.getItem(SESSION_KEY);
+      if (!ts || Date.now() - parseInt(ts) > SESSION_TTL) {
+        window.location.href = 'index.html';
+      }
+    }
+
+    // ── Init ─────────────────────────────────────────────────────────────────────
+    async function init() {
+      checkAuth();
+      await Promise.all([loadClients(), loadServices()]);
+
+      const params = new URLSearchParams(window.location.search);
+      const editId = params.get('id');
+
+      if (editId) {
+        await loadDocument(editId);
+      } else {
+        state.numero = await genNumber(state.type);
+        populateForm();
+        renderPreview();
+      }
+    }
+
+    // ── Supabase loaders ─────────────────────────────────────────────────────────
+    async function loadClients() {
+      const { data } = await db.from('clients').select('*').order('nom');
+      clientsList = data || [];
+      const sel = document.getElementById('client-select');
+      sel.innerHTML = '<option value="">— Nouveau client / Saisie manuelle —</option>' +
+        clientsList.map(c =>
+          `<option value="${c.id}">${esc(c.nom)}${c.entreprise ? ` — ${esc(c.entreprise)}` : ''}</option>`
+        ).join('');
+    }
+
+    async function loadServices() {
+      const { data } = await db.from('services')
+        .select('id, titre, prix_ht, details, actif')
+        .order('titre');
+      servicesList = data || [];
+      populateCatalog();
+    }
+
+    function populateCatalog() {
+      const sel = document.getElementById('catalog-select');
+      if (!sel) return;
+      sel.innerHTML = '<option value="">— Choisir une prestation —</option>' +
+        servicesList.map(s =>
+          '<option value="' + s.id + '">' + esc(s.titre) + (s.prix_ht ? ' \u2014 ' + eur(s.prix_ht) : '') + '</option>'
+        ).join('');
+    }
+
+    async function genNumber(type) {
+      const prefix = type === 'devis' ? 'DEV' : 'FAC';
+      const year = new Date().getFullYear();
+      const { data } = await db.from('documents')
+        .select('numero')
+        .like('numero', `${prefix}-${year}-%`)
+        .order('numero', { ascending: false })
+        .limit(1);
+      let next = 1;
+      if (data && data.length > 0) {
+        next = parseInt(data[0].numero.split('-')[2]) + 1;
+      }
+      return `${prefix}-${year}-${String(next).padStart(3, '0')}`;
+    }
+
+    // ── State handlers ───────────────────────────────────────────────────────────
+    function onField(key, val) {
+      switch (key) {
+        case 'numero': state.numero = val; break;
+        case 'date_creation': state.date_creation = val; break;
+        case 'date_validite': state.date_validite = val; break;
+        case 'date_echeance': state.date_echeance = val; break;
+        case 'siret': state.siret = val; localStorage.setItem('emvii_siret', val); break;
+        case 'objet': state.objet = val; break;
+        case 'acompte': state.acompte = val; break;
+        case 'moyen': state.moyen = val; break;
+        case 'notes': state.notes = val; break;
+        case 'statut': state.statut = val; break;
+        case 'client_nom': state.client.nom = val; break;
+        case 'client_entreprise': state.client.entreprise = val; break;
+        case 'client_secteur': state.client.secteur = val; break;
+        case 'client_email': state.client.email = val; break;
+        case 'client_adresse': state.client.adresse = val; break;
+      }
       renderPreview();
     }
-  }
 
-  // ── Supabase loaders ─────────────────────────────────────────────────────────
-  async function loadClients() {
-    const { data } = await db.from('clients').select('*').order('nom');
-    clientsList = data || [];
-    const sel = document.getElementById('client-select');
-    sel.innerHTML = '<option value="">— Nouveau client / Saisie manuelle —</option>' +
-      clientsList.map(c =>
-        `<option value="${c.id}">${esc(c.nom)}${c.entreprise ? ` — ${esc(c.entreprise)}` : ''}</option>`
-      ).join('');
-  }
-
-  async function loadServices() {
-    const { data } = await db.from('services')
-      .select('id, titre, prix_ht, details, actif')
-      .order('titre');
-    servicesList = data || [];
-    populateCatalog();
-  }
-
-  function populateCatalog() {
-    const sel = document.getElementById('catalog-select');
-    if (!sel) return;
-    sel.innerHTML = '<option value="">— Choisir une prestation —</option>' +
-      servicesList.map(s =>
-        '<option value="' + s.id + '">' + esc(s.titre) + (s.prix_ht ? ' \u2014 ' + eur(s.prix_ht) : '') + '</option>'
-      ).join('');
-  }
-
-  async function genNumber(type) {
-    const prefix = type === 'devis' ? 'DEV' : 'FAC';
-    const year   = new Date().getFullYear();
-    const { data } = await db.from('documents')
-      .select('numero')
-      .like('numero', `${prefix}-${year}-%`)
-      .order('numero', { ascending: false })
-      .limit(1);
-    let next = 1;
-    if (data && data.length > 0) {
-      next = parseInt(data[0].numero.split('-')[2]) + 1;
+    function onMention(key, val) {
+      state.mentions[key] = val;
+      renderPreview();
     }
-    return `${prefix}-${year}-${String(next).padStart(3,'0')}`;
-  }
 
-  // ── State handlers ───────────────────────────────────────────────────────────
-  function onField(key, val) {
-    switch (key) {
-      case 'numero':          state.numero         = val; break;
-      case 'date_creation':   state.date_creation  = val; break;
-      case 'date_validite':   state.date_validite  = val; break;
-      case 'date_echeance':   state.date_echeance  = val; break;
-      case 'siret':           state.siret = val; localStorage.setItem('emvii_siret', val); break;
-      case 'objet':           state.objet          = val; break;
-      case 'acompte':         state.acompte        = val; break;
-      case 'moyen':           state.moyen          = val; break;
-      case 'notes':           state.notes          = val; break;
-      case 'statut':          state.statut         = val; break;
-      case 'client_nom':      state.client.nom         = val; break;
-      case 'client_entreprise': state.client.entreprise= val; break;
-      case 'client_secteur':  state.client.secteur     = val; break;
-      case 'client_email':    state.client.email       = val; break;
-      case 'client_adresse':  state.client.adresse     = val; break;
+    function toggleCustomMention(checked) {
+      state.mentions.custom = checked;
+      document.getElementById('custom-mention').style.display = checked ? 'block' : 'none';
+      renderPreview();
     }
-    renderPreview();
-  }
 
-  function onMention(key, val) {
-    state.mentions[key] = val;
-    renderPreview();
-  }
-
-  function toggleCustomMention(checked) {
-    state.mentions.custom = checked;
-    document.getElementById('custom-mention').style.display = checked ? 'block' : 'none';
-    renderPreview();
-  }
-
-  function onClientSelect(id) {
-    state.client_id = id || null;
-    if (id) {
-      const c = clientsList.find(x => x.id === id);
-      if (c) {
-        state.client = { nom: c.nom||'', entreprise: c.entreprise||'', secteur: c.secteur||'', email: c.email||'', adresse: c.adresse||'' };
-        setVal('client-nom',        c.nom);
-        setVal('client-entreprise', c.entreprise);
-        setVal('client-secteur',    c.secteur);
-        setVal('client-email',      c.email);
-        setVal('client-adresse',    c.adresse);
-      }
-    }
-    renderPreview();
-  }
-
-  function setType(type) {
-    if (state.type === type) return;
-    state.type = type;
-    document.getElementById('btn-devis').classList.toggle('active',   type === 'devis');
-    document.getElementById('btn-facture').classList.toggle('active', type === 'facture');
-    document.getElementById('devis-date-group').style.display   = type === 'devis'   ? 'block' : 'none';
-    document.getElementById('facture-date-group').style.display = type === 'facture' ? 'block' : 'none';
-    genNumber(type).then(n => { state.numero = n; setVal('doc-numero', n); renderPreview(); });
-  }
-
-  function addFromCatalog(sel) {
-    const id = sel.value;
-    if (!id) return;
-    addLine(id);
-    populateCatalog(); // rehydrate options après manipulation DOM
-  }
-
-  function addLine(serviceId = null) {
-    const line = { id: lineIdSeq++, titre: '', description: '', qte: 1, prix_ht: 0 };
-    if (serviceId) {
-      const s = servicesList.find(x => x.id === serviceId);
-      if (s) {
-        line.titre    = s.titre;
-        line.prix_ht  = s.prix_ht || 0;
-        // details est un tableau text[] depuis Supabase
-        if (Array.isArray(s.details) && s.details.length > 0) {
-          line.description = s.details
-            .map(d => d.startsWith('>') ? d : '> ' + d)
-            .join('\n');
-        } else {
-          line.description = '';
+    function onClientSelect(id) {
+      state.client_id = id || null;
+      if (id) {
+        const c = clientsList.find(x => x.id === id);
+        if (c) {
+          state.client = { nom: c.nom || '', entreprise: c.entreprise || '', secteur: c.secteur || '', email: c.email || '', adresse: c.adresse || '' };
+          setVal('client-nom', c.nom);
+          setVal('client-entreprise', c.entreprise);
+          setVal('client-secteur', c.secteur);
+          setVal('client-email', c.email);
+          setVal('client-adresse', c.adresse);
         }
       }
+      renderPreview();
     }
-    state.lignes.push(line);
-    renderLines();
-    renderPreview();
-  }
 
-  function removeLine(id) {
-    state.lignes = state.lignes.filter(l => l.id !== id);
-    renderLines();
-    renderPreview();
-  }
+    function setType(type) {
+      if (state.type === type) return;
+      state.type = type;
+      document.getElementById('btn-devis').classList.toggle('active', type === 'devis');
+      document.getElementById('btn-facture').classList.toggle('active', type === 'facture');
+      document.getElementById('devis-date-group').style.display = type === 'devis' ? 'block' : 'none';
+      document.getElementById('facture-date-group').style.display = type === 'facture' ? 'block' : 'none';
+      genNumber(type).then(n => { state.numero = n; setVal('doc-numero', n); renderPreview(); });
+    }
 
-  function updateLine(id, field, raw) {
-    const line = state.lignes.find(l => l.id === id);
-    if (!line) return;
-    if (field === 'qte' || field === 'prix_ht') line[field] = parseFloat(raw) || 0;
-    else line[field] = raw;
-    const totEl = document.querySelector(`[data-lt="${id}"]`);
-    if (totEl) totEl.textContent = eur(line.qte * line.prix_ht);
-    renderPreview();
-  }
+    function addFromCatalog(sel) {
+      const id = sel.value;
+      if (!id) return;
+      addLine(id);
+      populateCatalog(); // rehydrate options après manipulation DOM
+    }
 
-  // ── Render lines form ────────────────────────────────────────────────────────
-  function renderLines() {
-    const container = document.getElementById('lines-container');
-    if (state.lignes.length === 0) { container.innerHTML = ''; return; }
-    container.innerHTML = state.lignes.map(l => {
-      const descRows = Math.max(2, (l.description || '').split('\n').length + 1);
-      return `
+    function addLine(serviceId = null) {
+      const line = { id: lineIdSeq++, titre: '', description: '', qte: 1, prix_ht: 0 };
+      if (serviceId) {
+        const s = servicesList.find(x => x.id === serviceId);
+        if (s) {
+          line.titre = s.titre;
+          line.prix_ht = s.prix_ht || 0;
+          // details est un tableau text[] depuis Supabase
+          if (Array.isArray(s.details) && s.details.length > 0) {
+            line.description = s.details
+              .map(d => d.startsWith('>') ? d : '> ' + d)
+              .join('\n');
+          } else {
+            line.description = '';
+          }
+        }
+      }
+      state.lignes.push(line);
+      renderLines();
+      renderPreview();
+    }
+
+    function removeLine(id) {
+      state.lignes = state.lignes.filter(l => l.id !== id);
+      renderLines();
+      renderPreview();
+    }
+
+    function updateLine(id, field, raw) {
+      const line = state.lignes.find(l => l.id === id);
+      if (!line) return;
+      if (field === 'qte' || field === 'prix_ht') line[field] = parseFloat(raw) || 0;
+      else line[field] = raw;
+      const totEl = document.querySelector(`[data-lt="${id}"]`);
+      if (totEl) totEl.textContent = eur(line.qte * line.prix_ht);
+      renderPreview();
+    }
+
+    // ── Render lines form ────────────────────────────────────────────────────────
+    function renderLines() {
+      const container = document.getElementById('lines-container');
+      if (state.lignes.length === 0) { container.innerHTML = ''; return; }
+      container.innerHTML = state.lignes.map(l => {
+        const descRows = Math.max(2, (l.description || '').split('\n').length + 1);
+        return `
       <div class="line-item">
         <div class="line-header">
           <input type="text" class="form-control" placeholder="Titre de la prestation"
@@ -509,38 +517,38 @@
           <div class="line-total" data-lt="${l.id}">${eur(l.qte * l.prix_ht)}</div>
         </div>
       </div>`;
-    }).join('');
-  }
+      }).join('');
+    }
 
-  function addDetail(lineId) {
-    const line = state.lignes.find(l => l.id === lineId);
-    if (!line) return;
-    line.description = (line.description ? line.description.trimEnd() + '\n' : '') + '> ';
-    renderLines();
-    renderPreview();
-    // Focus + place cursor à la fin
-    const ta = document.getElementById('desc-' + lineId);
-    if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
-  }
+    function addDetail(lineId) {
+      const line = state.lignes.find(l => l.id === lineId);
+      if (!line) return;
+      line.description = (line.description ? line.description.trimEnd() + '\n' : '') + '> ';
+      renderLines();
+      renderPreview();
+      // Focus + place cursor à la fin
+      const ta = document.getElementById('desc-' + lineId);
+      if (ta) { ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length); }
+    }
 
-  function autoResize(ta) {
-    ta.style.height = 'auto';
-    ta.style.height = ta.scrollHeight + 'px';
-  }
+    function autoResize(ta) {
+      ta.style.height = 'auto';
+      ta.style.height = ta.scrollHeight + 'px';
+    }
 
-  // ── Render PDF preview ───────────────────────────────────────────────────────
-  function renderPreview() {
-    const totalHT    = state.lignes.reduce((s, l) => s + l.qte * l.prix_ht, 0);
-    const acomptePct = parseInt(state.acompte) || 0;
-    const acompteAmt = totalHT * acomptePct / 100;
-    const soldeAmt   = totalHT - acompteAmt;
-    const c          = state.client;
+    // ── Render PDF preview ───────────────────────────────────────────────────────
+    function renderPreview() {
+      const totalHT = state.lignes.reduce((s, l) => s + l.qte * l.prix_ht, 0);
+      const acomptePct = parseInt(state.acompte) || 0;
+      const acompteAmt = totalHT * acomptePct / 100;
+      const soldeAmt = totalHT - acompteAmt;
+      const c = state.client;
 
-    const linesHTML = state.lignes.length === 0
-      ? `<tr><td colspan="4" style="color:#475569;font-style:italic;padding:16px 12px;text-align:center">
+      const linesHTML = state.lignes.length === 0
+        ? `<tr><td colspan="4" style="color:#475569;font-style:italic;padding:16px 12px;text-align:center">
            Aucune prestation ajoutée
          </td></tr>`
-      : state.lignes.map(l => {
+        : state.lignes.map(l => {
           const descLines = (l.description || '').split('\n').filter(Boolean)
             .map(d => `<div class="pdf-td-desc">${esc(d)}</div>`).join('');
           return `<tr>
@@ -554,38 +562,38 @@
           </tr>`;
         }).join('');
 
-    const mentionParts = [];
-    if (state.mentions.tva_293b)  mentionParts.push('TVA non applicable, art. 293B du CGI');
-    if (state.mentions.ei)         mentionParts.push('Entreprise Individuelle — EMVII');
-    if (state.mentions.penalites)  mentionParts.push('Pénalités de retard applicables (taux légal × 3)');
-    if (state.mentions.custom && state.mentions.custom_text) mentionParts.push(esc(state.mentions.custom_text));
+      const mentionParts = [];
+      if (state.mentions.tva_293b) mentionParts.push('TVA non applicable, art. 293B du CGI');
+      if (state.mentions.ei) mentionParts.push('Entreprise Individuelle — EMVII');
+      if (state.mentions.penalites) mentionParts.push('Pénalités de retard applicables (taux légal × 3)');
+      if (state.mentions.custom && state.mentions.custom_text) mentionParts.push(esc(state.mentions.custom_text));
 
-    const moyenLabel = { virement:'par virement bancaire', cb:'par carte bancaire', paypal:'par PayPal', cheque:'par chèque' };
+      const moyenLabel = { virement: 'par virement bancaire', cb: 'par carte bancaire', paypal: 'par PayPal', cheque: 'par chèque' };
 
-    const dateSecondLine = state.type === 'devis'
-      ? `<div>Valable jusqu'au&nbsp;: <span>${fmtDate(state.date_validite)}</span></div>`
-      : `<div>Échéance&nbsp;: <span>${fmtDate(state.date_echeance)}</span></div>`;
+      const dateSecondLine = state.type === 'devis'
+        ? `<div>Valable jusqu'au&nbsp;: <span>${fmtDate(state.date_validite)}</span></div>`
+        : `<div>Échéance&nbsp;: <span>${fmtDate(state.date_echeance)}</span></div>`;
 
-    const moyen = moyenLabel[state.moyen] || '';
-    let paymentHTML = '';
-    if (acomptePct > 0 && acomptePct < 100) {
-      paymentHTML = `
+      const moyen = moyenLabel[state.moyen] || '';
+      let paymentHTML = '';
+      if (acomptePct > 0 && acomptePct < 100) {
+        paymentHTML = `
         <div class="pdf-payment-line">Règlement ${moyen}</div>
         <div class="pdf-payment-line" style="margin-top:8px">Acompte ${acomptePct}&nbsp;% à la signature</div>
         <div class="pdf-payment-amount">${eur(acompteAmt)} — À la commande</div>
         <div class="pdf-payment-line">Solde ${100 - acomptePct}&nbsp;% à la livraison</div>
         <div class="pdf-payment-amount">${eur(soldeAmt)} — À la livraison</div>`;
-    } else if (acomptePct === 100) {
-      paymentHTML = `
+      } else if (acomptePct === 100) {
+        paymentHTML = `
         <div class="pdf-payment-line">Paiement intégral ${moyen}</div>
         <div class="pdf-payment-amount">${eur(totalHT)} — À la commande</div>`;
-    } else {
-      paymentHTML = `
+      } else {
+        paymentHTML = `
         <div class="pdf-payment-line">Paiement ${moyen} à la livraison</div>
         <div class="pdf-payment-amount">${eur(totalHT)}</div>`;
-    }
+      }
 
-    document.getElementById('pdf-content').innerHTML = `
+      document.getElementById('pdf-content').innerHTML = `
       <div class="pdf-header">
         <div class="pdf-header-left">
           <img src="../emvii-logo-nobg.png" alt="EMVII">
@@ -614,7 +622,7 @@
           <div class="pdf-party-detail">
             EMVII — Entreprise Individuelle<br>
             ${state.siret ? `SIRET&nbsp;: ${esc(state.siret)}<br>` : ''}
-            ${PRESTATAIRE.adresse ? esc(PRESTATAIRE.adresse).replace(/\n/g,'<br>') + '<br>' : ''}
+            ${PRESTATAIRE.adresse ? esc(PRESTATAIRE.adresse).replace(/\n/g, '<br>') + '<br>' : ''}
             ${PRESTATAIRE.email}
           </div>
         </div>
@@ -623,9 +631,9 @@
           <div class="pdf-party-name">${esc(c.nom) || '—'}</div>
           <div class="pdf-party-detail">
             ${c.entreprise ? esc(c.entreprise) + '<br>' : ''}
-            ${c.secteur    ? esc(c.secteur)    + '<br>' : ''}
-            ${c.adresse    ? esc(c.adresse).replace(/\n/g,'<br>') + '<br>' : ''}
-            ${c.email      ? esc(c.email)             : ''}
+            ${c.secteur ? esc(c.secteur) + '<br>' : ''}
+            ${c.adresse ? esc(c.adresse).replace(/\n/g, '<br>') + '<br>' : ''}
+            ${c.email ? esc(c.email) : ''}
           </div>
         </div>
       </div>
@@ -681,183 +689,183 @@
         <div class="footer-line" style="margin-top:4px;letter-spacing:4px">■■■ EMVII STUDIO ■■■</div>
       </div>
     `;
-  }
-
-  // ── Populate form from state ─────────────────────────────────────────────────
-  function populateForm() {
-    setVal('doc-numero',     state.numero);
-    setVal('doc-date',       state.date_creation);
-    setVal('doc-validite',   state.date_validite);
-    setVal('doc-echeance',   state.date_echeance);
-    setVal('siret-field',    state.siret);
-    setVal('client-select',  state.client_id || '');
-    setVal('client-nom',     state.client.nom);
-    setVal('client-entreprise', state.client.entreprise);
-    setVal('client-secteur', state.client.secteur);
-    setVal('client-email',   state.client.email);
-    setVal('client-adresse', state.client.adresse);
-    setVal('objet-field',    state.objet);
-    setVal('moyen-field',    state.moyen);
-    setVal('statut-field',   state.statut);
-    setVal('notes-field',    state.notes);
-
-    document.getElementById('btn-devis').classList.toggle('active',   state.type === 'devis');
-    document.getElementById('btn-facture').classList.toggle('active', state.type === 'facture');
-    document.getElementById('devis-date-group').style.display   = state.type === 'devis'   ? 'block' : 'none';
-    document.getElementById('facture-date-group').style.display = state.type === 'facture' ? 'block' : 'none';
-
-    document.querySelectorAll('input[name="acompte"]').forEach(r => {
-      r.checked = r.value === state.acompte;
-    });
-
-    document.getElementById('m-tva').checked       = !!state.mentions.tva_293b;
-    document.getElementById('m-ei').checked         = !!state.mentions.ei;
-    document.getElementById('m-penalites').checked  = !!state.mentions.penalites;
-    document.getElementById('m-custom').checked     = !!state.mentions.custom;
-    document.getElementById('custom-mention').style.display = state.mentions.custom ? 'block' : 'none';
-  }
-
-  // ── Save / Load ──────────────────────────────────────────────────────────────
-  async function saveDocument() {
-    const btn = document.getElementById('btn-save');
-    btn.disabled = true; btn.textContent = '⏳ SAUVEGARDE…';
-
-    const totalHT = state.lignes.reduce((s, l) => s + l.qte * l.prix_ht, 0);
-    const payload = {
-      type:               state.type,
-      numero:             state.numero,
-      date_creation:      state.date_creation,
-      date_validite:      state.type === 'devis'   ? state.date_validite : null,
-      date_echeance:      state.type === 'facture' ? state.date_echeance : null,
-      client_id:          state.client_id || null,
-      client_snapshot:    state.client,
-      objet:              state.objet,
-      lignes:             state.lignes,
-      total_ht:           totalHT,
-      modalites_paiement: { acompte: state.acompte, moyen: state.moyen },
-      mentions:           state.mentions,
-      notes:              state.notes,
-      statut:             state.statut,
-    };
-
-    let res;
-    if (state.savedId) {
-      res = await db.from('documents').update(payload).eq('id', state.savedId).select().single();
-    } else {
-      res = await db.from('documents').insert(payload).select().single();
-      if (res.data) { state.savedId = res.data.id; history.replaceState({}, '', `?id=${state.savedId}`); }
     }
 
-    btn.disabled = false; btn.textContent = '💾 SAUVEGARDER';
-    if (res.error) toast('Erreur : ' + res.error.message, true);
-    else toast('Document sauvegardé ✓');
-  }
+    // ── Populate form from state ─────────────────────────────────────────────────
+    function populateForm() {
+      setVal('doc-numero', state.numero);
+      setVal('doc-date', state.date_creation);
+      setVal('doc-validite', state.date_validite);
+      setVal('doc-echeance', state.date_echeance);
+      setVal('siret-field', state.siret);
+      setVal('client-select', state.client_id || '');
+      setVal('client-nom', state.client.nom);
+      setVal('client-entreprise', state.client.entreprise);
+      setVal('client-secteur', state.client.secteur);
+      setVal('client-email', state.client.email);
+      setVal('client-adresse', state.client.adresse);
+      setVal('objet-field', state.objet);
+      setVal('moyen-field', state.moyen);
+      setVal('statut-field', state.statut);
+      setVal('notes-field', state.notes);
 
-  async function loadDocument(id) {
-    const { data, error } = await db.from('documents').select('*').eq('id', id).single();
-    if (error || !data) { toast('Document introuvable', true); return; }
+      document.getElementById('btn-devis').classList.toggle('active', state.type === 'devis');
+      document.getElementById('btn-facture').classList.toggle('active', state.type === 'facture');
+      document.getElementById('devis-date-group').style.display = state.type === 'devis' ? 'block' : 'none';
+      document.getElementById('facture-date-group').style.display = state.type === 'facture' ? 'block' : 'none';
 
-    state = {
-      type:           data.type,
-      numero:         data.numero,
-      date_creation:  data.date_creation,
-      date_validite:  data.date_validite || addDays(30),
-      date_echeance:  data.date_echeance || addDays(30),
-      siret:          localStorage.getItem('emvii_siret') || '',
-      client_id:      data.client_id,
-      client:         { nom:'', entreprise:'', secteur:'', email:'', adresse:'', ...(data.client_snapshot || {}) },
-      objet:          data.objet || '',
-      lignes:         (data.lignes || []).map((l, i) => ({ ...l, id: i + 1 })),
-      acompte:        data.modalites_paiement?.acompte || '50',
-      moyen:          data.modalites_paiement?.moyen   || 'virement',
-      mentions:       data.mentions || { tva_293b: true, ei: true },
-      notes:          data.notes || '',
-      statut:         data.statut || 'brouillon',
-      savedId:        id,
-    };
-    lineIdSeq = state.lignes.length + 1;
-    populateForm();
-    renderLines();
-    renderPreview();
-  }
+      document.querySelectorAll('input[name="acompte"]').forEach(r => {
+        r.checked = r.value === state.acompte;
+      });
 
-  function newDocument() {
-    if (!confirm('Créer un nouveau document ? Les modifications non sauvegardées seront perdues.')) return;
-    history.replaceState({}, '', 'devis.html');
-    state = {
-      type:'devis', numero:'', date_creation:today(),
-      date_validite:addDays(30), date_echeance:addDays(30),
-      siret: localStorage.getItem('emvii_siret')||'',
-      client_id:null, client:{nom:'',entreprise:'',secteur:'',email:'',adresse:''},
-      objet:'', lignes:[], acompte:'50', moyen:'virement',
-      mentions:{ tva_293b:true, ei:true, penalites:false, custom:false, custom_text:'' },
-      notes:'', statut:'brouillon', savedId:null,
-    };
-    lineIdSeq = 1;
-    genNumber('devis').then(n => { state.numero = n; populateForm(); renderLines(); renderPreview(); });
-  }
+      document.getElementById('m-tva').checked = !!state.mentions.tva_293b;
+      document.getElementById('m-ei').checked = !!state.mentions.ei;
+      document.getElementById('m-penalites').checked = !!state.mentions.penalites;
+      document.getElementById('m-custom').checked = !!state.mentions.custom;
+      document.getElementById('custom-mention').style.display = state.mentions.custom ? 'block' : 'none';
+    }
 
-  // ── Save client to Supabase ──────────────────────────────────────────────────
-  async function saveClient() {
-    if (!state.client.nom) { toast('Le nom du client est requis', true); return; }
-    const { data, error } = await db.from('clients').insert(state.client).select().single();
-    if (error) { toast('Erreur : ' + error.message, true); return; }
-    state.client_id = data.id;
-    clientsList.push(data);
-    const sel = document.getElementById('client-select');
-    sel.innerHTML += `<option value="${data.id}">${esc(data.nom)}${data.entreprise ? ` — ${esc(data.entreprise)}` : ''}</option>`;
-    sel.value = data.id;
-    toast(`Client "${data.nom}" enregistré ✓`);
-  }
+    // ── Save / Load ──────────────────────────────────────────────────────────────
+    async function saveDocument() {
+      const btn = document.getElementById('btn-save');
+      btn.disabled = true; btn.textContent = '⏳ SAUVEGARDE…';
 
-  // ── Download PDF ─────────────────────────────────────────────────────────────
-  async function downloadPDF() {
-    const btn = document.getElementById('btn-pdf');
-    btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
+      const totalHT = state.lignes.reduce((s, l) => s + l.qte * l.prix_ht, 0);
+      const payload = {
+        type: state.type,
+        numero: state.numero,
+        date_creation: state.date_creation,
+        date_validite: state.type === 'devis' ? state.date_validite : null,
+        date_echeance: state.type === 'facture' ? state.date_echeance : null,
+        client_id: state.client_id || null,
+        client_snapshot: state.client,
+        objet: state.objet,
+        lignes: state.lignes,
+        total_ht: totalHT,
+        modalites_paiement: { acompte: state.acompte, moyen: state.moyen },
+        mentions: state.mentions,
+        notes: state.notes,
+        statut: state.statut,
+      };
 
-    const el = document.getElementById('pdf-content');
-    const W  = 794;
-    const H  = el.scrollHeight; // hauteur réelle du contenu
+      let res;
+      if (state.savedId) {
+        res = await db.from('documents').update(payload).eq('id', state.savedId).select().single();
+      } else {
+        res = await db.from('documents').insert(payload).select().single();
+        if (res.data) { state.savedId = res.data.id; history.replaceState({}, '', `?id=${state.savedId}`); }
+      }
 
-    await html2pdf().set({
-      margin:      0,
-      filename:    `${state.numero || 'document'}.pdf`,
-      image:       { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#0A0A1A',
-        logging: false,
-        onclone: (clonedDoc) => {
-          clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#0A0A1A';
-          clonedDoc.documentElement.style.background = '#0A0A1A';
-          const cloned = clonedDoc.getElementById('pdf-content');
-          if (cloned) {
-            cloned.style.background   = '#0A0A1A';
-            cloned.style.boxShadow    = 'none';
-            cloned.style.borderRadius = '0';
-            cloned.style.width        = W + 'px';
-            cloned.style.height       = H + 'px'; // fige la hauteur mesurée
-          }
+      btn.disabled = false; btn.textContent = '💾 SAUVEGARDER';
+      if (res.error) toast('Erreur : ' + res.error.message, true);
+      else toast('Document sauvegardé ✓');
+    }
+
+    async function loadDocument(id) {
+      const { data, error } = await db.from('documents').select('*').eq('id', id).single();
+      if (error || !data) { toast('Document introuvable', true); return; }
+
+      state = {
+        type: data.type,
+        numero: data.numero,
+        date_creation: data.date_creation,
+        date_validite: data.date_validite || addDays(30),
+        date_echeance: data.date_echeance || addDays(30),
+        siret: localStorage.getItem('emvii_siret') || '',
+        client_id: data.client_id,
+        client: { nom: '', entreprise: '', secteur: '', email: '', adresse: '', ...(data.client_snapshot || {}) },
+        objet: data.objet || '',
+        lignes: (data.lignes || []).map((l, i) => ({ ...l, id: i + 1 })),
+        acompte: data.modalites_paiement?.acompte || '50',
+        moyen: data.modalites_paiement?.moyen || 'virement',
+        mentions: data.mentions || { tva_293b: true, ei: true },
+        notes: data.notes || '',
+        statut: data.statut || 'brouillon',
+        savedId: id,
+      };
+      lineIdSeq = state.lignes.length + 1;
+      populateForm();
+      renderLines();
+      renderPreview();
+    }
+
+    function newDocument() {
+      if (!confirm('Créer un nouveau document ? Les modifications non sauvegardées seront perdues.')) return;
+      history.replaceState({}, '', 'devis.html');
+      state = {
+        type: 'devis', numero: '', date_creation: today(),
+        date_validite: addDays(30), date_echeance: addDays(30),
+        siret: localStorage.getItem('emvii_siret') || '',
+        client_id: null, client: { nom: '', entreprise: '', secteur: '', email: '', adresse: '' },
+        objet: '', lignes: [], acompte: '50', moyen: 'virement',
+        mentions: { tva_293b: true, ei: true, penalites: false, custom: false, custom_text: '' },
+        notes: '', statut: 'brouillon', savedId: null,
+      };
+      lineIdSeq = 1;
+      genNumber('devis').then(n => { state.numero = n; populateForm(); renderLines(); renderPreview(); });
+    }
+
+    // ── Save client to Supabase ──────────────────────────────────────────────────
+    async function saveClient() {
+      if (!state.client.nom) { toast('Le nom du client est requis', true); return; }
+      const { data, error } = await db.from('clients').insert(state.client).select().single();
+      if (error) { toast('Erreur : ' + error.message, true); return; }
+      state.client_id = data.id;
+      clientsList.push(data);
+      const sel = document.getElementById('client-select');
+      sel.innerHTML += `<option value="${data.id}">${esc(data.nom)}${data.entreprise ? ` — ${esc(data.entreprise)}` : ''}</option>`;
+      sel.value = data.id;
+      toast(`Client "${data.nom}" enregistré ✓`);
+    }
+
+    // ── Download PDF ─────────────────────────────────────────────────────────────
+    async function downloadPDF() {
+      const btn = document.getElementById('btn-pdf');
+      btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
+
+      const el = document.getElementById('pdf-content');
+      const W = 794;
+      const H = el.scrollHeight; // hauteur réelle du contenu
+
+      await html2pdf().set({
+        margin: 0,
+        filename: `${state.numero || 'document'}.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#0A0A1A',
+          logging: false,
+          onclone: (clonedDoc) => {
+            clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#0A0A1A';
+            clonedDoc.documentElement.style.background = '#0A0A1A';
+            const cloned = clonedDoc.getElementById('pdf-content');
+            if (cloned) {
+              cloned.style.background = '#0A0A1A';
+              cloned.style.boxShadow = 'none';
+              cloned.style.borderRadius = '0';
+              cloned.style.width = W + 'px';
+              cloned.style.height = H + 'px'; // fige la hauteur mesurée
+            }
+          },
         },
-      },
-      jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
-    }).from(el).save();
+        jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
+      }).from(el).save();
 
-    btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
-  }
+      btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
+    }
 
-  // ── Download PDF (version claire / imprimable) ──────────────────────────────
-  async function downloadPDFLight() {
-    const btn = document.getElementById('btn-pdf-light');
-    btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
+    // ── Download PDF (version claire / imprimable) ──────────────────────────────
+    async function downloadPDFLight() {
+      const btn = document.getElementById('btn-pdf-light');
+      btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
 
-    const el = document.getElementById('pdf-content');
-    const W  = 794;
-    const H  = el.scrollHeight;
+      const el = document.getElementById('pdf-content');
+      const W = 794;
+      const H = el.scrollHeight;
 
-    const lightCSS = `
+      const lightCSS = `
       #pdf-content, #pdf-content * { box-sizing: border-box; }
       #pdf-content { background: #FFFFFF !important; color: #0A0A1A !important; }
 
@@ -921,49 +929,50 @@
       .pdf-badge { background: #eee !important; color: #0A0A1A !important; }
     `;
 
-    await html2pdf().set({
-      margin:      0,
-      filename:    `${state.numero || 'document'}-clair.pdf`,
-      image:       { type: 'jpeg', quality: 0.98 },
-      html2canvas: {
-        scale: 2,
-        useCORS: true,
-        allowTaint: true,
-        backgroundColor: '#FFFFFF',
-        logging: false,
-        onclone: (clonedDoc) => {
-          clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#FFFFFF';
-          clonedDoc.documentElement.style.background = '#FFFFFF';
-          const style = clonedDoc.createElement('style');
-          style.textContent = lightCSS;
-          clonedDoc.head.appendChild(style);
-          const cloned = clonedDoc.getElementById('pdf-content');
-          if (cloned) {
-            cloned.style.background   = '#FFFFFF';
-            cloned.style.boxShadow    = 'none';
-            cloned.style.borderRadius = '0';
-            cloned.style.width        = W + 'px';
-            cloned.style.height       = H + 'px';
-          }
+      await html2pdf().set({
+        margin: 0,
+        filename: `${state.numero || 'document'}-clair.pdf`,
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          allowTaint: true,
+          backgroundColor: '#FFFFFF',
+          logging: false,
+          onclone: (clonedDoc) => {
+            clonedDoc.body.style.cssText = 'margin:0;padding:0;background:#FFFFFF';
+            clonedDoc.documentElement.style.background = '#FFFFFF';
+            const style = clonedDoc.createElement('style');
+            style.textContent = lightCSS;
+            clonedDoc.head.appendChild(style);
+            const cloned = clonedDoc.getElementById('pdf-content');
+            if (cloned) {
+              cloned.style.background = '#FFFFFF';
+              cloned.style.boxShadow = 'none';
+              cloned.style.borderRadius = '0';
+              cloned.style.width = W + 'px';
+              cloned.style.height = H + 'px';
+            }
+          },
         },
-      },
-      jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
-    }).from(el).save();
+        jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
+      }).from(el).save();
 
-    btn.disabled = false; btn.textContent = '☀ VERSION CLAIRE';
-  }
+      btn.disabled = false; btn.textContent = '☀ VERSION CLAIRE';
+    }
 
-  // ── Toast ────────────────────────────────────────────────────────────────────
-  function toast(msg, isErr = false) {
-    const el = document.getElementById('toast');
-    el.textContent = msg;
-    el.className = isErr ? 'err show' : 'show';
-    clearTimeout(el._t);
-    el._t = setTimeout(() => el.className = '', 3200);
-  }
+    // ── Toast ────────────────────────────────────────────────────────────────────
+    function toast(msg, isErr = false) {
+      const el = document.getElementById('toast');
+      el.textContent = msg;
+      el.className = isErr ? 'err show' : 'show';
+      clearTimeout(el._t);
+      el._t = setTimeout(() => el.className = '', 3200);
+    }
 
-  // ── Start ────────────────────────────────────────────────────────────────────
-  init();
+    // ── Start ────────────────────────────────────────────────────────────────────
+    init();
   </script>
 </body>
+
 </html>
