@@ -215,8 +215,8 @@
       <div class="preview-actions">
         <button class="btn btn-outline" id="btn-save" onclick="saveDocument()">💾 SAUVEGARDER</button>
         <button class="btn btn-primary" id="btn-new" onclick="newDocument()">✦ NOUVEAU</button>
-        <button class="btn btn-cyan" id="btn-pdf" onclick="downloadPDF()">⬇ TÉLÉCHARGER PDF</button>
-        <button class="btn btn-outline" id="btn-pdf-light" onclick="downloadPDFLight()">☀ VERSION CLAIRE</button>
+        <button class="btn btn-cyan" id="btn-pdf" onclick="downloadPDFLight()">⬇ TÉLÉCHARGER PDF</button>
+        <button class="btn btn-outline" id="btn-pdf-light" onclick="downloadPDF()">🌑 VERSION SOMBRE</button>
       </div>
 
       <!-- Zone PDF — mise à jour en temps réel -->
@@ -820,7 +820,7 @@
 
     // ── Download PDF ─────────────────────────────────────────────────────────────
     async function downloadPDF() {
-      const btn = document.getElementById('btn-pdf');
+      const btn = document.getElementById('btn-pdf-light');
       btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
 
       const el = document.getElementById('pdf-content');
@@ -853,12 +853,12 @@
         jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
       }).from(el).save();
 
-      btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
+      btn.disabled = false; btn.textContent = '🌑 VERSION SOMBRE';
     }
 
     // ── Download PDF (version claire / imprimable) ──────────────────────────────
     async function downloadPDFLight() {
-      const btn = document.getElementById('btn-pdf-light');
+      const btn = document.getElementById('btn-pdf');
       btn.disabled = true; btn.textContent = '⏳ GÉNÉRATION…';
 
       const el = document.getElementById('pdf-content');
@@ -958,7 +958,7 @@
         jsPDF: { unit: 'px', format: [W, H], orientation: 'portrait' },
       }).from(el).save();
 
-      btn.disabled = false; btn.textContent = '☀ VERSION CLAIRE';
+      btn.disabled = false; btn.textContent = '⬇ TÉLÉCHARGER PDF';
     }
 
     // ── Toast ────────────────────────────────────────────────────────────────────
