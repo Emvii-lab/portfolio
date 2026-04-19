@@ -109,6 +109,12 @@
               oninput="onField('client_secteur', this.value)">
           </div>
         </div>
+        <div class="form-group">
+          <label>Adresse postale</label>
+          <textarea id="client-adresse" class="form-control" rows="2"
+            placeholder="12 rue de la Paix&#10;75001 Paris"
+            oninput="onField('client_adresse', this.value)"></textarea>
+        </div>
         <button class="btn btn-ghost btn-sm" onclick="saveClient()" style="margin-top:4px">
           + Enregistrer ce client dans Supabase
         </button>
@@ -234,6 +240,7 @@
     tagline:  '< DEVELOPPEUSE NO-CODE / LOW-CODE / IA />',
     email:    'contact@emvii.fr',
     website:  'www.emvii.fr',
+    adresse:  '',
   };
 
   const db = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
@@ -247,7 +254,7 @@
     date_echeance:  addDays(30),
     siret:          localStorage.getItem('emvii_siret') || '',
     client_id:      null,
-    client:         { nom:'', entreprise:'', secteur:'', email:'' },
+    client:         { nom:'', entreprise:'', secteur:'', email:'', adresse:'' },
     objet:          '',
     lignes:         [],
     acompte:        '50',
@@ -379,6 +386,7 @@
       case 'client_entreprise': state.client.entreprise= val; break;
       case 'client_secteur':  state.client.secteur     = val; break;
       case 'client_email':    state.client.email       = val; break;
+      case 'client_adresse':  state.client.adresse     = val; break;
     }
     renderPreview();
   }
@@ -399,11 +407,12 @@
     if (id) {
       const c = clientsList.find(x => x.id === id);
       if (c) {
-        state.client = { nom: c.nom||'', entreprise: c.entreprise||'', secteur: c.secteur||'', email: c.email||'' };
+        state.client = { nom: c.nom||'', entreprise: c.entreprise||'', secteur: c.secteur||'', email: c.email||'', adresse: c.adresse||'' };
         setVal('client-nom',        c.nom);
         setVal('client-entreprise', c.entreprise);
         setVal('client-secteur',    c.secteur);
         setVal('client-email',      c.email);
+        setVal('client-adresse',    c.adresse);
       }
     }
     renderPreview();
@@ -605,6 +614,7 @@
           <div class="pdf-party-detail">
             EMVII — Entreprise Individuelle<br>
             ${state.siret ? `SIRET&nbsp;: ${esc(state.siret)}<br>` : ''}
+            ${PRESTATAIRE.adresse ? esc(PRESTATAIRE.adresse).replace(/\n/g,'<br>') + '<br>' : ''}
             ${PRESTATAIRE.email}
           </div>
         </div>
@@ -614,6 +624,7 @@
           <div class="pdf-party-detail">
             ${c.entreprise ? esc(c.entreprise) + '<br>' : ''}
             ${c.secteur    ? esc(c.secteur)    + '<br>' : ''}
+            ${c.adresse    ? esc(c.adresse).replace(/\n/g,'<br>') + '<br>' : ''}
             ${c.email      ? esc(c.email)             : ''}
           </div>
         </div>
@@ -684,6 +695,7 @@
     setVal('client-entreprise', state.client.entreprise);
     setVal('client-secteur', state.client.secteur);
     setVal('client-email',   state.client.email);
+    setVal('client-adresse', state.client.adresse);
     setVal('objet-field',    state.objet);
     setVal('moyen-field',    state.moyen);
     setVal('statut-field',   state.statut);
@@ -753,7 +765,7 @@
       date_echeance:  data.date_echeance || addDays(30),
       siret:          localStorage.getItem('emvii_siret') || '',
       client_id:      data.client_id,
-      client:         data.client_snapshot || {},
+      client:         { nom:'', entreprise:'', secteur:'', email:'', adresse:'', ...(data.client_snapshot || {}) },
       objet:          data.objet || '',
       lignes:         (data.lignes || []).map((l, i) => ({ ...l, id: i + 1 })),
       acompte:        data.modalites_paiement?.acompte || '50',
@@ -776,7 +788,7 @@
       type:'devis', numero:'', date_creation:today(),
       date_validite:addDays(30), date_echeance:addDays(30),
       siret: localStorage.getItem('emvii_siret')||'',
-      client_id:null, client:{nom:'',entreprise:'',secteur:'',email:''},
+      client_id:null, client:{nom:'',entreprise:'',secteur:'',email:'',adresse:''},
       objet:'', lignes:[], acompte:'50', moyen:'virement',
       mentions:{ tva_293b:true, ei:true, penalites:false, custom:false, custom_text:'' },
       notes:'', statut:'brouillon', savedId:null,
